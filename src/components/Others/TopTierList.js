@@ -1,54 +1,51 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 
 import RenderTierList from "../RenderTierList/RenderTierList";
 import Loading from "../Loading/Loading";
 import { getChallengerLeagueByQueue } from "../../utils/api";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
 
-class TopTierList extends React.Component {
-  state = {
-    loading: true
-  };
+const TopTierList = () => {
+  const [summoners, setSummoners] = useState([]),
+    [loading, setLoading] = useState(true),
+    [error, setError] = useState(null);
 
-  orderByLeaguePoints = summoners => {
+  useEffect(() => {
+    var callback = {
+      onSuccess: response => {
+        orderByLeaguePoints(response.data.entries);
+      },
+      onFailed: error => {
+        setError(error.response);
+      }
+    };
+
+    getChallengerLeagueByQueue("RANKED_SOLO_5x5", callback);
+  }, []);
+
+  const orderByLeaguePoints = summoners => {
     var summonersSortedList = [...summoners];
 
     summonersSortedList.sort((a, b) => {
       return b.leaguePoints - a.leaguePoints;
     });
 
-    summonersSortedList = summonersSortedList.map((summoner, index) => {
-      summoner.rankNumber = index + 1;
-      return summoner;
-    });
+    summonersSortedList = summonersSortedList.map((summoner, index) => ({
+      ...summoner,
+      rankNumber: index + 1
+    }));
 
-    this.setState({ summoners: summonersSortedList, loading: false });
+    setSummoners(summonersSortedList);
+    setLoading(false);
   };
 
-  componentDidMount() {
-    var callback = {
-      onSuccess: response => {
-        this.orderByLeaguePoints(response.data.entries);
-      },
-      onFailed: error => {
-        this.setState({ error: error.response });
-      }
-    };
-
-    getChallengerLeagueByQueue("RANKED_SOLO_5x5", callback);
-  }
-
-  render() {
-    const { summoners, loading, error } = this.state;
-
-    return error ? (
-      <ErrorPanel error={error} />
-    ) : loading ? (
-      <Loading name="top tier summoners" />
-    ) : (
-      <RenderTierList summoners={summoners} />
-    );
-  }
-}
+  return error ? (
+    <ErrorPanel error={error} />
+  ) : loading ? (
+    <Loading name="top tier summoners" />
+  ) : (
+    <RenderTierList summoners={summoners} />
+  );
+};
 
 export default TopTierList;

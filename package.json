@@ -45,7 +45,9 @@
     "axios": "^0.18.1",
     "cors": "^2.8.5",
     "express": "^4.17.0",
+    "parcel": "^1.12.4",
     "react": "^16.8.6",
+    "react-awesome-reveal": "^3.4.0",
     "react-bootstrap": "^1.0.0-beta.8",
     "react-dom": "^16.8.6"
   }

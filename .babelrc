@@ -1,14 +1,17 @@
 {
-    "presets": [
-      "react",
-      [
-        "env",
-        {
-          "targets": {
-            "browsers": ["last 2 versions"]
-          }
+  "presets": [
+    "react",
+    [
+      "env",
+      {
+        "targets": {
+          "browsers": ["last 2 versions"]
         }
-      ]
-    ],
-    "plugins": ["transform-class-properties"]
-  }
+      }
+    ]
+  ],
+  "plugins": [
+    "@babel/plugin-proposal-class-properties",
+    "@babel/plugin-proposal-object-rest-spread"
+  ]
+}

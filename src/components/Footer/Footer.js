@@ -1,12 +1,12 @@
-import { Icon } from "antd";
 import React from "react";
+import { Icon } from "antd";
 import { Slide } from "react-awesome-reveal";
 import riotGames from "../../../public/images/riotGames.png";
+import "./Footer.css";
 import {
   githubBranchRepository,
-  riotGamesDevelopers
+  riotGamesDevelopers,
 } from "../../utils/Constants/urls";
-import "./Footer.css";
 const Footer = () => {
   return (
     <Slide direction="up">

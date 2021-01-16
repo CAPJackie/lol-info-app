@@ -1,27 +1,22 @@
 {
-  "name": "juandavidramirez-final-project",
-  "version": "1.0.0",
+  "name": "lol-info",
+  "version": "1.0.1",
   "description": "",
   "main": "index.js",
-  "scripts": {
-    "clear-build-cache": "rm -rf .cache/ dist/",
-    "format": "prettier --write \"**/*.{js, jsx, css, json} \" ",
-    "format:check": "prettier --list-different \"src/**/*.{js, jsx, css, json} \" ",
-    "lint": "eslint \"**/*.{js,jsx}\"",
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "parcel public/index.html"
+  "dependencies": {
+    "@jam3/gsap-promise": "^4.0.1",
+    "@material-ui/core": "^3.9.3",
+    "@reach/router": "^1.2.1",
+    "antd": "^3.18.2",
+    "axios": "^0.18.1",
+    "cors": "^2.8.5",
+    "express": "^4.17.0",
+    "parcel": "^1.12.4",
+    "react": "^16.8.6",
+    "react-awesome-reveal": "^3.4.0",
+    "react-bootstrap": "^1.0.0-beta.8",
+    "react-dom": "^16.8.6"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Globant-UI-Engineering/Bootcamp.git"
-  },
-  "keywords": [],
-  "author": "Juan David Ramirez Mendoza",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Globant-UI-Engineering/Bootcamp/issues"
-  },
-  "homepage": "https://github.com/Globant-UI-Engineering/Bootcamp/tree/JuanDavidRamirezFinalProject/bogota-abril-2019/final_project/juandavidramirez-final-project#readme",
   "devDependencies": {
     "@babel/core": "^7.12.10",
     "@babel/eslint-parser": "^7.12.1",
@@ -38,18 +33,21 @@
     "parcel-bundler": "^1.11.0",
     "prettier": "^1.16.4"
   },
-  "dependencies": {
-    "@jam3/gsap-promise": "^4.0.1",
-    "@material-ui/core": "^3.9.3",
-    "@reach/router": "^1.2.1",
-    "antd": "^3.18.2",
-    "axios": "^0.18.1",
-    "cors": "^2.8.5",
-    "express": "^4.17.0",
-    "parcel": "^1.12.4",
-    "react": "^16.8.6",
-    "react-awesome-reveal": "^3.4.0",
-    "react-bootstrap": "^1.0.0-beta.8",
-    "react-dom": "^16.8.6"
-  }
+  "scripts": {
+    "clear-build-cache": "rm -rf .cache/ dist/",
+    "format": "prettier --write \"**/*.{js, jsx, css, json} \" ",
+    "format:check": "prettier --list-different \"src/**/*.{js, jsx, css, json} \" ",
+    "lint": "eslint \"**/*.{js,jsx}\"",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "parcel public/index.html"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Globant-UI-Engineering/Bootcamp.git"
+  },
+  "author": "Juan David Ramirez Mendoza",
+  "license": "GNU General Public License v3.0",
+  "browserslist": [
+    "last 2 Chrome versions"
+  ]
 }

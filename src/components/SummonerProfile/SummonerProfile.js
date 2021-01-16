@@ -11,7 +11,7 @@ import "./SummonerProfile.css";
 
 class SummonerProfile extends React.Component {
   state = {
-    loading: true
+    loading: true,
   };
 
   UNSAFE_componentWillReceiveProps(newProps) {
@@ -22,7 +22,7 @@ class SummonerProfile extends React.Component {
         loading: true,
         matches: null,
         profileInfo: null,
-        error: null
+        error: null,
       });
     }
   }
@@ -35,22 +35,22 @@ class SummonerProfile extends React.Component {
 
   handleProfileRequest = () => {
     var callback = {
-      onSuccess: response => {
+      onSuccess: (response) => {
         this.setState({ profileInfo: response.data }, () => {
           var callback = {
-            onSuccess: response => {
+            onSuccess: (response) => {
               this.setState({ loading: false, matches: response.data });
             },
-            onFailed: error => {
+            onFailed: (error) => {
               this.setState({ error: error.response });
-            }
+            },
           };
           getSummonerMatches(20, this.state.profileInfo.accountId, callback);
         });
       },
-      onFailed: error => {
+      onFailed: (error) => {
         this.setState({ error: error.response });
-      }
+      },
     };
     getSummoner(this.props.name, callback);
   };

@@ -1,22 +1,16 @@
 import React from "react";
 import { Icon } from "antd";
-import animate from "@jam3/gsap-promise";
-
+import { Slide } from "react-awesome-reveal";
+import riotGames from "../../../public/images/riotGames.png";
 import "./Footer.css";
-
 import {
   githubBranchRepository,
-  riotGamesDevelopers
+  riotGamesDevelopers,
 } from "../../utils/Constants/urls";
-import riotGames from "../../../public/images/riotGames.png";
-
-class Footer extends React.Component {
-  componentDidMount() {
-    animate.from(this.footer, 0.6, { y: 1000, delay: 0.4 });
-  }
-  render() {
-    return (
-      <footer className="footer-container" ref={f => (this.footer = f)}>
+const Footer = () => {
+  return (
+    <Slide direction="up" triggerOnce>
+      <footer className="footer-container">
         <nav>
           <h3 aria-label="League of legends master">lol master</h3>
           <ul>
@@ -36,8 +30,8 @@ class Footer extends React.Component {
           </ul>
         </nav>
       </footer>
-    );
-  }
-}
+    </Slide>
+  );
+};
 
 export default Footer;

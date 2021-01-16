@@ -3,7 +3,7 @@ import { Link } from "@reach/router";
 
 const Champion = ({ name, image, nameKey }) => {
   return (
-    <React.Fragment>
+    <>
       <Link to={`/champion/${nameKey}`}>
         <img
           alt={name}
@@ -13,7 +13,7 @@ const Champion = ({ name, image, nameKey }) => {
       </Link>
 
       <h3 id={`champion-name-${nameKey}`}>{name}</h3>
-    </React.Fragment>
+    </>
   );
 };
 

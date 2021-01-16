@@ -1,7 +1,5 @@
 import React from "react";
-
 import sadTeemo from "../../../public/images/sadTeemo.gif";
-
 import "./ErrorPanel.css";
 
 const ErrorPanel = ({ error }) => {

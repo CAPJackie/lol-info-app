@@ -3,34 +3,34 @@ import { apiStaticUrl, apiUrl } from "./Constants/urls";
 
 const key = process.env.API_KEY;
 
-const concatApiKey = option => {
+const concatApiKey = (option) => {
   return option + "api_key=" + key;
 };
 
-export function getChampions(callback) {
+const getChampions = (callback) => {
   axios
     .get(apiStaticUrl.data + "/champion.json")
-    .then(response => {
+    .then((response) => {
       callback.onSuccess(response);
     })
-    .catch(error => {
+    .catch((error) => {
       callback.onFailed(error);
     });
-}
+};
 
-export function getChampion(key, callback) {
+const getChampion = (key, callback) => {
   var championsCallback = {
-    onSuccess: response => {
+    onSuccess: (response) => {
       callback.onSuccess({ data: response.data.data[key] });
     },
-    onFailed: error => {
+    onFailed: (error) => {
       callback.onFailed(error);
-    }
+    },
   };
   getChampions(championsCallback);
-}
+};
 
-export function getSummoner(summonerName, callback) {
+const getSummoner = (summonerName, callback) => {
   axios
     .get(
       apiUrl +
@@ -38,26 +38,26 @@ export function getSummoner(summonerName, callback) {
         summonerName +
         concatApiKey("?")
     )
-    .then(response => {
+    .then((response) => {
       callback.onSuccess(response);
     })
-    .catch(error => {
+    .catch((error) => {
       callback.onFailed(error);
     });
-}
+};
 
-export function getSummonerById(id, callback) {
+const getSummonerById = (id, callback) => {
   axios
     .get(apiUrl + "/summoner/v4/summoners/" + id + concatApiKey("?"))
-    .then(response => {
+    .then((response) => {
       callback.onSuccess(response);
     })
-    .catch(error => {
+    .catch((error) => {
       callback.onFailed(error);
     });
-}
+};
 
-export function getSummonerMatches(number, accountId, callback) {
+const getSummonerMatches = (number, accountId, callback) => {
   axios
     .get(
       apiUrl +
@@ -67,15 +67,15 @@ export function getSummonerMatches(number, accountId, callback) {
         number +
         concatApiKey("&")
     )
-    .then(response => {
+    .then((response) => {
       callback.onSuccess(response);
     })
-    .catch(error => {
+    .catch((error) => {
       callback.onFailed(error);
     });
-}
+};
 
-export function getChallengerLeagueByQueue(queue, callback) {
+const getChallengerLeagueByQueue = (queue, callback) => {
   axios
     .get(
       apiUrl +
@@ -83,10 +83,19 @@ export function getChallengerLeagueByQueue(queue, callback) {
         queue +
         concatApiKey("?")
     )
-    .then(response => {
+    .then((response) => {
       callback.onSuccess(response);
     })
-    .catch(error => {
+    .catch((error) => {
       callback.onFailed(error);
     });
-}
+};
+
+export {
+  getChampions,
+  getChampion,
+  getSummoner,
+  getSummonerById,
+  getSummonerMatches,
+  getChallengerLeagueByQueue,
+};

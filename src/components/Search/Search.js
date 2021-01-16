@@ -11,18 +11,18 @@ import "./Search.css";
 
 class Search extends React.Component {
   state = {
-    summonerName: ""
+    summonerName: "",
   };
 
-  handleChange = event => {
+  handleChange = (event) => {
     this.setState({ summonerName: event.target.value });
   };
 
-  handleSubmit = event => {
+  handleSubmit = (event) => {
     event.preventDefault();
   };
 
-  handleEnterKey = event => {
+  handleEnterKey = (event) => {
     if (event.key === "Enter") {
       navigate("/search/summoners/" + this.state.summonerName);
     }
@@ -39,7 +39,7 @@ class Search extends React.Component {
       <React.Fragment>
         <Paper
           className="search-section-container"
-          ref={container => (this.container = findDOMNode(container))}
+          ref={(container) => (this.container = findDOMNode(container))}
           aria-label="Search a summoner name"
         >
           <InputBase

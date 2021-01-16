@@ -8,7 +8,7 @@ const apiStaticUrlImg = apiStaticUrl.img + "/champion";
 
 const RenderChampionList = ({ champions }) => {
   const getChampionList = () => {
-    var championList = Object.keys(champions).map(key => (
+    var championList = Object.keys(champions).map((key) => (
       <li key={key} className="champions-item" aria-label={champions[key].name}>
         <Champion
           name={champions[key].name}

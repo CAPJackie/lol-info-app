@@ -12,18 +12,18 @@ const TopTierList = () => {
 
   useEffect(() => {
     var callback = {
-      onSuccess: response => {
+      onSuccess: (response) => {
         orderByLeaguePoints(response.data.entries);
       },
-      onFailed: error => {
+      onFailed: (error) => {
         setError(error.response);
-      }
+      },
     };
 
     getChallengerLeagueByQueue("RANKED_SOLO_5x5", callback);
   }, []);
 
-  const orderByLeaguePoints = summoners => {
+  const orderByLeaguePoints = (summoners) => {
     var summonersSortedList = [...summoners];
 
     summonersSortedList.sort((a, b) => {
@@ -32,7 +32,7 @@ const TopTierList = () => {
 
     summonersSortedList = summonersSortedList.map((summoner, index) => ({
       ...summoner,
-      rankNumber: index + 1
+      rankNumber: index + 1,
     }));
 
     setSummoners(summonersSortedList);

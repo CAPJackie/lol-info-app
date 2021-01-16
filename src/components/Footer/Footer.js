@@ -9,7 +9,7 @@ import {
 } from "../../utils/Constants/urls";
 const Footer = () => {
   return (
-    <Slide direction="up">
+    <Slide direction="up" triggerOnce>
       <footer className="footer-container">
         <nav>
           <h3 aria-label="League of legends master">lol master</h3>

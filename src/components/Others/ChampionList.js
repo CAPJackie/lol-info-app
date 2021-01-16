@@ -12,17 +12,17 @@ const ChampionList = () => {
 
   useEffect(() => {
     var callback = {
-      onSuccess: response => {
+      onSuccess: (response) => {
         setChampions(response.data.data);
         setLoading(false);
       },
-      onFailed: error => {
+      onFailed: (error) => {
         setError(error);
-      }
+      },
     };
 
     getChampions(callback);
-  }, [error, loading, champions]);
+  }, []);
 
   return loading ? (
     <Loading name="Champions" />

@@ -1,18 +1,14 @@
 import { Link } from "@reach/router";
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext } from "react";
 import { Fade } from "react-awesome-reveal";
-import { AppThemeContext, themes } from "../../context/AppThemeContext";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
+import { AppThemeContext, themes } from "../../context/AppThemeContext";
 import "./Header.css";
 
 const Header = () => {
-  const [appTheme, setAppTheme] = useContext(AppThemeContext),
-    [isDarkMode, setIsDarkMode] = useState(appTheme == themes.dark);
+  const [appTheme, setAppTheme] = useContext(AppThemeContext);
 
-  useEffect(() => {
-    console.log("App theme", appTheme);
-  }, []);
-
+  const isDarkMode = appTheme == themes.dark;
   return (
     <Fade>
       <nav
@@ -44,11 +40,8 @@ const Header = () => {
             search
           </Link>
           <DarkModeSwitch
-            onChange={(checked) => {
-              setIsDarkMode(checked);
-              setAppTheme(
-                appTheme == themes.light ? themes.dark : themes.light
-              );
+            onChange={() => {
+              setAppTheme(isDarkMode ? themes.light : themes.dark);
             }}
             checked={isDarkMode}
             size={35}

@@ -1,26 +1,30 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Router } from "@reach/router";
 
 import Home from "../Home/Home";
-import ChampionList from "./ChampionList";
-import TopTierList from "./TopTierList";
-import Search from "../Search/Search";
-import SummonerProfile from "../SummonerProfile/SummonerProfile";
-import ChampionDetail from "./ChampionDetail";
+import Loading from "../Loading/Loading";
+
+const ChampionList = lazy(() => import("./ChampionList")),
+  TopTierList = lazy(() => import("./TopTierList")),
+  Search = lazy(() => import("../Search/Search")),
+  SummonerProfile = lazy(() => import("../SummonerProfile/SummonerProfile")),
+  ChampionDetail = lazy(() => import("./ChampionDetail"));
 
 const Content = () => {
   return (
     <article>
-      <Router>
-        <Home exact path="/" />
-        <ChampionList path="champions" />
-        <TopTierList path="tierList" />
-        <Search path="search">
+      <Suspense fallback={<Loading name="Suspense stuff" />}>
+        <Router>
+          <Home exact path="/" />
+          <ChampionList path="champions" />
+          <TopTierList path="tierList" />
+          <Search path="search">
+            <SummonerProfile path="summoners/:name" />
+          </Search>
           <SummonerProfile path="summoners/:name" />
-        </Search>
-        <SummonerProfile path="summoners/:name" />
-        <ChampionDetail path="champion/:id" />
-      </Router>
+          <ChampionDetail path="champion/:id" />
+        </Router>
+      </Suspense>
     </article>
   );
 };

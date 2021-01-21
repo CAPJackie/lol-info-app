@@ -1,65 +1,54 @@
 /* eslint-disable react/no-find-dom-node */
-import React from "react";
-import animate from "@jam3/gsap-promise";
-import { Button, Paper, InputBase } from "@material-ui/core";
+import { Button, InputBase, Paper } from "@material-ui/core";
 import { Link, navigate } from "@reach/router";
-import { findDOMNode } from "react-dom";
-
+import React, { useState } from "react";
+import { Slide } from "react-awesome-reveal";
 import search from "../../../public/images/search.svg";
-
 import "./Search.css";
 
-class Search extends React.Component {
-  state = {
-    summonerName: "",
+const Search = ({ children }) => {
+  const [summonerName, setSummonerName] = useState("");
+
+  const handleChange = (event) => {
+    setSummonerName(event.target.value);
   };
 
-  handleChange = (event) => {
-    this.setState({ summonerName: event.target.value });
-  };
-
-  handleSubmit = (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
   };
 
-  handleEnterKey = (event) => {
+  const handleEnterKey = (event) => {
     if (event.key === "Enter") {
-      navigate("/search/summoners/" + this.state.summonerName);
+      navigate("/search/summoners/" + summonerName);
     }
   };
 
-  componentDidMount() {
-    animate.from(this.container, 0.2, { y: -200, delay: 0.4 });
-  }
-
-  render() {
-    const { summonerName } = this.state;
-    const { children } = this.props;
-    return (
-      <React.Fragment>
+  return (
+    <>
+      <Slide direction="down" triggerOnce duration={500}>
         <Paper
           className="search-section-container"
-          ref={(container) => (this.container = findDOMNode(container))}
           aria-label="Search a summoner name"
         >
           <InputBase
             id="search-summoner-input"
             value={summonerName}
-            onChange={this.handleChange}
+            onChange={handleChange}
             placeholder="Summoner name..."
             aria-describedby="Search a summoner name"
-            onKeyDown={this.handleEnterKey}
+            onKeyDown={handleEnterKey}
           />
-          <Button onClick={this.handleSubmit}>
+          <Button onClick={handleSubmit}>
             <Link to={`summoners/${summonerName}`}>
               <img src={search} alt="icon button" />
             </Link>
           </Button>
         </Paper>
-        {children}
-      </React.Fragment>
-    );
-  }
-}
+      </Slide>
+
+      {children}
+    </>
+  );
+};
 
 export default Search;

@@ -14,16 +14,16 @@ const SummonerProfile = ({ name }) => {
     [matches, setMatches] = useState(null),
     [error, setError] = useState(null);
 
-  useRenderCount([name]),
-    useEffect(() => {
-      handleProfileRequest();
-      // renderNumber.current = 1;
+  useRenderCount([name]);
+  useEffect(() => {
+    handleProfileRequest();
+    // renderNumber.current = 1;
 
-      return () => {
-        setLoading(true);
-        setError(null);
-      };
-    }, [name]);
+    return () => {
+      setLoading(true);
+      setError(null);
+    };
+  }, [name]);
 
   const handleProfileRequest = () => {
     const callback = {

@@ -1,15 +1,17 @@
-import React, { useEffect, useState } from "react";
+import React, { memo, useEffect, useState } from "react";
 
 import { getChampion } from "../../utils/api";
 import Loading from "../Loading/Loading";
 import RenderChampionDetail from "../RenderChampionDetail/RenderChampionDetail";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
+import { useRenderCount } from "../../hooks/customHooks";
 
 const ChampionDetail = ({ id }) => {
   const [loading, setLoading] = useState(true),
     [champion, setChampion] = useState(null),
     [error, setError] = useState(null);
 
+  useRenderCount([id]);
   useEffect(() => {
     var callback = {
       onSuccess: (response) => {
@@ -54,4 +56,6 @@ const ChampionDetail = ({ id }) => {
   );
 };
 
-export default ChampionDetail;
+const MemoizedChampionDetail = memo(ChampionDetail);
+
+export default MemoizedChampionDetail;

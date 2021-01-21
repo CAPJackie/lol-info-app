@@ -1,10 +1,11 @@
+/* eslint-disable no-console */
 import { useEffect, useRef } from "react";
 
 const useRenderCount = (deps) => {
   const renderCount = useRef(1);
 
   useEffect(() => {
-    console.log("Render # ", renderCount.current);
+    console.log(`Render # ${renderCount.current}, Props: ${deps.join}`);
     renderCount.current++;
   });
 

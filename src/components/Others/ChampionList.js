@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-
 import { getChampions } from "../../utils/api.js";
+import ErrorPanel from "../ErrorPanel/ErrorPanel";
 import Loading from "../Loading/Loading";
 import RenderChampionList from "../RenderChampionList/RenderChampionList";
-import ErrorPanel from "../ErrorPanel/ErrorPanel";
 
 const ChampionList = () => {
   const [champions, setChampions] = useState([]),

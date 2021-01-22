@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { Slide } from "react-awesome-reveal";
 import { apiStaticUrl } from "../../utils/Constants/urls";
 import Champion from "../Others/Champion";
@@ -26,13 +26,11 @@ const RenderChampionList = ({ champions }) => {
         <h2 aria-label="Champions">champions</h2>
       </Slide>
 
-      <Slide direction="up" triggerOnce>
-        <ul aria-label="List of champions" className="champions-container">
-          {getChampionList()}
-        </ul>
-      </Slide>
+      <ul aria-label="List of champions" className="champions-container">
+        {getChampionList()}
+      </ul>
     </section>
   );
 };
 
-export default RenderChampionList;
+export default memo(RenderChampionList);

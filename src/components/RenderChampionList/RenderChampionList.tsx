@@ -1,14 +1,19 @@
-import React, { memo } from "react";
+import React, { FunctionComponent, memo } from "react";
 import { Slide } from "react-awesome-reveal";
+import { ChampionsMap } from "../../types/commonTypes";
 import { apiStaticUrl } from "../../utils/Constants/urls";
 import Champion from "../Others/Champion";
 import "./RenderChampionList.css";
 
 const apiStaticUrlImg = apiStaticUrl.img + "/champion";
 
-const RenderChampionList = ({ champions }) => {
+interface IProps {
+  champions: ChampionsMap;
+}
+
+const RenderChampionList: FunctionComponent<IProps> = ({ champions }) => {
   const getChampionList = () => {
-    var championList = Object.keys(champions).map((key) => (
+    const championList = Object.keys(champions).map((key) => (
       <li key={key} className="champions-item" aria-label={champions[key].name}>
         <Champion
           name={champions[key].name}
@@ -22,7 +27,7 @@ const RenderChampionList = ({ champions }) => {
 
   return (
     <section className="page-wrapper">
-      <Slide direction="down" triggerOnce>
+      <Slide direction="down" triggerOnce={true}>
         <h2 aria-label="Champions">champions</h2>
       </Slide>
 

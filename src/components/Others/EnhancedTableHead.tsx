@@ -1,12 +1,22 @@
-import React from "react";
+import { TableSortLabel, Tooltip } from "@material-ui/core";
+import TableCell from "@material-ui/core/TableCell";
 import TableHead from "@material-ui/core/TableHead";
 import TableRow from "@material-ui/core/TableRow";
-import TableCell from "@material-ui/core/TableCell";
-import { Tooltip, TableSortLabel } from "@material-ui/core";
+import React, { FunctionComponent } from "react";
 
-const EnhancedTableHead = ({ order, orderBy, onRequestSort }) => {
-  const createSortHandler = (property, event) => {
-    onRequestSort(event, property);
+interface IProps {
+  order?: "asc" | "desc";
+  orderBy: string;
+  onRequestSort: (property: string) => void;
+}
+
+const EnhancedTableHead: FunctionComponent<IProps> = ({
+  order,
+  orderBy,
+  onRequestSort,
+}) => {
+  const createSortHandler: (property: string) => void = (property) => {
+    onRequestSort(property);
   };
 
   return (
@@ -34,7 +44,7 @@ const EnhancedTableHead = ({ order, orderBy, onRequestSort }) => {
               <TableSortLabel
                 active={orderBy === row.id}
                 direction={order}
-                onClick={(event) => createSortHandler(row.id, event)}
+                onClick={() => createSortHandler(row.id)}
               >
                 {row.label}
               </TableSortLabel>
@@ -46,6 +56,7 @@ const EnhancedTableHead = ({ order, orderBy, onRequestSort }) => {
   );
 };
 
+// TODO Move to constants file
 const rows = [
   { id: "rankNumber", numeric: true, disablePadding: false, label: "Rank" },
   {

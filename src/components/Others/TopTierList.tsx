@@ -1,17 +1,20 @@
 import React, { useEffect, useState } from "react";
-
-import RenderTierList from "../RenderTierList/RenderTierList";
-import Loading from "../Loading/Loading";
+import { LeagueItemDTO } from "../../types/commonTypes";
 import { getChallengerLeagueByQueue } from "../../utils/api";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
+import Loading from "../Loading/Loading";
+import RenderTierList from "../RenderTierList/RenderTierList";
 
+interface IProps {
+  rankNumber?: number;
+}
 const TopTierList = () => {
-  const [summoners, setSummoners] = useState([]),
-    [loading, setLoading] = useState(true),
-    [error, setError] = useState(null);
+  const [summoners, setSummoners] = useState<LeagueItemDTO[] & IProps>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
 
   useEffect(() => {
-    var callback = {
+    const callback = {
       onSuccess: (response) => {
         orderByLeaguePoints(response.data.entries);
       },
@@ -23,8 +26,10 @@ const TopTierList = () => {
     getChallengerLeagueByQueue("RANKED_SOLO_5x5", callback);
   }, []);
 
-  const orderByLeaguePoints = (summoners) => {
-    var summonersSortedList = [...summoners];
+  const orderByLeaguePoints: (summonersList: LeagueItemDTO[]) => void = (
+    summonersList
+  ) => {
+    let summonersSortedList = [...summonersList];
 
     summonersSortedList.sort((a, b) => {
       return b.leaguePoints - a.leaguePoints;

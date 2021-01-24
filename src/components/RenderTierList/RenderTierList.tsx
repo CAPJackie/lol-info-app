@@ -2,40 +2,46 @@ import { TablePagination } from "@material-ui/core";
 import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
-import React, { useState } from "react";
+import React, { FunctionComponent, useState } from "react";
 import { Slide } from "react-awesome-reveal";
 import challenger from "../../../public/images/challenger.png";
+import { SummonerDTO } from "../../types/commonTypes";
 import EnhancedTableHead from "../Others/EnhancedTableHead";
 import SummonerRow from "../Others/SummonerRow";
 import "./RenderTierList.css";
 
-const RenderTierList = ({ summoners }) => {
-  const [order, setOrder] = useState("asc"),
-    [orderBy, setOrderBy] = useState("summoner"),
-    [rowsPerPage, setRowsPerPage] = useState(7),
-    [page, setPage] = useState(0);
+interface IProps {
+  summoners: SummonerDTO[];
+}
 
-  const handleRequestSort = (event, property) => {
-    const orderBy = property;
-    let order = "desc";
+const RenderTierList: FunctionComponent<IProps> = ({ summoners }) => {
+  const [order, setOrder] = useState<"asc" | "desc" | undefined>("asc");
+  const [orderBy, setOrderBy] = useState<string>("summoner");
+  const [rowsPerPage, setRowsPerPage] = useState<number>(7);
+  const [page, setPage] = useState<number>(0);
 
-    if (orderBy === property && order === "desc") {
-      order = "asc";
+  const handleRequestSort: (property: string) => void = (property) => {
+    let selectedOrder: "asc" | "desc" = "desc";
+
+    if (orderBy === property && selectedOrder === "desc") {
+      selectedOrder = "asc";
     }
 
-    setOrder(order);
-    setOrderBy(orderBy);
+    setOrder(selectedOrder);
+    setOrderBy(property);
   };
 
-  const handleChangePage = (event, page) => {
-    setPage(page);
+  const handleChangePage: (pageNumber: number) => void = (pageNumber) => {
+    setPage(pageNumber);
   };
 
-  const handleChangeRowsPerPage = (event) => {
-    setRowsPerPage(event.target.value);
+  const handleChangeRowsPerPage: (
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => void = (event) => {
+    setRowsPerPage(+event.target.value);
   };
 
-  const getSummonerRows = () => {
+  const getSummonerRows: () => JSX.Element[] = () => {
     return stableSort(summoners, getSorting(order, orderBy))
       .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
       .map((value, index) => {
@@ -58,16 +64,16 @@ const RenderTierList = ({ summoners }) => {
 
   return (
     <section className="page-wrapper">
-      <Slide direction="top" triggerOnce>
+      <Slide direction="up" triggerOnce={true}>
         <h2 className="challenger-section-title">challenger elo</h2>
       </Slide>
 
-      <Slide direction="right" triggerOnce>
+      <Slide direction="right" triggerOnce={true}>
         <img src={challenger} alt="Challenger icon" />
       </Slide>
 
       <Paper className="table-container">
-        <Slide direction="down" triggerOnce>
+        <Slide direction="down" triggerOnce={true}>
           <div className="table-wrapper">
             <Table
               className="summoners-table"

@@ -1,8 +1,5 @@
 import { AxiosError, AxiosResponse } from "axios";
 
-declare module "*.png";
-declare module "*.jpeg";
-
 declare const process: {
   env: {
     API_KEY: string;
@@ -70,11 +67,14 @@ interface IChampion {
   stats: IStats;
 }
 
+interface ChampionsMap {
+  [championName: string]: IChampion;
+}
 interface IChampions {
   type: string;
   format: string;
   version: string;
-  data: { [championName: string]: IChampion };
+  data: ChampionsMap;
 }
 
 interface ResponseType<T = any> {

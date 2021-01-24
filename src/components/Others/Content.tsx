@@ -1,14 +1,15 @@
+import { Router } from "@reach/router";
 import React, { FunctionComponent, lazy, Suspense } from "react";
-import { RouteComponentProps, Router } from "@reach/router";
-
 import Home from "../Home/Home";
 import Loading from "../Loading/Loading";
 
-const ChampionList = lazy(() => import("./ChampionList")),
-  TopTierList = lazy(() => import("./TopTierList")),
-  Search = lazy(() => import("../Search/Search")),
-  SummonerProfile = lazy(() => import("../SummonerProfile/SummonerProfile")),
-  ChampionDetail = lazy(() => import("./ChampionDetail"));
+const ChampionList = lazy(() => import("./ChampionList"));
+const TopTierList = lazy(() => import("./TopTierList"));
+const Search = lazy(() => import("../Search/Search"));
+const SummonerProfile = lazy(
+  () => import("../SummonerProfile/SummonerProfile")
+);
+const ChampionDetail = lazy(() => import("./ChampionDetail"));
 
 const Content: FunctionComponent = () => {
   return (

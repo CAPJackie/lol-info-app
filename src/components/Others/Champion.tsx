@@ -1,14 +1,19 @@
 import { Link } from "@reach/router";
-import React, { memo } from "react";
+import React, { FunctionComponent, memo } from "react";
 
+// TODO Refactor with type names declared in Developers portal
 type ChampionProps = {
   name: string;
   image: string;
   nameKey: string;
 };
 
-const Champion = ({ name, image, nameKey }: ChampionProps) => {
-  //Only log this if necessary, it can low the performance
+const Champion: FunctionComponent<ChampionProps> = ({
+  name,
+  image,
+  nameKey,
+}) => {
+  // Only log this if necessary, it can low the performance
   // useRenderCount([name, image, nameKey]);
   return (
     <>

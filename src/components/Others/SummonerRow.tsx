@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import { navigate } from "@reach/router";
@@ -8,7 +8,18 @@ import Veteran from "./Veteran";
 import HotStreak from "./HotStreak";
 import FreshBlood from "./FreshBlood";
 
-const SummonerRow = ({
+interface IProps {
+  rankNumber;
+  name;
+  wins;
+  losses;
+  hotStreak;
+  veteran;
+  freshBlood;
+  leaguePoints;
+}
+
+const SummonerRow: FunctionComponent<IProps> = ({
   rankNumber,
   name,
   wins,

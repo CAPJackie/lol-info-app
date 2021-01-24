@@ -5,8 +5,10 @@ import Loading from "../Loading/Loading";
 import RenderChampionDetail from "../RenderChampionDetail/RenderChampionDetail";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
 import { useRenderCount } from "../../hooks/customHooks";
+import { useParams } from "@reach/router";
 
-const ChampionDetail = ({ id }) => {
+const ChampionDetail = () => {
+  const { id } = useParams();
   const [loading, setLoading] = useState(true),
     [champion, setChampion] = useState(null),
     [error, setError] = useState(null);
@@ -56,6 +58,4 @@ const ChampionDetail = ({ id }) => {
   );
 };
 
-const MemoizedChampionDetail = memo(ChampionDetail);
-
-export default MemoizedChampionDetail;
+export default memo(ChampionDetail);

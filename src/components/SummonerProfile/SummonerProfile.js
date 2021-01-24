@@ -1,4 +1,5 @@
 import { Paper } from "@material-ui/core";
+import { useParams } from "@reach/router";
 import React, { memo, useEffect, useState } from "react";
 import { useRenderCount } from "../../hooks/customHooks";
 import { getSummoner, getSummonerMatches } from "../../utils/api";
@@ -8,7 +9,8 @@ import Loading from "../Loading/Loading";
 import Match from "../Match/Match";
 import "./SummonerProfile.css";
 
-const SummonerProfile = ({ name }) => {
+const SummonerProfile = () => {
+  const { name } = useParams();
   const [loading, setLoading] = useState(true),
     [profileInfo, setProfileInfo] = useState(null),
     [matches, setMatches] = useState(null),

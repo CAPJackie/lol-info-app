@@ -1,11 +1,11 @@
 import { Link } from "@reach/router";
-import React, { useContext } from "react";
+import React, { FunctionComponent, useContext } from "react";
 import { Fade } from "react-awesome-reveal";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { AppThemeContext, themes } from "../../context/AppThemeContext";
 import "./Header.css";
 
-const Header = () => {
+const Header: FunctionComponent = () => {
   const [appTheme, setAppTheme] = useContext(AppThemeContext);
 
   const isDarkMode = appTheme == themes.dark;

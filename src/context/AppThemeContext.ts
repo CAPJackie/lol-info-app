@@ -21,6 +21,19 @@ const themes = {
   },
 };
 
-const AppThemeContext = createContext([themes.light, (obj) => obj]);
+type Theme = {
+  background: string;
+  surface: string;
+  primary: string;
+  secondary: string;
+  highEmphasizedTextOpacity: string;
+  mediumEmphasizedTextOpacity: string;
+  disabledTextOpacity: string;
+};
+
+const AppThemeContext = createContext<[Theme, (theme: Theme) => void]>([
+  themes.light,
+  () => {},
+]);
 
 export { AppThemeContext, themes };

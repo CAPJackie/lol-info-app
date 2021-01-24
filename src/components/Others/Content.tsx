@@ -1,5 +1,5 @@
-import React, { lazy, Suspense } from "react";
-import { Router } from "@reach/router";
+import React, { FunctionComponent, lazy, Suspense } from "react";
+import { RouteComponentProps, Router } from "@reach/router";
 
 import Home from "../Home/Home";
 import Loading from "../Loading/Loading";
@@ -10,12 +10,12 @@ const ChampionList = lazy(() => import("./ChampionList")),
   SummonerProfile = lazy(() => import("../SummonerProfile/SummonerProfile")),
   ChampionDetail = lazy(() => import("./ChampionDetail"));
 
-const Content = () => {
+const Content: FunctionComponent = () => {
   return (
     <article>
       <Suspense fallback={<Loading name="Suspense stuff" />}>
         <Router>
-          <Home exact path="/" />
+          <Home path="/" />
           <ChampionList path="champions" />
           <TopTierList path="tierList" />
           <Search path="search">

@@ -1,7 +1,13 @@
 import { Link } from "@reach/router";
 import React, { memo } from "react";
 
-const Champion = ({ name, image, nameKey }) => {
+type ChampionProps = {
+  name: string;
+  image: string;
+  nameKey: string;
+};
+
+const Champion = ({ name, image, nameKey }: ChampionProps) => {
   //Only log this if necessary, it can low the performance
   // useRenderCount([name, image, nameKey]);
   return (
@@ -19,5 +25,4 @@ const Champion = ({ name, image, nameKey }) => {
   );
 };
 
-const MemoizedChampion = memo(Champion);
-export default MemoizedChampion;
+export default memo(Champion);

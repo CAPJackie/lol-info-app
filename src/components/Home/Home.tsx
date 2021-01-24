@@ -1,12 +1,14 @@
 import { Button } from "@material-ui/core";
-import React from "react";
+import { RouteComponentProps } from "@reach/router";
+import React, { FunctionComponent } from "react";
 import { Bounce, Fade, Slide } from "react-awesome-reveal";
+
 import league from "../../../public/images/league.png";
 import { description } from "../../utils/Constants/game";
 import { LeagueOfLegendsUrl } from "../../utils/Constants/urls";
 import "./Home.css";
 
-const Home = () => {
+const Home: FunctionComponent<RouteComponentProps> = () => {
   return (
     <article className="home-container">
       <Fade>
@@ -25,4 +27,5 @@ const Home = () => {
     </article>
   );
 };
+
 export default Home;

@@ -9,14 +9,14 @@ import HotStreak from "./HotStreak";
 import FreshBlood from "./FreshBlood";
 
 interface IProps {
-  rankNumber;
-  name;
-  wins;
-  losses;
-  hotStreak;
-  veteran;
-  freshBlood;
-  leaguePoints;
+  rankNumber?: number;
+  name: string;
+  wins: number;
+  losses: number;
+  hotStreak: boolean;
+  veteran: boolean;
+  freshBlood: boolean;
+  leaguePoints: number;
 }
 
 const SummonerRow: FunctionComponent<IProps> = ({
@@ -29,12 +29,12 @@ const SummonerRow: FunctionComponent<IProps> = ({
   freshBlood,
   leaguePoints,
 }) => {
-  const handleClick = (event, name) => {
+  const handleClick: () => void = () => {
     navigate("/summoners/" + name);
   };
 
   return (
-    <TableRow hover onClick={(event) => handleClick(event, name)}>
+    <TableRow hover={true} onClick={(_event) => handleClick()}>
       <TableCell component="th" scope="row">
         {rankNumber}
       </TableCell>

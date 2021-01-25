@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { FunctionComponent, useEffect, useState } from "react";
 import { Card } from "@material-ui/core";
 import { Link } from "@reach/router";
 
@@ -9,8 +9,15 @@ import { seasons, queues, serviceProxies } from "../../utils/Constants/game";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
 
 import "./Match.css";
+import { AxiosError, AxiosResponse } from "axios";
+import {
+  ChampionsMap,
+  IChampion,
+  IChampions,
+  MatchReferenceDTO,
+} from "../../types/commonTypes";
 
-const Match = ({
+const Match: FunctionComponent<MatchReferenceDTO> = ({
   champion,
   platformId,
   queue,
@@ -19,28 +26,33 @@ const Match = ({
   role,
   lane,
 }) => {
-  const [championInfo, setChampionInfo] = useState(null),
-    [loading, setLoading] = useState(true),
-    [seasonValue, setSeasonValue] = useState(null),
-    [queueValue, setQueueValue] = useState(null),
-    [platformValue, setPlatformValue] = useState(null),
-    [realDate, setRealDate] = useState(null),
-    [roleValue, setRoleValue] = useState(null),
-    [laneValue, setLaneValue] = useState(null),
-    [error, setError] = useState(null);
+  const [championInfo, setChampionInfo] = useState<IChampion | undefined>(
+    undefined
+  );
+  const [loading, setLoading] = useState(true);
+  const [seasonValue, setSeasonValue] = useState<string | null>(null);
+  const [queueValue, setQueueValue] = useState(null);
+  const [platformValue, setPlatformValue] = useState(null);
+  const [realDate, setRealDate] = useState(null);
+  const [roleValue, setRoleValue] = useState(null);
+  const [laneValue, setLaneValue] = useState(null);
+  const [error, setError] = useState({});
 
-  const getChampionInfo = (champions) => {
-    let championInfo;
-    let championMatched = Object.keys(champions).find((champ) => {
-      return champions[champ].key == champion;
+  const getChampionInfo = (champions: ChampionsMap) => {
+    let championInfoObject;
+    const championMatched = Object.keys(champions).find((champ) => {
+      // TODO Check if key can be converted to number type
+      return +champions[champ].key === champion;
     });
-    championInfo = champions[championMatched];
-    return championInfo;
+    championInfoObject = championMatched
+      ? champions[championMatched]
+      : undefined;
+    return championInfoObject;
   };
 
   useEffect(() => {
     const callback = {
-      onSuccess: (response) => {
+      onSuccess: (response: AxiosResponse<IChampions>) => {
         setChampionInfo(getChampionInfo(response.data.data));
         setSeasonValue(seasons[season]);
         setQueueValue(queues[queue] ? queues[queue] : queue);
@@ -50,8 +62,8 @@ const Match = ({
         setLaneValue(lane === "NONE" ? null : lane);
         setLoading(false);
       },
-      onFailed: (error) => {
-        setError(error.response);
+      onFailed: (errorObject: AxiosError<Error>) => {
+        setError(errorObject);
       },
     };
     getChampions(callback);

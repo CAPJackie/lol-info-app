@@ -1,15 +1,15 @@
 import { RouteComponentProps } from "@reach/router";
 import { AxiosError, AxiosResponse } from "axios";
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { IChampions } from "../../types/commonTypes.js";
+import { ChampionsMap, IChampions } from "../../types/commonTypes.js";
 import { getChampions } from "../../utils/api.js";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
 import Loading from "../Loading/Loading";
 import RenderChampionList from "../RenderChampionList/RenderChampionList";
 
 const ChampionList: FunctionComponent<RouteComponentProps> = () => {
-  const [champions, setChampions] = useState({});
-  const [loading, setLoading] = useState(true);
+  const [champions, setChampions] = useState<ChampionsMap>({});
+  const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState({});
 
   useEffect(() => {

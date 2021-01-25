@@ -1,23 +1,28 @@
-/* eslint-disable react/no-find-dom-node */
 import { Button, InputBase, Paper } from "@material-ui/core";
-import { Link, navigate } from "@reach/router";
-import React, { useState } from "react";
+import { Link, navigate, RouteComponentProps } from "@reach/router";
+import React, { FunctionComponent, useState } from "react";
 import { Slide } from "react-awesome-reveal";
 import search from "../../../public/images/search.svg";
 import "./Search.css";
 
-const Search = ({ children }) => {
+const Search: FunctionComponent<RouteComponentProps> = ({ children }) => {
   const [summonerName, setSummonerName] = useState("");
 
-  const handleChange = (event) => {
+  const handleChange: (
+    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => void = (event) => {
     setSummonerName(event.target.value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit: (
+    event: React.MouseEvent<HTMLButtonElement, MouseEvent>
+  ) => void = (event) => {
     event.preventDefault();
   };
 
-  const handleEnterKey = (event) => {
+  const handleEnterKey: (
+    event: React.KeyboardEvent<HTMLTextAreaElement | HTMLInputElement>
+  ) => void = (event) => {
     if (event.key === "Enter") {
       navigate("/search/summoners/" + summonerName);
     }
@@ -25,7 +30,7 @@ const Search = ({ children }) => {
 
   return (
     <>
-      <Slide direction="down" triggerOnce duration={500}>
+      <Slide direction="down" triggerOnce={true} duration={500}>
         <Paper
           className="search-section-container"
           aria-label="Search a summoner name"

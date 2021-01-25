@@ -5,13 +5,13 @@ import TableBody from "@material-ui/core/TableBody";
 import React, { FunctionComponent, useState } from "react";
 import { Slide } from "react-awesome-reveal";
 import challenger from "../../../public/images/challenger.png";
-import { SummonerDTO } from "../../types/commonTypes";
+import { IRankNumber, LeagueItemDTO } from "../../types/commonTypes";
 import EnhancedTableHead from "../Others/EnhancedTableHead";
 import SummonerRow from "../Others/SummonerRow";
 import "./RenderTierList.css";
 
 interface IProps {
-  summoners: SummonerDTO[];
+  summoners: (LeagueItemDTO & IRankNumber)[];
 }
 
 const RenderTierList: FunctionComponent<IProps> = ({ summoners }) => {
@@ -44,10 +44,9 @@ const RenderTierList: FunctionComponent<IProps> = ({ summoners }) => {
   const getSummonerRows: () => JSX.Element[] = () => {
     return stableSort(summoners, getSorting(order, orderBy))
       .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
-      .map((value, index) => {
+      .map((value: LeagueItemDTO & IRankNumber, index: number) => {
         return (
           <SummonerRow
-            summonerId={value.summonerId}
             key={index}
             rankNumber={value.rankNumber}
             name={value.summonerName}
@@ -111,7 +110,9 @@ const RenderTierList: FunctionComponent<IProps> = ({ summoners }) => {
           nextIconButtonProps={{
             "aria-label": "Next Page",
           }}
-          onChangePage={handleChangePage}
+          onChangePage={(_e, p) => {
+            handleChangePage(p);
+          }}
           onChangeRowsPerPage={handleChangeRowsPerPage}
         />
       </Paper>
@@ -119,9 +120,9 @@ const RenderTierList: FunctionComponent<IProps> = ({ summoners }) => {
   );
 };
 
-const desc = (a, b, orderBy) => {
-  var first;
-  var second;
+const desc = (a: any, b: any, orderBy: string) => {
+  let first;
+  let second;
   if (orderBy === "winPercentage") {
     first = a.wins / a.losses;
     second = b.wins / b.losses;
@@ -138,7 +139,7 @@ const desc = (a, b, orderBy) => {
   return 0;
 };
 
-const stableSort = (array, comparator) => {
+const stableSort = (array: any[], comparator: (a: any, b: any) => number) => {
   const sortedArray = array.map((value, index) => [value, index]);
   sortedArray.sort((a, b) => {
     const order = comparator(a[0], b[0]);
@@ -148,10 +149,10 @@ const stableSort = (array, comparator) => {
   return sortedArray.map((el) => el[0]);
 };
 
-const getSorting = (order, orderBy) => {
+const getSorting = (order: "asc" | "desc" | undefined, orderBy: string) => {
   return order === "desc"
-    ? (a, b) => desc(a, b, orderBy)
-    : (a, b) => -desc(a, b, orderBy);
+    ? (a: any, b: any) => desc(a, b, orderBy)
+    : (a: any, b: any) => -desc(a, b, orderBy);
 };
 
 export default RenderTierList;

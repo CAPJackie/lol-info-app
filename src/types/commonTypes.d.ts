@@ -166,3 +166,27 @@ interface IChampionCallback {
   onSuccess: (response: CustomChampionResponse) => void;
   onFailed: (error: AxiosError) => void;
 }
+
+interface IRankNumber {
+  rankNumber?: number;
+}
+
+interface SeasonsMap {
+  [index: number]: string;
+}
+
+interface IQueue {
+  map: string;
+  description: string;
+}
+interface QueuesMap {
+  [code: number]: IQueue;
+}
+
+interface IProxy {
+  region: string;
+  host: string;
+}
+interface ServicesProxiesMap {
+  [regionName: string]: IProxy;
+}

@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 
 import newPlayer from "../../../public/images/new-player.svg";
 
-const FreshBlood = () => {
+const FreshBlood: FunctionComponent = () => {
   return (
     <img
       src={newPlayer}

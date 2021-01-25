@@ -1,6 +1,6 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 
-const HashTagList = ({ values }) => {
+const HashTagList: FunctionComponent<{ values: string[] }> = ({ values }) => {
   const getValues = () => {
     return values.map((value) => (
       <li key={value}>

@@ -1,25 +1,30 @@
-import React, { useEffect, useState } from "react";
-import { LeagueItemDTO } from "../../types/commonTypes";
+import { RouteComponentProps } from "@reach/router";
+import { AxiosError, AxiosResponse } from "axios";
+import React, { FunctionComponent, useEffect, useState } from "react";
+import {
+  IRankNumber,
+  LeagueItemDTO,
+  LeagueListDTO,
+} from "../../types/commonTypes";
 import { getChallengerLeagueByQueue } from "../../utils/api";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
 import Loading from "../Loading/Loading";
 import RenderTierList from "../RenderTierList/RenderTierList";
 
-interface IProps {
-  rankNumber?: number;
-}
-const TopTierList = () => {
-  const [summoners, setSummoners] = useState<LeagueItemDTO[] & IProps>([]);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
+const TopTierList: FunctionComponent<RouteComponentProps> = () => {
+  const [summoners, setSummoners] = useState<(LeagueItemDTO & IRankNumber)[]>(
+    []
+  );
+  const [loading, setLoading] = useState<boolean>(true);
+  const [error, setError] = useState({});
 
   useEffect(() => {
     const callback = {
-      onSuccess: (response) => {
+      onSuccess: (response: AxiosResponse<LeagueListDTO>) => {
         orderByLeaguePoints(response.data.entries);
       },
-      onFailed: (error) => {
-        setError(error.response);
+      onFailed: (errorMsg: AxiosError<Error>) => {
+        setError(errorMsg);
       },
     };
 

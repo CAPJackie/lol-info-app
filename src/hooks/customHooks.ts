@@ -1,7 +1,6 @@
-/* eslint-disable no-console */
 import { useEffect, useRef } from "react";
 
-const useRenderCount = (deps) => {
+export const useRenderCount = (deps: React.DependencyList) => {
   const renderCount = useRef(1);
 
   useEffect(() => {
@@ -20,5 +19,3 @@ const useRenderCount = (deps) => {
 //   });
 //   return ref.current;
 // };
-
-export { useRenderCount };

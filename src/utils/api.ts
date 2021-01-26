@@ -9,7 +9,6 @@ import {
   ISummonerMatchesCallback,
   LeagueListDTO,
   MatchlistDto,
-  process,
   SummonerDTO,
 } from "../types/commonTypes";
 import { apiStaticUrl, apiUrl } from "./Constants/urls";

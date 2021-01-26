@@ -17,7 +17,7 @@ interface IProps {
 const RenderTierList: FunctionComponent<IProps> = ({ summoners }) => {
   const [order, setOrder] = useState<"asc" | "desc" | undefined>("asc");
   const [orderBy, setOrderBy] = useState<string>("summoner");
-  const [rowsPerPage, setRowsPerPage] = useState<number>(7);
+  const [rowsPerPage, setRowsPerPage] = useState<number>(5);
   const [page, setPage] = useState<number>(0);
 
   const handleRequestSort: (property: string) => void = (property) => {

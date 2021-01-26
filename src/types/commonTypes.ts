@@ -1,20 +1,14 @@
 import { AxiosError, AxiosResponse } from "axios";
 
-declare const process: {
-  env: {
-    API_KEY: string;
-  };
-};
-
-interface ICallback {
+export interface ICallback {
   onSuccess: (response: AxiosResponse) => void;
   onFailed: (error: AxiosError) => void;
 }
 
-//TODO Create my own npm type package mapping Riot Games developer API
-//TODO Change interfaces names according to developer.riotgames.com
+// TODO Create my own npm type package mapping Riot Games developer API
+// TODO Change export interfaces names according to developer.riotgames.com
 
-interface IStats {
+export interface IStats {
   hp: number;
   hpperlevel: number;
   mp: number;
@@ -37,7 +31,7 @@ interface IStats {
   attackspeed: number;
 }
 
-interface IImage {
+export interface IImage {
   full: string;
   sprite: string;
   group: string;
@@ -47,13 +41,13 @@ interface IImage {
   h: number;
 }
 
-interface IInfo {
+export interface IInfo {
   attack: number;
   defense: number;
   magic: number;
   difficulty: number;
 }
-interface IChampion {
+export interface IChampion {
   version: string;
   id: string;
   key: string;
@@ -67,29 +61,26 @@ interface IChampion {
   stats: IStats;
 }
 
-interface ChampionsMap {
+export interface ChampionsMap {
   [championName: string]: IChampion;
 }
-interface IChampions {
+export interface IChampions {
   type: string;
   format: string;
   version: string;
   data: ChampionsMap;
 }
 
-interface ResponseType<T = any> {
-  (response: AxiosResponse<T>): void;
-}
+export type ResponseType<T = any> = (response: AxiosResponse<T>) => void;
 
-interface ErrorType<T = any> {
-  (error: AxiosError<T>): void;
-}
-interface IChampionsCallback {
+export type ErrorType<T = any> = (error: AxiosError<T>) => void;
+
+export interface IChampionsCallback {
   onSuccess: ResponseType<IChampions>;
   onFailed: ErrorType<CustomError>;
 }
 
-interface SummonerDTO {
+export interface SummonerDTO {
   accountId: string;
   profileIconId: number;
   revisionDate: number;
@@ -99,18 +90,18 @@ interface SummonerDTO {
   summonerLevel: number;
 }
 
-interface CustomError {
+export interface CustomError {
   message: string;
 }
 
-type Error = AxiosResponse<CustomError>;
+export type Error = AxiosResponse<CustomError>;
 
-interface ISummonerCallback {
+export interface ISummonerCallback {
   onSuccess: ResponseType<SummonerDTO>;
   onFailed: ErrorType<CustomError>;
 }
 
-interface MatchReferenceDTO {
+export interface MatchReferenceDTO {
   gameId: number;
   role: string;
   season: number;
@@ -121,26 +112,26 @@ interface MatchReferenceDTO {
   timestamp: number;
 }
 
-interface MatchlistDto {
+export interface MatchlistDto {
   startIndex: number;
   totalGames: number;
   endIndex: number;
   matches: MatchReferenceDTO[];
 }
 
-interface ISummonerMatchesCallback {
+export interface ISummonerMatchesCallback {
   onSuccess: ResponseType<MatchlistDto>;
   onFailed: ErrorType<CustomError>;
 }
 
-interface MiniSeriesDTO {
+export interface MiniSeriesDTO {
   losses: number;
   progress: string;
   target: number;
   wins: number;
 }
 
-interface LeagueItemDTO {
+export interface LeagueItemDTO {
   freshBlood: boolean;
   wins: number;
   summonerName: string;
@@ -154,7 +145,7 @@ interface LeagueItemDTO {
   summonerId: string;
 }
 
-interface LeagueListDTO {
+export interface LeagueListDTO {
   leagueId: string;
   entries: LeagueItemDTO[];
   tier: string;
@@ -162,40 +153,40 @@ interface LeagueListDTO {
   queue: string;
 }
 
-interface IleagueListCallback {
+export interface IleagueListCallback {
   onSuccess: ResponseType<LeagueListDTO>;
   onFailed: ErrorType<CustomError>;
 }
 
-interface CustomChampionResponse {
+export interface CustomChampionResponse {
   data: IChampion;
 }
 
-interface IChampionCallback {
+export interface IChampionCallback {
   onSuccess: (response: CustomChampionResponse) => void;
   onFailed: ErrorType<CustomError>;
 }
 
-interface IRankNumber {
+export interface IRankNumber {
   rankNumber?: number;
 }
 
-interface SeasonsMap {
+export interface SeasonsMap {
   [index: number]: string;
 }
 
-interface IQueue {
+export interface IQueue {
   map: string;
   description: string;
 }
-interface QueuesMap {
+export interface QueuesMap {
   [code: number]: IQueue;
 }
 
-interface IProxy {
+export interface IProxy {
   region: string;
   host: string;
 }
-interface ServicesProxiesMap {
+export interface ServicesProxiesMap {
   [regionName: string]: IProxy;
 }

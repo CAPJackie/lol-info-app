@@ -4,8 +4,8 @@ import {
   ChampionsMap,
   Error,
   IChampionsCallback,
-} from "../../types/commonTypes.js";
-import { getChampions } from "../../utils/api.js";
+} from "../../types/commonTypes";
+import { getChampions } from "../../utils/api";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
 import Loading from "../Loading/Loading";
 import RenderChampionList from "../RenderChampionList/RenderChampionList";

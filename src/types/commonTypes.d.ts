@@ -80,6 +80,10 @@ interface IChampions {
 interface ResponseType<T = any> {
   (response: AxiosResponse<T>): void;
 }
+
+interface ErrorType<T = any> {
+  (error: AxiosError<T>): void;
+}
 // TODO Create a type that encapsules onSuccess responses
 interface IChampionsCallback {
   onSuccess: ResponseType<IChampions>;
@@ -96,9 +100,20 @@ interface SummonerDTO {
   summonerLevel: number;
 }
 
+interface CustomError {
+  message: string;
+}
+
+type Error = AxiosResponse<CustomError>;
+
 interface ISummonerCallback {
   onSuccess: ResponseType<SummonerDTO>;
-  onFailed: (error: AxiosError) => void;
+  onFailed: ErrorType<CustomError>;
+}
+
+// TODO: Delete after error refactoring
+interface ErrorResponse {
+  error: AxiosResponse<CustomError>;
 }
 
 interface MatchReferenceDTO {
@@ -121,7 +136,7 @@ interface MatchlistDto {
 
 interface ISummonerMatchesCallback {
   onSuccess: ResponseType<MatchlistDto>;
-  onFailed: (error: AxiosError) => void;
+  onFailed: ErrorType<CustomError>;
 }
 
 interface MiniSeriesDTO {

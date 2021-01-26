@@ -1,5 +1,6 @@
 import axios, { AxiosError, AxiosResponse } from "axios";
 import {
+  CustomError,
   IChampionCallback,
   IChampions,
   IChampionsCallback,
@@ -18,7 +19,7 @@ const key = process.env.API_KEY;
 const concatApiKey = (option: string) => {
   return option + "api_key=" + key;
 };
-
+// TODO: Refactoring Error and callback types
 export const getChampions = (callback: IChampionsCallback) => {
   axios
     .get(apiStaticUrl.data + "/champion.json")
@@ -29,7 +30,7 @@ export const getChampions = (callback: IChampionsCallback) => {
       callback.onFailed(error);
     });
 };
-
+// TODO: Refactoring Error and callback types
 // TODO write types
 export const getChampion = (
   championKey: string,
@@ -60,11 +61,11 @@ export const getSummoner = (
     .then((response: AxiosResponse<SummonerDTO>) => {
       callback.onSuccess(response);
     })
-    .catch((error: AxiosError) => {
+    .catch((error: AxiosError<CustomError>) => {
       callback.onFailed(error);
     });
 };
-
+// TODO: Refactoring Error and callback types
 export const getSummonerById = (
   encryptedSummonerId: string,
   callback: ISummonerCallback
@@ -82,7 +83,6 @@ export const getSummonerById = (
       callback.onFailed(error);
     });
 };
-
 export const getSummonerMatches = (
   numberOfMatches: number,
   encryptedAccountId: string,
@@ -100,11 +100,11 @@ export const getSummonerMatches = (
     .then((response: AxiosResponse<MatchlistDto>) => {
       callback.onSuccess(response);
     })
-    .catch((error: AxiosError) => {
+    .catch((error: AxiosError<CustomError>) => {
       callback.onFailed(error);
     });
 };
-
+// TODO: Refactoring Error and callback types
 export const getChallengerLeagueByQueue = (
   // TODO Create an Enum
   queue: string,

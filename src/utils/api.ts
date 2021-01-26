@@ -19,28 +19,26 @@ const key = process.env.API_KEY;
 const concatApiKey = (option: string) => {
   return option + "api_key=" + key;
 };
-// TODO: Refactoring Error and callback types
 export const getChampions = (callback: IChampionsCallback) => {
   axios
     .get(apiStaticUrl.data + "/champion.json")
     .then((response: AxiosResponse<IChampions>) => {
       callback.onSuccess(response);
     })
-    .catch((error: AxiosError) => {
+    .catch((error: AxiosError<CustomError>) => {
       callback.onFailed(error);
     });
 };
-// TODO: Refactoring Error and callback types
 // TODO write types
 export const getChampion = (
   championKey: string,
   callback: IChampionCallback
 ) => {
-  const championsCallback = {
-    onSuccess: (response: AxiosResponse<IChampions>) => {
+  const championsCallback: IChampionsCallback = {
+    onSuccess: (response) => {
       callback.onSuccess({ data: response.data.data[championKey] });
     },
-    onFailed: (error: AxiosError) => {
+    onFailed: (error) => {
       callback.onFailed(error);
     },
   };
@@ -65,8 +63,7 @@ export const getSummoner = (
       callback.onFailed(error);
     });
 };
-// TODO: Refactoring Error and callback types
-export const getSummonerById = (
+const getSummonerById = (
   encryptedSummonerId: string,
   callback: ISummonerCallback
 ) => {
@@ -79,7 +76,7 @@ export const getSummonerById = (
     .then((response: AxiosResponse<SummonerDTO>) => {
       callback.onSuccess(response);
     })
-    .catch((error: AxiosError) => {
+    .catch((error: AxiosError<CustomError>) => {
       callback.onFailed(error);
     });
 };
@@ -104,7 +101,6 @@ export const getSummonerMatches = (
       callback.onFailed(error);
     });
 };
-// TODO: Refactoring Error and callback types
 export const getChallengerLeagueByQueue = (
   // TODO Create an Enum
   queue: string,
@@ -120,7 +116,7 @@ export const getChallengerLeagueByQueue = (
     .then((response: AxiosResponse<LeagueListDTO>) => {
       callback.onSuccess(response);
     })
-    .catch((error: AxiosError) => {
+    .catch((error: AxiosError<CustomError>) => {
       callback.onFailed(error);
     });
 };

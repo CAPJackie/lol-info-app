@@ -87,7 +87,7 @@ interface ErrorType<T = any> {
 // TODO Create a type that encapsules onSuccess responses
 interface IChampionsCallback {
   onSuccess: ResponseType<IChampions>;
-  onFailed: (error: AxiosError) => void;
+  onFailed: ErrorType<CustomError>;
 }
 
 interface SummonerDTO {
@@ -170,7 +170,7 @@ interface LeagueListDTO {
 
 interface IleagueListCallback {
   onSuccess: ResponseType<LeagueListDTO>;
-  onFailed: (error: AxiosError) => void;
+  onFailed: ErrorType<CustomError>;
 }
 
 interface CustomChampionResponse {
@@ -179,7 +179,7 @@ interface CustomChampionResponse {
 
 interface IChampionCallback {
   onSuccess: (response: CustomChampionResponse) => void;
-  onFailed: (error: AxiosError) => void;
+  onFailed: ErrorType<CustomError>;
 }
 
 interface IRankNumber {

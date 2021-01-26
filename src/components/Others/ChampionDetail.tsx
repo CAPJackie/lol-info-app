@@ -1,39 +1,41 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { FunctionComponent, memo, useEffect, useState } from "react";
 
 import { getChampion } from "../../utils/api";
 import Loading from "../Loading/Loading";
 import RenderChampionDetail from "../RenderChampionDetail/RenderChampionDetail";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
 import { useRenderCount } from "../../hooks/customHooks";
-import { useParams } from "@reach/router";
+import { RouteComponentProps, useParams } from "@reach/router";
+import { Error, IChampion, IChampionCallback } from "../../types/commonTypes";
 
-const ChampionDetail = () => {
-  const { id } = useParams();
-  const [loading, setLoading] = useState(true),
-    [champion, setChampion] = useState(null),
-    [error, setError] = useState(null);
+const ChampionDetail: FunctionComponent<RouteComponentProps> = () => {
+  const { id }: { id: string } = useParams();
+  const [loading, setLoading] = useState(true);
+  const [champion, setChampion] = useState<IChampion>();
+  const [error, setError] = useState<Error>();
 
   useRenderCount([id]);
   useEffect(() => {
-    var callback = {
+    const callback: IChampionCallback = {
       onSuccess: (response) => {
         setLoading(false);
         setChampion(response.data);
       },
-      onFailed: (error) => {
-        setError(error.response);
+      onFailed: (errorObject) => {
+        setError(errorObject.response);
       },
     };
 
     getChampion(id, callback);
   }, []);
 
-  const errorChampion = !champion
-    ? {
-        status: 404,
-        data: { status: { message: "Champion not found" } },
-      }
-    : null;
+  const errorChampion: Error = {
+    status: 404,
+    data: { message: "Champion not found" },
+    statusText: "",
+    config: {},
+    headers: {},
+  };
 
   return loading ? (
     <Loading name="champion detail" />

@@ -1,11 +1,12 @@
-import React from "react";
+import React, { FunctionComponent } from "react";
 import { Slide } from "react-awesome-reveal";
+import { IChampion } from "../../types/commonTypes";
 import { apiStaticUrl } from "../../utils/Constants/urls";
 import HashTagList from "../Others/HashTagList";
 import InfoCategory from "../Others/InfoCategory";
 import "./RenderChampionDetail.css";
 
-const RenderChampionDetail = ({
+const RenderChampionDetail: FunctionComponent<IChampion> = ({
   id,
   name,
   title,
@@ -18,13 +19,13 @@ const RenderChampionDetail = ({
     apiStaticUrl.noVersionImg + "/champion/loading/" + id + "_0.jpg";
   return (
     <article className="champion-detail">
-      <Slide direction="top" triggerOnce>
+      <Slide direction="up" triggerOnce={true}>
         <h2>{name}</h2>
       </Slide>
-      <Slide direction="top" triggerOnce>
+      <Slide direction="up" triggerOnce={true}>
         <h3>{title}</h3>
       </Slide>
-      <Slide direction="top" triggerOnce>
+      <Slide direction="up" triggerOnce={true}>
         <p>
           <span>version </span>
           {version}
@@ -32,7 +33,7 @@ const RenderChampionDetail = ({
       </Slide>
 
       <div>
-        <Slide direction="right" triggerOnce>
+        <Slide direction="right" triggerOnce={true}>
           <div>
             <img alt={`${name} Splash art`} src={championImageUrl} />
             <HashTagList values={tags} />
@@ -40,7 +41,7 @@ const RenderChampionDetail = ({
         </Slide>
 
         <div aria-label="Additional info">
-          <Slide direction="right" triggerOnce>
+          <Slide direction="right" triggerOnce={true}>
             <p>{blurb}</p>
           </Slide>
           <div>

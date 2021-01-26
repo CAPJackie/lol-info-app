@@ -12,8 +12,12 @@ import "./Match.css";
 import { AxiosError, AxiosResponse } from "axios";
 import {
   ChampionsMap,
+  CustomError,
+  Error,
   IChampion,
   IChampions,
+  IProxy,
+  IQueue,
   MatchReferenceDTO,
 } from "../../types/commonTypes";
 
@@ -30,13 +34,13 @@ const Match: FunctionComponent<MatchReferenceDTO> = ({
     undefined
   );
   const [loading, setLoading] = useState(true);
-  const [seasonValue, setSeasonValue] = useState<string | null>(null);
-  const [queueValue, setQueueValue] = useState(null);
-  const [platformValue, setPlatformValue] = useState(null);
-  const [realDate, setRealDate] = useState(null);
-  const [roleValue, setRoleValue] = useState(null);
-  const [laneValue, setLaneValue] = useState(null);
-  const [error, setError] = useState({});
+  const [seasonValue, setSeasonValue] = useState<string>();
+  const [queueValue, setQueueValue] = useState<IQueue>();
+  const [platformValue, setPlatformValue] = useState<IProxy>();
+  const [realDate, setRealDate] = useState<string>();
+  const [roleValue, setRoleValue] = useState<string>();
+  const [laneValue, setLaneValue] = useState<string>();
+  const [error, setError] = useState<Error>();
 
   const getChampionInfo = (champions: ChampionsMap) => {
     let championInfoObject;
@@ -55,22 +59,22 @@ const Match: FunctionComponent<MatchReferenceDTO> = ({
       onSuccess: (response: AxiosResponse<IChampions>) => {
         setChampionInfo(getChampionInfo(response.data.data));
         setSeasonValue(seasons[season]);
-        setQueueValue(queues[queue] ? queues[queue] : queue);
+        setQueueValue(queues[queue]);
         setPlatformValue(serviceProxies[platformId]);
         setRealDate(new Date(timestamp).toDateString());
-        setRoleValue(role === "NONE" ? null : role);
-        setLaneValue(lane === "NONE" ? null : lane);
+        setRoleValue(role === "NONE" ? undefined : role);
+        setLaneValue(lane === "NONE" ? undefined : lane);
         setLoading(false);
       },
-      onFailed: (errorObject: AxiosError<Error>) => {
-        setError(errorObject);
+      onFailed: (errorObject: AxiosError<CustomError>) => {
+        setError(errorObject.response);
       },
     };
     getChampions(callback);
   }, []);
 
   const championImgUrl = championInfo
-    ? apiStaticUrl.img + "/champion/" + championInfo.image.full
+    ? `${apiStaticUrl.img}/champion/${championInfo.image.full}`
     : "";
 
   return loading ? (
@@ -79,21 +83,21 @@ const Match: FunctionComponent<MatchReferenceDTO> = ({
     <ErrorPanel error={error} />
   ) : (
     <Card className="flex-row-match-card">
-      <Link to={`/champion/${championInfo.id}`}>
+      <Link to={`/champion/${championInfo?.id}`}>
         <img
           src={championImgUrl}
-          alt={`The champion used was ${championInfo.name}`}
+          alt={`The champion used was ${championInfo?.name}`}
         />
       </Link>
 
       <h4>{seasonValue}</h4>
 
       <article className="details-panel">
-        <h5>{`${queueValue.map}, ${queueValue.description}`}</h5>
+        <h5>{`${queueValue?.map}, ${queueValue?.description}`}</h5>
         <dl>
           <div>
             <dt>server</dt>
-            <dd>{platformValue.region}</dd>
+            <dd>{platformValue?.region}</dd>
           </div>
           <div>
             <dt>date</dt>

@@ -1,7 +1,10 @@
 import { RouteComponentProps } from "@reach/router";
-import { AxiosError, AxiosResponse } from "axios";
 import React, { FunctionComponent, useEffect, useState } from "react";
-import { ChampionsMap, IChampions } from "../../types/commonTypes.js";
+import {
+  ChampionsMap,
+  Error,
+  IChampionsCallback,
+} from "../../types/commonTypes.js";
 import { getChampions } from "../../utils/api.js";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
 import Loading from "../Loading/Loading";
@@ -10,18 +13,18 @@ import RenderChampionList from "../RenderChampionList/RenderChampionList";
 const ChampionList: FunctionComponent<RouteComponentProps> = () => {
   const [champions, setChampions] = useState<ChampionsMap>({});
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState({});
+  const [error, setError] = useState<Error>();
 
   useEffect(() => {
-    const callback = {
-      onSuccess: (response: AxiosResponse<IChampions>) => {
+    const callback: IChampionsCallback = {
+      onSuccess: (response) => {
         setChampions(response.data.data);
         setLoading(false);
       },
-      onFailed: (errorValue: AxiosError<Error>) => {
+      onFailed: (errorValue) => {
         // TODO Test if it is returning the spected error
         // console.log("error: ", errorValue.message);
-        setError(errorValue);
+        setError(errorValue.response);
       },
     };
 

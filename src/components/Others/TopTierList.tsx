@@ -1,10 +1,10 @@
 import { RouteComponentProps } from "@reach/router";
-import { AxiosError, AxiosResponse } from "axios";
 import React, { FunctionComponent, useEffect, useState } from "react";
 import {
+  Error,
+  IleagueListCallback,
   IRankNumber,
   LeagueItemDTO,
-  LeagueListDTO,
 } from "../../types/commonTypes";
 import { getChallengerLeagueByQueue } from "../../utils/api";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
@@ -16,15 +16,15 @@ const TopTierList: FunctionComponent<RouteComponentProps> = () => {
     []
   );
   const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState({});
+  const [error, setError] = useState<Error>();
 
   useEffect(() => {
-    const callback = {
-      onSuccess: (response: AxiosResponse<LeagueListDTO>) => {
+    const callback: IleagueListCallback = {
+      onSuccess: (response) => {
         orderByLeaguePoints(response.data.entries);
       },
-      onFailed: (errorMsg: AxiosError<Error>) => {
-        setError(errorMsg);
+      onFailed: (errorMsg) => {
+        setError(errorMsg.response);
       },
     };
 

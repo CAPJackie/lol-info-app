@@ -84,7 +84,6 @@ interface ResponseType<T = any> {
 interface ErrorType<T = any> {
   (error: AxiosError<T>): void;
 }
-// TODO Create a type that encapsules onSuccess responses
 interface IChampionsCallback {
   onSuccess: ResponseType<IChampions>;
   onFailed: ErrorType<CustomError>;
@@ -109,11 +108,6 @@ type Error = AxiosResponse<CustomError>;
 interface ISummonerCallback {
   onSuccess: ResponseType<SummonerDTO>;
   onFailed: ErrorType<CustomError>;
-}
-
-// TODO: Delete after error refactoring
-interface ErrorResponse {
-  error: AxiosResponse<CustomError>;
 }
 
 interface MatchReferenceDTO {

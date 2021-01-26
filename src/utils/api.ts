@@ -29,7 +29,6 @@ export const getChampions = (callback: IChampionsCallback) => {
       callback.onFailed(error);
     });
 };
-// TODO write types
 export const getChampion = (
   championKey: string,
   callback: IChampionCallback

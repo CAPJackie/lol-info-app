@@ -7,7 +7,8 @@ const apiStaticUrl = {
   noVersionImg: "http://ddragon.leagueoflegends.com/cdn/img",
 };
 const apiUrl = "https://la1.api.riotgames.com/lol";
-const LeagueOfLegendsUrl = "https://lan.leagueoflegends.com/es/";
+const LeagueOfLegendsUrl =
+  "https://www.leagueoflegends.com/es-mx/?utm_medium=card1%2Bwww.leagueoflegends.com&utm_source=riotbar";
 const githubBranchRepository =
   "https://github.com/Globant-UI-Engineering/Bootcamp/tree/JuanDavidRamirezFinalProject";
 const riotGamesDevelopers = "https://developer.riotgames.com/";

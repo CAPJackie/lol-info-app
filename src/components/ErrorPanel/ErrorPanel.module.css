@@ -1,0 +1,26 @@
+.container {
+  text-align: center;
+  margin: 9%;
+}
+
+.container > div {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.container > div p {
+  margin-left: 15px;
+  font-size: 25px;
+}
+
+.container * {
+  font-family: "Mandali", sans-serif;
+}
+
+.container > div * {
+  text-transform: uppercase;
+  margin: 0;
+}

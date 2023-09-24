@@ -1,0 +1,52 @@
+.paper > h2 {
+  font-size: 40px;
+}
+
+.paper {
+  margin: 3% 10%;
+  padding: 4%;
+  text-align: center;
+}
+
+.paper > h2,
+.section h3 {
+  font-family: "Noto Sans", sans-serif;
+}
+
+.paper > h2 {
+  margin-bottom: 0;
+}
+
+.paper > img {
+  width: 300px;
+  height: 300px;
+  border: 2px solid grey;
+  border-radius: 4px;
+}
+
+.paper > p:nth-child(3),
+.paper > h2,
+.section h3 {
+  text-transform: uppercase;
+}
+
+.section {
+  margin-top: 5%;
+}
+
+.section h3 {
+  font-size: 20px;
+}
+
+.section > div {
+  padding: 5px;
+}
+
+.section ul {
+  list-style-type: none;
+  padding: 2% 2% 0 2%;
+}
+
+.section ul li {
+  margin-bottom: 20px;
+}

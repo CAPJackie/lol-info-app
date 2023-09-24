@@ -1,0 +1,33 @@
+.championsContainer {
+  padding: 15px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+}
+
+.championsContainer li {
+  list-style-type: none;
+  margin: 30px;
+}
+
+.championsContainer li img:first-child {
+  cursor: pointer;
+  border: 2px solid goldenrod;
+}
+
+.championsContainer li img:first-child:hover {
+  opacity: 0.5;
+}
+
+.championsContainer li :last-child {
+  font-family: "Heebo";
+  font-size: 12pt;
+  cursor: default;
+  text-align: center;
+}
+
+.championsContainer,
+.championsContainer li :last-child {
+  margin: 0;
+}

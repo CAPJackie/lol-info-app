@@ -1,0 +1,23 @@
+.paper {
+  flex-wrap: nowrap;
+  align-items: center;
+  width: 250px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+}
+.paper div:first-child {
+  margin-left: 15px;
+}
+
+.paper img {
+  width: 36px;
+}
+
+.paper a {
+  width: 100%;
+}
+
+.paper button {
+  padding: 0;
+}

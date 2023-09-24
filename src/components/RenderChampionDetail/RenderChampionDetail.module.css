@@ -1,0 +1,109 @@
+.container {
+  text-align: center;
+  padding: 1% 5%;
+}
+
+.container > div,
+.container > div > :last-child > div > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.container > div > :last-child > div > div > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.container > h2 {
+  margin-bottom: 0;
+  font-size: 40px;
+}
+
+.container > h3,
+.container > div > :last-child > div > div > p {
+  text-transform: capitalize;
+}
+
+.container > div > :last-child > p {
+  font-family: "Mandali", sans-serif;
+}
+
+.container > h3 {
+  font-size: 18px;
+}
+
+.container > p {
+  font-style: italic;
+}
+
+.container > p span {
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+
+.container > h2,
+.container > h3,
+.container > p span,
+.container > div > :first-child p,
+.container > div > :last-child > div > div > p {
+  font-family: "Noto Sans", sans-serif;
+}
+
+.container > div > :first-child ul {
+  list-style-type: none;
+}
+
+.container > div {
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding: 1%;
+}
+
+.container > div > :first-child {
+  text-align: start;
+}
+
+.container > div > :first-child p {
+  padding-left: 3%;
+  font-weight: 800;
+}
+
+.container > div > :first-child p span {
+  padding-left: 1%;
+}
+
+.container > div > :first-child ul {
+  padding: 0;
+}
+
+.container img {
+  border: 2px solid black;
+}
+
+.container > div > :last-child {
+  text-align: justify;
+  width: 60%;
+}
+
+.container > div > :last-child > div {
+  margin-top: 18%;
+}
+
+.container > div > :last-child > div > div {
+  flex-wrap: nowrap;
+  justify-content: space-between;
+}
+
+.container > div > :last-child > div > div > p {
+  font-weight: 800;
+}
+
+.container > div > :last-child > div > div > div {
+  width: 80%;
+  justify-content: center;
+}
+
+.container > div > :last-child > div > div > div div.linear-progress-bar {
+  height: 16px;
+}

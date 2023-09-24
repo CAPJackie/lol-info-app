@@ -1,0 +1,52 @@
+.nav {
+  background: black;
+  border-bottom: 2px solid darkgrey;
+  padding: 20px 15px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  justify-content: space-between;
+}
+
+.nav :first-child,
+.nav > div {
+  align-items: center;
+}
+
+.nav div a {
+  padding-right: 15px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+  outline: none;
+}
+
+.nav a:hover {
+  color: #e91e63;
+}
+
+.nav > div {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nav a:active {
+  opacity: 0.5;
+}
+
+.nav a > h1 {
+  margin: 0;
+}
+
+.nav,
+.nav :first-child,
+.nav > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav a {
+  text-transform: uppercase;
+}

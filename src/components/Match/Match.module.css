@@ -1,0 +1,59 @@
+.card > a img:hover {
+  opacity: 0.5;
+}
+
+.card {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 4px;
+  align-items: center;
+}
+
+.card > a,
+.article {
+  display: flex;
+  flex-direction: column;
+}
+
+.card > a,
+.article {
+  justify-content: center;
+}
+
+.card > h4 {
+  font-family: "Noto Sans", sans-serif;
+  font-size: 18px;
+}
+
+.article {
+  padding: 2%;
+}
+
+.article > h5,
+.article dt,
+.article dd {
+  margin: 0;
+}
+
+.article > h5 {
+  font-size: 17px;
+  margin-bottom: 5px;
+}
+
+.article dt {
+  font-weight: 600;
+  margin-right: 10px;
+}
+
+.article dd,
+.article dt {
+  display: inline;
+}
+
+.article > h5,
+.article dt,
+.card > h4 {
+  text-transform: uppercase;
+}

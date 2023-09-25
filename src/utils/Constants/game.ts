@@ -1,3 +1,4 @@
+import { RegionKey, RegionValue, Regions } from "@/types/regions";
 import {
   QueuesMap,
   SeasonsMap,
@@ -32,3 +33,46 @@ export const serviceProxies: ServicesProxiesMap = {
 };
 export const description =
   "League of Legends is a fast-paced, competitive online game that blends the speed and intensity of an RTS with RPG elements. Two teams of powerful champions, each with a unique design and playstyle, battle head-to-head across multiple battlefields and game modes. With an ever-expanding roster of champions, frequent updates and a thriving tournament scene, League of Legends offers endless replayability for players of every skill level.";
+
+export const regions: Regions = {
+  [RegionKey.EUW]: {
+    slug: RegionKey.EUW,
+    value: RegionValue.EUROPE_WEST,
+  },
+  [RegionKey.EUNE]: {
+    slug: RegionKey.EUNE,
+    value: RegionValue.EUROPE_NORDIC_AND_EAST,
+  },
+  [RegionKey.BR]: {
+    slug: RegionKey.BR,
+    value: RegionValue.BRAZIL,
+  },
+  [RegionKey.JP]: {
+    slug: RegionKey.JP,
+    value: RegionValue.JAPAN,
+  },
+  [RegionKey.LAN]: {
+    slug: RegionKey.LAN,
+    value: RegionValue.LATIN_AMERICA_NORTH,
+  },
+  [RegionKey.LAS]: {
+    slug: RegionKey.LAS,
+    value: RegionValue.LATIN_AMERICA_SOUTH,
+  },
+  [RegionKey.NA]: {
+    slug: RegionKey.NA,
+    value: RegionValue.NORTH_AMERICA,
+  },
+  [RegionKey.OCE]: {
+    slug: RegionKey.OCE,
+    value: RegionValue.OCEANIA,
+  },
+  [RegionKey.RU]: {
+    slug: RegionKey.RU,
+    value: RegionValue.RUSSIA,
+  },
+  [RegionKey.TR]: {
+    slug: RegionKey.TR,
+    value: RegionValue.TURKEY,
+  },
+};

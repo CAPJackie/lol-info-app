@@ -6,7 +6,7 @@ import {
   MouseEventHandler,
   useState,
 } from "react";
-import styles from "./SummonerSearchBar.module.css";
+import styles from "./SummonerSearchBar.module.scss";
 
 const SummonerSearchBar: FunctionComponent = () => {
   const [summonerName, setSummonerName] = useState("");
@@ -16,7 +16,6 @@ const SummonerSearchBar: FunctionComponent = () => {
     setSummonerName(event.target.value);
   };
 
-  console.log(currentRegion);
   const onClick: MouseEventHandler<HTMLButtonElement> = () => {
     setMenuRegionIsOpen(!menuRegionIsOpen);
   };
@@ -30,18 +29,16 @@ const SummonerSearchBar: FunctionComponent = () => {
               placeholder="Summoner name..."
               {...{ onChange }}
               value={summonerName}
+              className={styles.summonerNameInput}
             />
           </div>
-          <div>
-            <button
-              type="button"
-              {...{ onClick }}
-            >{` ${currentRegion.slug} `}</button>
-          </div>
+          <button
+            type="button"
+            {...{ onClick }}
+            className={styles.regionSelector}
+          >{` ${currentRegion.slug} `}</button>
         </li>
-        <li className={styles.searchButton}>
-          <button type="submit" className={styles.searchButton}></button>
-        </li>
+        <button type="submit" className={styles.searchButton}></button>
       </ul>
     </div>
   );

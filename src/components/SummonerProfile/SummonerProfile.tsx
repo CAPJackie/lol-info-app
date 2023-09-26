@@ -13,7 +13,7 @@ import { apiStaticUrl, apiUrl2 } from "../../utils/Constants/urls";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
 import Loading from "../Loading/Loading";
 import Match from "../Match/Match";
-import styles from "./SummonerProfile.module.css";
+import styles from "./SummonerProfile.module.scss";
 import Image from "next/image";
 import axios, { AxiosResponse } from "axios";
 

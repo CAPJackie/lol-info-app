@@ -1,6 +1,6 @@
 import { Tooltip } from "@material-ui/core";
 import React, { FunctionComponent } from "react";
-import styles from "./ProgressBar.module.css";
+import styles from "./ProgressBar.module.scss";
 
 interface IProps {
   value: number;
@@ -28,9 +28,7 @@ const ProgressBar: FunctionComponent<IProps> = ({ value, total, type }) => {
         // variant="determinate"
         // value={percentage}
       >
-        <div
-          style={{ transform: `scaleX(${percentage / 100})` }}
-        />
+        <div style={{ transform: `scaleX(${percentage / 100})` }} />
       </div>
     </Tooltip>
   );

@@ -2,7 +2,7 @@ import { Button, InputBase, Paper } from "@material-ui/core";
 import React, { FunctionComponent, useState } from "react";
 import { Slide } from "react-awesome-reveal";
 import search from "../../../public/images/search.svg";
-import styles from "./Search.module.css";
+import styles from "./Search.module.scss";
 import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";

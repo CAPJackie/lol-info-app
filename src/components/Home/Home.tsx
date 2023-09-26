@@ -4,7 +4,7 @@ import { Bounce, Fade, Slide } from "react-awesome-reveal";
 
 import league from "../../../public/images/league.png";
 import { LeagueOfLegendsUrl } from "../../utils/Constants/urls";
-import styles from "./Home.module.css";
+import styles from "./Home.module.scss";
 import Image from "next/image";
 import { description } from "@/utils/Constants/game";
 

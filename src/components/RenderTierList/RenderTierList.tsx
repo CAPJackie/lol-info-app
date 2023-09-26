@@ -9,7 +9,7 @@ import challenger from "../../../public/images/challenger.png";
 import { IRankNumber, LeagueItemDTO } from "../../types/commonTypes";
 import EnhancedTableHead from "../Others/EnhancedTableHead";
 import SummonerRow from "../Others/SummonerRow";
-import styles from "./RenderTierList.module.css";
+import styles from "./RenderTierList.module.scss";
 
 interface IProps {
   summoners: (LeagueItemDTO & IRankNumber)[];
@@ -37,7 +37,7 @@ const RenderTierList: FunctionComponent<IProps> = ({ summoners }) => {
   };
 
   const handleChangeRowsPerPage: (
-    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+    event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>,
   ) => void = (event) => {
     setRowsPerPage(+event.target.value);
   };
@@ -75,9 +75,7 @@ const RenderTierList: FunctionComponent<IProps> = ({ summoners }) => {
       <Paper className={styles.tableContainer}>
         <Slide direction="down" triggerOnce={true}>
           <div className={styles.tableWrapper}>
-            <Table
-              aria-labelledby="Challenger summoners"
-            >
+            <Table aria-labelledby="Challenger summoners">
               <colgroup>
                 <col width="10%" />
                 <col width="30%" />

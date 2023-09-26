@@ -1,0 +1,66 @@
+.searchButton {
+  height: 100%;
+  list-style: none;
+  padding: 8px 12px;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid;
+  border-color: #2e2734;
+  width: 70px;
+  background-image: url(/images/search.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+.searchBarList {
+  height: 100%;
+}
+
+.input,
+.input * {
+  height: 100%;
+}
+
+.summonerNameInput {
+  background: transparent;
+  padding: 8px 24px;
+  background: rgba(0, 0, 0, 0.1);
+  border: 1px solid;
+  border-color: #2e2734;
+  border-right: none;
+}
+
+.searchBar * {
+  font-family:
+    roboto black,
+    sans-serif;
+  font-size: 1.5rem;
+}
+
+.regionSelector {
+  background: transparent;
+  border: 1px solid;
+  border-color: #2e2734;
+  padding: 8px 12px;
+  font-size: 16px;
+  line-height: 20px;
+  font-weight: 700;
+  font-family: "roboto black";
+  color: rgb(191, 190, 209);
+  cursor: pointer;
+  border-left: none;
+}
+
+.searchBar *:focus,
+.searchBar:focus {
+  & .regionSelector,
+  .summonerNameInput,
+  .searchButton {
+    border-color: rgba(246, 222, 167, 0.4);
+    &:focus {
+      border-color: rgba(246, 222, 167, 0.4);
+    }
+  }
+}

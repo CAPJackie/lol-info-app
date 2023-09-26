@@ -2,7 +2,7 @@ import React from "react";
 import { Icon } from "antd";
 import { Slide } from "react-awesome-reveal";
 import riotGames from "../../../public/images/riotGames.png";
-import styles from "./Footer.module.css";
+import styles from "./Footer.module.scss";
 import {
   githubBranchRepository,
   riotGamesDevelopers,
@@ -27,7 +27,12 @@ const Footer = () => {
             </li>
             <li>
               <Link href={riotGamesDevelopers}>
-                <Image alt="Riot games developers portal" src={riotGames} width={50} height={50}/>
+                <Image
+                  alt="Riot games developers portal"
+                  src={riotGames}
+                  width={50}
+                  height={50}
+                />
               </Link>
             </li>
           </ul>

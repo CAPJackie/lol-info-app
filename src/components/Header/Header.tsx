@@ -2,7 +2,7 @@ import Link from "next/link";
 import React, { FunctionComponent, useContext } from "react";
 import { DarkModeSwitch } from "react-toggle-dark-mode";
 import { AppThemeContext, themes } from "../../context/AppThemeContext";
-import styles from "./Header.module.css";
+import styles from "./Header.module.scss";
 import Image from "next/image";
 import SummonerSearchBar from "../SummonerSearchBar/SummonerSearchBar";
 

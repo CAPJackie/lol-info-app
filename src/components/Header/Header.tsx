@@ -5,11 +5,9 @@ import { AppThemeContext, themes } from "../../context/AppThemeContext";
 import styles from "./Header.module.scss";
 import Image from "next/image";
 import SummonerSearchBar from "../SummonerSearchBar/SummonerSearchBar";
+import HeaderLinks from "../HeaderLinks/HeaderLinks";
 
 const Header: FunctionComponent = () => {
-  const [appTheme, setAppTheme] = useContext(AppThemeContext);
-
-  const isDarkMode = appTheme == themes.dark;
   return (
     <nav className={styles.nav}>
       <Link
@@ -27,35 +25,7 @@ const Header: FunctionComponent = () => {
         />
       </Link>
       <SummonerSearchBar />
-
-      <div>
-        <Link
-          style={{ opacity: appTheme.mediumEmphasizedTextOpacity }}
-          href="/champions"
-        >
-          champions
-        </Link>
-        <Link
-          style={{ opacity: appTheme.mediumEmphasizedTextOpacity }}
-          href="/tierList"
-        >
-          tier list
-        </Link>
-        <Link
-          style={{ opacity: appTheme.mediumEmphasizedTextOpacity }}
-          href="/search"
-        >
-          search
-        </Link>
-        <DarkModeSwitch
-          onChange={() => {
-            setAppTheme(isDarkMode ? themes.light : themes.dark);
-          }}
-          checked={isDarkMode}
-          size={35}
-          style={{ marginLeft: 16 }}
-        />
-      </div>
+      <HeaderLinks />
     </nav>
   );
 };

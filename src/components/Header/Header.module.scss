@@ -54,7 +54,7 @@
 }
 
 .nav div a {
-  padding-right: 15px;
+  padding: 8px;
 }
 
 .nav a {
@@ -64,16 +64,12 @@
 }
 
 .nav a:hover {
-  color: #e91e63;
+  color: #f6dea7;
 }
 
 .nav > div {
   justify-content: center;
   flex-wrap: wrap;
-}
-
-.nav a:active {
-  opacity: 0.5;
 }
 
 .nav a > h1 {

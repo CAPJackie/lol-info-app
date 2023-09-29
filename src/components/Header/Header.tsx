@@ -1,11 +1,9 @@
-import Link from "next/link";
-import React, { FunctionComponent, useContext } from "react";
-import { DarkModeSwitch } from "react-toggle-dark-mode";
-import { AppThemeContext, themes } from "../../context/AppThemeContext";
-import styles from "./Header.module.scss";
 import Image from "next/image";
-import SummonerSearchBar from "../SummonerSearchBar/SummonerSearchBar";
+import Link from "next/link";
+import { FunctionComponent } from "react";
 import HeaderLinks from "../HeaderLinks/HeaderLinks";
+import SummonerSearchBar from "../SummonerSearchBar/SummonerSearchBar";
+import styles from "./Header.module.scss";
 
 const Header: FunctionComponent = () => {
   return (

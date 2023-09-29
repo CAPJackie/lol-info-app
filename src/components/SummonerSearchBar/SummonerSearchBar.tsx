@@ -1,4 +1,4 @@
-import { RegionObject } from "@/types/regions";
+import { RegionKey, RegionObject } from "@/types/regions";
 import { regions } from "@/utils/Constants/game";
 import {
   ChangeEventHandler,
@@ -8,10 +8,12 @@ import {
 } from "react";
 import styles from "./SummonerSearchBar.module.scss";
 
+const euw = regions.find(({ slug }) => slug === RegionKey.EUW) as RegionObject;
+
 const SummonerSearchBar: FunctionComponent = () => {
   const [summonerName, setSummonerName] = useState("");
   const [menuRegionIsOpen, setMenuRegionIsOpen] = useState(false);
-  const [currentRegion, setCurrentRegion] = useState<RegionObject>(regions.EUW);
+  const [currentRegion, setCurrentRegion] = useState<RegionObject>(euw);
   const onChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     setSummonerName(event.target.value);
   };

@@ -1,11 +1,9 @@
-export interface Regions {
-  [key: string]: RegionObject;
-}
+export type Regions = RegionObject[];
 
-export type RegionObject = {
-  slug: string;
-  value: RegionValue;
-};
+export interface RegionObject {
+  slug?: string;
+  name: RegionValue;
+}
 
 export enum RegionKey {
   EUW = "EUW",
@@ -22,15 +20,15 @@ export enum RegionKey {
 }
 
 export enum RegionValue {
-  EUROPE_WEST = "EUROPE WEST",
-  EUROPE_NORDIC_AND_EAST = "EUROPE NORDIC & EAST",
-  NORTH_AMERICA = "NORTH AMERICA",
-  BRAZIL = "BRAZIL",
-  KOREA = "KOREA",
-  TURKEY = "TURKEY",
-  RUSSIA = "RUSSIA",
-  LATIN_AMERICA_NORTH = "LATIN AMERICA NORTH",
-  LATIN_AMERICA_SOUTH = "LATIN AMERICA SOUTH",
-  OCEANIA = "OCEANIA",
-  JAPAN = "JAPAN",
+  EUROPE_WEST = "Europe West",
+  EUROPE_NORDIC_AND_EAST = "Europe Nordic & East",
+  NORTH_AMERICA = "North America",
+  BRAZIL = "Brazil",
+  KOREA = "Korea",
+  TURKEY = "Turkey",
+  RUSSIA = "Russia",
+  LATIN_AMERICA_NORTH = "Latin America North",
+  LATIN_AMERICA_SOUTH = "Latin America South",
+  OCEANIA = "Oceania",
+  JAPAN = "Japan",
 }

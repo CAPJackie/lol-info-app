@@ -1,6 +1,5 @@
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
-import { AppThemeContext } from "@/context/AppThemeContext";
 import "@/styles/globals.scss";
 import type { AppProps } from "next/app";
 

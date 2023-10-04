@@ -1,0 +1,28 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding: 0 15px;
+}
+
+.ranking {
+  width: 50px;
+  font-size: 30px;
+  color: #f6dea7;
+  font-family: beaufort;
+  text-align: center;
+}
+
+.championIcon {
+  border: 1px solid #2e2734;
+}
+
+.championMastery {
+  top: 48px;
+  vertical-align: middle;
+  border-style: none;
+}
+
+.icon {
+  position: relative;
+}

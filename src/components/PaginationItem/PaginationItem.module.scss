@@ -1,0 +1,23 @@
+.container {
+  margin: 30px 0;
+}
+
+.item {
+  display: inline-block;
+  margin-right: 5px;
+  padding: 10px 15px;
+  background: #0f0713;
+  border: 1px solid #2e2734;
+  color: #fff;
+  font-family:
+    roboto black,
+    sans-serif;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.clickable {
+  &:hover {
+    border-color: #f6dea7;
+  }
+}

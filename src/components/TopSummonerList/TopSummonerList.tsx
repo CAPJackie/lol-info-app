@@ -24,13 +24,19 @@ const TopSummonerList: FunctionComponent = () => {
 
   const numberOfPages = Math.ceil(summonersList.length / itemsPerPage);
 
+  const sortedEntireList = summonersList.sort(
+    (a, b) => b.lssScore - a.lssScore,
+  );
+
   const items = buildPagination<SummonerInfo>(
-    summonersList,
+    sortedEntireList,
     page,
     itemsPerPage,
   );
 
   const sortedItems = items.sort((a, b) => b.lssScore - a.lssScore);
+
+  console.log(sortedEntireList);
 
   return (
     <div className={clsx("row", styles.container)}>
@@ -39,10 +45,12 @@ const TopSummonerList: FunctionComponent = () => {
           {sortedItems.map((summonerInfo, index) => (
             <li key={summonerInfo.summonerName} className={styles.item}>
               <SummonerCard
-                ranking={sortedItems.findIndex(
-                  ({ summonerName }) =>
-                    summonerName === summonerInfo.summonerName,
-                )}
+                ranking={
+                  sortedEntireList.findIndex(
+                    ({ summonerName }) =>
+                      summonerName === summonerInfo.summonerName,
+                  ) + 1
+                }
                 {...summonerInfo}
               />
             </li>

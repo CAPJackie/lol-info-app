@@ -1,26 +1,16 @@
-import Footer from '@/components/Footer/Footer';
-import Header from '@/components/Header/Header';
-import { AppThemeContext, themes } from '@/context/AppThemeContext';
-import '@/styles/globals.css'
-import type { AppProps } from 'next/app'
-import { useState } from 'react';
+import Footer from "@/components/Footer/Footer";
+import Header from "@/components/Header/Header";
+import "@/styles/globals.scss";
+import type { AppProps } from "next/app";
 
 export default function App({ Component, pageProps }: AppProps) {
-  const initialTheme = useState(themes.light);
-
-
   return (
-    <AppThemeContext.Provider value={initialTheme}>
-      <div
-        className="site"
-        style={{ backgroundColor: initialTheme[0].surface }}
-      >
-        <div>
-          <Header />
-          <Component {...pageProps} />
-        </div>
-        <Footer />
+    <div className="site">
+      <div>
+        <Header />
+        <Component {...pageProps} />
       </div>
-    </AppThemeContext.Provider>
+      <Footer />
+    </div>
   );
 }

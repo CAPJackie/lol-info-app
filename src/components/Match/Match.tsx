@@ -7,7 +7,7 @@ import Loading from "../Loading/Loading";
 import { seasons, queues, serviceProxies } from "../../utils/Constants/game";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
 
-import styles from "./Match.module.css";
+import styles from "./Match.module.scss";
 import { AxiosError, AxiosResponse } from "axios";
 import {
   ChampionsMap,

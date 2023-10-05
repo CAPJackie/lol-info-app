@@ -2,7 +2,7 @@ import { FunctionComponent, memo } from "react";
 import { Slide } from "react-awesome-reveal";
 import { ChampionsMap } from "../../types/commonTypes";
 import { apiStaticUrl } from "../../utils/Constants/urls";
-import styles from "./RenderChampionList.module.css";
+import styles from "./RenderChampionList.module.scss";
 import Champion from "../Others/Champion";
 
 const apiStaticUrlImg = apiStaticUrl.img + "/champion";
@@ -14,7 +14,7 @@ interface IProps {
 const RenderChampionList: FunctionComponent<IProps> = ({ champions }) => {
   const getChampionList = () => {
     const championList = Object.keys(champions).map((key) => (
-      <li key={key}  aria-label={champions[key].name}>
+      <li key={key} aria-label={champions[key].name}>
         <Champion
           name={champions[key].name}
           image={`${apiStaticUrlImg}/${champions[key].image.full}`}
@@ -26,7 +26,7 @@ const RenderChampionList: FunctionComponent<IProps> = ({ champions }) => {
   };
 
   return (
-    <section >
+    <section>
       <Slide direction="down" triggerOnce={true}>
         <h2 aria-label="Champions">champions</h2>
       </Slide>

@@ -1,0 +1,104 @@
+.container {
+  background: black;
+  position: relative;
+  border-top: 1px solid #2e2734;
+  border-bottom: 1px solid #2e2734;
+}
+
+.container > nav h3:first-of-type {
+  color: white;
+}
+
+.container > nav,
+.container > nav ul {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.container > nav ul li > a {
+  padding: 6px;
+}
+
+.container > nav ul > :first-child {
+  font-size: 50px;
+}
+
+.container > nav ul {
+  margin: 0;
+}
+
+.container {
+  text-align: center;
+}
+
+.container > nav h3:first-of-type {
+  text-transform: uppercase;
+}
+
+.iconsContainer > a:first-child {
+  margin-right: 30px;
+}
+
+.iconsContainer {
+  position: relative;
+  margin: 0 35px;
+}
+
+.lolSkillIcon {
+  position: absolute;
+  left: 50px;
+  top: 32.5px;
+}
+
+.footerTop {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  background: #0c060f;
+}
+
+.footerBottom {
+  background: #060308;
+}
+.bottomContainer {
+  margin: 0 35px;
+  padding: 30px 0;
+}
+
+.footerTop {
+  padding: 15px 15px;
+}
+
+.firstContainer {
+}
+
+.secondContainer {
+}
+
+.firstContainer a,
+.secondContainer p {
+  font-size: 16px;
+  font-family:
+    roboto black,
+    sans-serif;
+}
+
+.firstContainer a {
+  margin: 0 15px;
+  &:hover {
+    color: #f6dea7;
+  }
+}
+
+.firstContainer {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.secondContainer {
+  display: flex;
+  justify-content: flex-start;
+}

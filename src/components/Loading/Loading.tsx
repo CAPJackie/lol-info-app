@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import CircularProgress from "@material-ui/core/CircularProgress";
-import styles from "./Loading.module.css";
+import styles from "./Loading.module.scss";
 
 interface IProps {
   name: string;

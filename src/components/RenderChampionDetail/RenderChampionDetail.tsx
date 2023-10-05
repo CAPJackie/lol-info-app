@@ -2,7 +2,7 @@ import React, { FunctionComponent } from "react";
 import { Slide } from "react-awesome-reveal";
 import { IChampion } from "../../types/commonTypes";
 import { apiStaticUrl } from "../../utils/Constants/urls";
-import styles from "./RenderChampionDetail.module.css";
+import styles from "./RenderChampionDetail.module.scss";
 import Image from "next/image";
 import HashTagList from "../Others/HashTagList";
 import InfoCategory from "../Others/InfoCategory";

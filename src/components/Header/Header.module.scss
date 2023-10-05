@@ -1,0 +1,88 @@
+.nav {
+  background: #0f0713;
+  border-bottom: 1px solid #2e2734;
+  padding: 0px 15px;
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+}
+
+.searchBar {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.searchBarList {
+  margin-left: auto;
+  height: 100%;
+  flex-direction: row;
+  display: flex;
+  list-style: none;
+  padding-left: 0;
+  margin-bottom: 0;
+  border: 1px solid #2e2734;
+}
+
+.searchButton {
+  height: 70px;
+  border-radius: 0;
+  background-image: url(/images/search.png);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: 40%;
+  box-shadow: none !important;
+  cursor: pointer;
+}
+
+.toggleHome {
+  display: flex;
+  align-items: center;
+  height: 70px;
+  padding: 5px 0px;
+}
+
+.img {
+  max-height: 30px;
+}
+
+.nav :first-child,
+.nav > div {
+  align-items: center;
+}
+
+.nav div a {
+  padding: 8px;
+}
+
+.nav a {
+  text-decoration: none;
+  color: white;
+  outline: none;
+}
+
+.nav a:hover {
+  color: #f6dea7;
+}
+
+.nav > div {
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.nav a > h1 {
+  margin: 0;
+}
+
+.nav,
+.nav :first-child,
+.nav > div {
+  display: flex;
+  flex-direction: row;
+}
+
+.nav a {
+  text-transform: uppercase;
+}

@@ -1,0 +1,33 @@
+.container {
+  margin-top: 100px;
+  margin-bottom: 30px;
+}
+
+.link {
+  width: 100%;
+}
+
+.button {
+  width: 100%;
+  min-height: 60px;
+  padding: 1rem 3rem;
+  background: #0f0713;
+  border-color: rgba(246, 222, 167, 0.25);
+  border-radius: 0.25rem;
+  color: #f6dea7;
+  font-family:
+    roboto black,
+    sans-serif;
+  text-transform: uppercase;
+  font-weight: 400;
+  cursor: pointer;
+  &:hover {
+    border-color: #f6dea7;
+    background-color: #f6dea7;
+    color: #0f0713 !important;
+  }
+}
+
+.linkHovered {
+  color: #f6dea7;
+}

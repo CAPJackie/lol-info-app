@@ -1,0 +1,65 @@
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 0 15px;
+  height: 100px;
+  align-items: center;
+  width: 100%;
+  margin-top: 30px;
+  background-clip: padding-box;
+  background-color: #0f0713;
+  background-position: center left;
+  background-repeat: no-repeat;
+  border: 1px solid #2e2734;
+}
+
+.ranking {
+  width: 50px;
+  font-size: 30px;
+  color: #f6dea7;
+  font-family: beaufort;
+  text-align: center;
+}
+
+.championIcon {
+  border: 1px solid #2e2734;
+}
+
+.championMastery {
+  vertical-align: middle;
+  border-style: none;
+  position: absolute;
+  top: 55px;
+  left: 15px;
+}
+
+.icon {
+  position: relative;
+}
+
+.regionContainer {
+  width: 40px;
+  color: #a6a5a7;
+  font-family:
+    roboto black,
+    sans-serif;
+  font-size: 14px;
+}
+
+.summonerName {
+  font-size: 22px;
+  margin-left: 15px;
+  color: #fff;
+  font-family:
+    roboto black,
+    sans-serif;
+}
+
+.rankingIcon {
+  margin-left: auto;
+}
+
+.statsContainer {
+  margin-left: 15px;
+}

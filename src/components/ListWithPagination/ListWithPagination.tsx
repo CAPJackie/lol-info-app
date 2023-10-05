@@ -14,7 +14,7 @@ const ListWithPagination: FunctionComponent<ListWithPaginationProps> = ({
   return (
     <div className={styles.container}>
       <PaginationItem {...{ numberOfPages }} />
-      <div>{children}</div>
+      {children}
       <PaginationItem {...{ numberOfPages }} />
     </div>
   );

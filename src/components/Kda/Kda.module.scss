@@ -1,0 +1,42 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 120px;
+}
+
+.kda {
+  margin: 0;
+  margin-top: 3px;
+  color: #a6a5a7;
+  font-family:
+    roboto black,
+    sans-serif;
+  font-size: 14px;
+  text-transform: uppercase;
+}
+
+.statGreen {
+  color: #a4e7a1;
+  font-size: 16px;
+  font-family:
+    roboto black,
+    sans-serif;
+}
+
+.statRed {
+  color: #e7a1a1;
+  font-size: 16px;
+  font-family:
+    roboto black,
+    sans-serif;
+}
+
+.upperText {
+  margin: 0;
+  font-family:
+    roboto black,
+    sans-serif;
+  font-size: 18px;
+  color: #fff;
+}

@@ -1,11 +1,14 @@
-import { FunctionComponent } from "react";
-import styles from "./SummonerCard.module.scss";
-import { League } from "@/types/league";
-import { Kda } from "@/types/kda";
-import { Mastery } from "@/types/mastery";
-import Link from "next/link";
-import Image from "next/image";
 import { SummonerInfo } from "@/types/summonerInfo";
+import clsx from "clsx";
+import Image from "next/image";
+import Link from "next/link";
+import { FunctionComponent } from "react";
+import Games from "../Games/Games";
+import RankingIcon from "../RankingIcon/RankingIcon";
+import styles from "./SummonerCard.module.scss";
+import Kda from "../Kda/Kda";
+import Performance from "../Performance/Performance";
+import SkillScore from "../SkillScore/SkillScore";
 
 const SummonerCard: FunctionComponent<SummonerInfo> = ({
   championPerformance,
@@ -15,13 +18,16 @@ const SummonerCard: FunctionComponent<SummonerInfo> = ({
   mainMastery,
   region,
   summonerName,
-  winningRate,
+  games,
   ranking,
 }) => {
   return (
     <Link
       href={`/summoner/${region}/${summonerName}`}
       className={styles.container}
+      style={{
+        backgroundImage: `url(https://cdn.lolskill.net/img/skins/tablerow/${mainMastery.champion}_0.jpg)`,
+      }}
     >
       <div className={styles.ranking}>{ranking}</div>
       <div className={styles.icon}>
@@ -41,6 +47,25 @@ const SummonerCard: FunctionComponent<SummonerInfo> = ({
           height={32}
           alt="mastery icon"
         />
+      </div>
+      <div className={clsx(styles.statsContainer, styles.regionContainer)}>
+        {region}
+      </div>
+      <div className={styles.summonerName}>{summonerName}</div>
+      <div className={styles.rankingIcon}>
+        <RankingIcon {...currentLeague} />
+      </div>
+      <div className={styles.statsContainer}>
+        <Games {...games} />
+      </div>
+      <div className={styles.statsContainer}>
+        <Kda {...kda} />
+      </div>
+      <div className={styles.statsContainer}>
+        <Performance {...{ championPerformance }} />
+      </div>
+      <div className={styles.statsContainer}>
+        <SkillScore {...{ lssScore }} />
       </div>
     </Link>
   );

@@ -43,7 +43,7 @@ interface Image {
   h: 48;
 }
 
-interface Champion {
+export interface Champion {
   version: string;
   id: string;
   key: string;

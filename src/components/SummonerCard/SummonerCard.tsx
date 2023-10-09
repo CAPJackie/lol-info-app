@@ -9,6 +9,7 @@ import styles from "./SummonerCard.module.scss";
 import Kda from "../Kda/Kda";
 import Performance from "../Performance/Performance";
 import SkillScore from "../SkillScore/SkillScore";
+import { convertToLolSkillChampionNameConvention } from "@/utils/convertToLolSkillChampionNameConvention";
 
 const SummonerCard: FunctionComponent<SummonerInfo> = ({
   championPerformance,
@@ -32,9 +33,9 @@ const SummonerCard: FunctionComponent<SummonerInfo> = ({
       <div className={styles.ranking}>{ranking}</div>
       <div className={styles.icon}>
         <Image
-          src={`https://cdn.lolskill.net/img/champions/64/${mainMastery.champion
-            .toLowerCase()
-            .replaceAll(" ", "")}.png`}
+          src={`https://cdn.lolskill.net/img/champions/64/${convertToLolSkillChampionNameConvention(
+            mainMastery.champion,
+          )}.png`}
           className={styles.championIcon}
           width={64}
           height={64}

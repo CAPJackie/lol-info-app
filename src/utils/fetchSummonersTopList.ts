@@ -1,40 +1,8 @@
 import { SummonerInfo } from "@/types/summonerInfo";
 import { faker } from "@faker-js/faker";
+import { champions } from "./Constants/champions";
 
 export const fetchSummonersTopList: () => SummonerInfo[] = () => {
-  const champions = [
-    "Anivia",
-    "Ahri",
-    "Ashe",
-    "Amumu",
-    "Blitzcrank",
-    "Caitlyn",
-    "Diana",
-    "Draven",
-    "Ezreal",
-    "Fiora",
-    "Garen",
-    "Heimerdinger",
-    "Irelia",
-    "Jax",
-    "Katarina",
-    "Lux",
-    "Miss Fortune",
-    "Nasus",
-    "Orianna",
-    "Poppy",
-    "Quinn",
-    "Riven",
-    "Soraka",
-    "Teemo",
-    "Udyr",
-    "Vayne",
-    "Warwick",
-    "Xin Zhao",
-    "Yasuo",
-    "Zed",
-  ];
-
   const generateGamingUsername = () =>
     `${faker.internet.userName()}${faker.datatype.number({
       min: 1,

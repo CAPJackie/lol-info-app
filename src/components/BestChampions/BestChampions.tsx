@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { FunctionComponent } from "react";
 import styles from "./BestChampions.module.scss";
 import Link from "next/link";
+import { convertToLolSkillChampionNameConvention } from "@/utils/convertToLolSkillChampionNameConvention";
 
 type BestStat = {
   champion: string;
@@ -20,16 +21,12 @@ const bestChampionsMock: BestChampions = {
   mostPopular: { champion: "Xayah", rate: 52.5 },
 };
 
-const convertToLowercaseWithoutSpaces: (value: string) => string = (value) => {
-  return value.toLowerCase().replaceAll(" ", "");
-};
-
 const BestChampions: FunctionComponent = () => {
   const { mostPopular, highestWinRate, mostBanned } = bestChampionsMock;
   return (
     <>
       <Link
-        href={`/champion/${convertToLowercaseWithoutSpaces(
+        href={`/champion/${convertToLolSkillChampionNameConvention(
           mostPopular.champion,
         )}`}
         className={clsx(styles.card, styles.marginRight)}
@@ -47,7 +44,7 @@ const BestChampions: FunctionComponent = () => {
         </div>
       </Link>
       <Link
-        href={`/champion/${convertToLowercaseWithoutSpaces(
+        href={`/champion/${convertToLolSkillChampionNameConvention(
           highestWinRate.champion,
         )}`}
         className={clsx(styles.card, styles.marginLeft, styles.marginRight)}
@@ -65,7 +62,7 @@ const BestChampions: FunctionComponent = () => {
         </div>
       </Link>
       <Link
-        href={`/champion/${convertToLowercaseWithoutSpaces(
+        href={`/champion/${convertToLolSkillChampionNameConvention(
           mostBanned.champion,
         )}`}
         className={clsx(styles.card, styles.marginLeft)}

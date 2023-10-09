@@ -6,7 +6,7 @@ import BestChampions from "../BestChampions/BestChampions";
 import ChampionsListDetail from "../ChampionsListDetail/ChampionsListDetail";
 
 type ChampionListProps = {
-  champions: Champions;
+  champions: string[];
 };
 
 const ChampionList: FunctionComponent<ChampionListProps> = ({ champions }) => {

@@ -93,7 +93,7 @@ export const getSummonerMatches = (
         concatApiKey("&"),
     )
     .then((response: AxiosResponse<MatchlistDto>) => {
-      callback.onSuccess(response);
+      callback.onSuccess(response as AxiosResponse);
     })
     .catch((error: AxiosError<CustomError>) => {
       callback.onFailed(error);

@@ -36,7 +36,6 @@ const TopSummonerList: FunctionComponent = () => {
 
   const sortedItems = items.sort((a, b) => b.lssScore - a.lssScore);
 
-  console.log(sortedEntireList);
 
   return (
     <div className={clsx("row", styles.container)}>

@@ -25,7 +25,6 @@ const Filters: FunctionComponent<FiltersProps> = ({ champions }) => {
   const [filterPlatform, setFilterPlatform] = useState("");
   const router = useRouter();
   const typeOfTopList = router.query.typeOfTopList ?? "skillscore";
-  console.log(typeOfTopList === "skillscore");
 
   const allChampions: Options = [{ label: "All Champions" }].concat(
     champions.map(({ key, name }) => ({

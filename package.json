@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "clean-dev": "rm -rf node_modules && bun install && bun run dev",
+    "clean-dev": "rm -rf node_modules && yarn && yarn dev",
     "dev": "next dev",
     "build": "next build",
     "start": "next start",

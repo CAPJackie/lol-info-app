@@ -74,7 +74,6 @@ const SummonerProfile: FunctionComponent<ISummonerProfile> = ({ name }) => {
   };
 
   const getMatches = () => {
-    console.log(matches);
     //TODO Needs to change since api changed responses
     return matches?.map(
       (

@@ -1,2 +1,31 @@
 .container {
+  margin-bottom: 200px;
+}
+
+.h2 {
+  margin: 3rem 0 1rem;
+  font-size: 40px;
+  text-align: center;
+  font-family: beaufort;
+  text-transform: uppercase;
+  color: #fff;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.h5 {
+  margin-bottom: 30px;
+  margin: 0 0 3rem;
+  font-family: beaufort;
+  text-align: center;
+  color: #f6dea7;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.ul {
+  list-style-type: none;
+  display: flex;
+  flex-direction: row;
 }

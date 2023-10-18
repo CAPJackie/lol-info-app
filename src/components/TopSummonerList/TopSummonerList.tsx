@@ -1,14 +1,17 @@
+import { SummonerInfo } from "@/types/summonerInfo";
+import { buildPagination } from "@/utils/buildPagination";
+import clsx from "clsx";
 import { useRouter } from "next/router";
 import { FunctionComponent } from "react";
-import styles from "./TopSummonerList.module.scss";
-import clsx from "clsx";
-import { buildPagination } from "@/utils/buildPagination";
-import SummonerCard from "../SummonerCard/SummonerCard";
 import ListWithPagination from "../ListWithPagination/ListWithPagination";
-import { fetchSummonersTopList } from "@/utils/fetchSummonersTopList";
-import { SummonerInfo } from "@/types/summonerInfo";
+import SummonerCard from "../SummonerCard/SummonerCard";
+import styles from "./TopSummonerList.module.scss";
 
-const TopSummonerList: FunctionComponent = () => {
+type Props = {
+  summonersList: SummonerInfo[]
+}
+
+const TopSummonerList: FunctionComponent<Props> = ({ summonersList }) => {
   const router = useRouter();
   const page = Number(router.query.page) || 1;
   // const onChangePage = () => {
@@ -18,7 +21,6 @@ const TopSummonerList: FunctionComponent = () => {
   //   });
   // };
 
-  const summonersList: SummonerInfo[] = fetchSummonersTopList();
 
   const itemsPerPage = 30;
 

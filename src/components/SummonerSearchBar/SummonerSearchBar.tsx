@@ -1,5 +1,6 @@
 import { RegionKey, RegionObject } from "@/types/regions";
 import { regions } from "@/utils/Constants/game";
+import clsx from "clsx";
 import {
   ChangeEventHandler,
   FunctionComponent,
@@ -10,7 +11,13 @@ import styles from "./SummonerSearchBar.module.scss";
 
 const euw = regions.find(({ slug }) => slug === RegionKey.EUW) as RegionObject;
 
-const SummonerSearchBar: FunctionComponent = () => {
+type SummonerSearchBarProps = {
+  classes?: string;
+};
+
+const SummonerSearchBar: FunctionComponent<SummonerSearchBarProps> = ({
+  classes,
+}) => {
   const [summonerName, setSummonerName] = useState("");
   const [menuRegionIsOpen, setMenuRegionIsOpen] = useState(false);
   const [currentRegion, setCurrentRegion] = useState<RegionObject>(euw);
@@ -22,10 +29,10 @@ const SummonerSearchBar: FunctionComponent = () => {
     setMenuRegionIsOpen(!menuRegionIsOpen);
   };
   return (
-    <div className={styles.searchBar}>
+    <div className={clsx(styles.searchBar, classes)}>
       <ul className={styles.searchBarList}>
         <li className={styles.input}>
-          <div>
+          <div className={styles.nameInputContainer}>
             <input
               type="text"
               placeholder="Summoner name..."

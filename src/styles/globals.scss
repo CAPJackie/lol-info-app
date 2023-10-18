@@ -8,6 +8,15 @@ body > div,
   margin: 0;
 }
 
+.body {
+  background-color: #0f0713;
+  color: #fff;
+  font-family:
+    roboto light,
+    sans-serif;
+  font-size: 16px;
+}
+
 .site {
   display: flex;
   flex-direction: column;
@@ -181,15 +190,15 @@ body {
   overflow-x: hidden;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
-}
+// body {
+//   color: rgb(var(--foreground-rgb));
+//   background: linear-gradient(
+//       to bottom,
+//       transparent,
+//       rgb(var(--background-end-rgb))
+//     )
+//     rgb(var(--background-start-rgb));
+// }
 
 a {
   color: inherit;

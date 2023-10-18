@@ -32,7 +32,7 @@ const SummonerSearchBar: FunctionComponent<SummonerSearchBarProps> = ({
     <div className={clsx(styles.searchBar, classes)}>
       <ul className={styles.searchBarList}>
         <li className={styles.input}>
-          <div>
+          <div className={styles.nameInputContainer}>
             <input
               type="text"
               placeholder="Summoner name..."

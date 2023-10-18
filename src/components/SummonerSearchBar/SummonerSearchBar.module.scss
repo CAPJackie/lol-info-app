@@ -14,14 +14,31 @@
   cursor: pointer;
 }
 
+.nameInputContainer{
+  flex: 1;
+}
+
 .searchBarList {
   height: 100%;
   list-style-type: none;
 }
 
+.searchBarList, .input{
+  display: flex;
+  flex-direction: row;
+}
+
+.input{
+  width: 100%;
+}
+
 .input,
 .input * {
   height: 100%;
+}
+
+.searchButton{
+  width: 90px;
 }
 
 .summonerNameInput {
@@ -31,6 +48,7 @@
   border: 1px solid;
   border-color: #2e2734;
   border-right: none;
+  width: 100%;
 }
 
 .searchBar * {
@@ -53,6 +71,8 @@
   cursor: pointer;
   border-left: none;
 }
+
+
 
 .searchBar *:focus,
 .searchBar:focus {

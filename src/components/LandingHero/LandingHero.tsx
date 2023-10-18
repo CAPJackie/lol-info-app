@@ -7,7 +7,7 @@ const LandingHero: FunctionComponent = () => {
     <div className={styles.container}>
       <h2 className={styles.h2}>League of Legends</h2>
       <h1 className={styles.h1}>Game & Summoner Analysis</h1>
-      <SummonerSearchBar />
+      <SummonerSearchBar classes={styles.searchBar} />
     </div>
   );
 };

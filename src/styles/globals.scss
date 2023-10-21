@@ -17,6 +17,21 @@ body > div,
   font-size: 16px;
 }
 
+.landing-site {
+  background-image: url(https://cdn.lolskill.net/img/background_landing.jpg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
+.other-sites {
+  background-attachment: fixed;
+  background-image: url(https://cdn.lolskill.net/img/background.jpg);
+  background-position: top center;
+  background-repeat: no-repeat;
+  background-size: auto;
+}
+
 .site {
   display: flex;
   flex-direction: column;

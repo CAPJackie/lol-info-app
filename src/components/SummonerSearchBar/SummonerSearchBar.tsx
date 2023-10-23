@@ -1,6 +1,7 @@
 "use client";
 
-import { callApiAction } from "@/app/actions";
+import { callApiAction } from "@/actions";
+
 import { RegionKey, RegionObject } from "@/types/regions";
 import { regions } from "@/utils/Constants/game";
 import clsx from "clsx";

@@ -1,3 +1,5 @@
+"use client";
+
 import { Champions } from "@/types/champions";
 import { Options } from "@/types/options";
 import { regions } from "@/utils/Constants/game";

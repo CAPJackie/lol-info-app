@@ -1,3 +1,5 @@
+"use client";
+
 import React, { FunctionComponent, memo, useEffect, useState } from "react";
 
 import { getChampion } from "../../utils/api";

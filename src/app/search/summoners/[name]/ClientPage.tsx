@@ -1,3 +1,5 @@
+"use client";
+
 import Search from "@/components/Search/Search";
 import SummonerProfile from "@/components/SummonerProfile/SummonerProfile";
 import { useSearchParams } from "next/navigation";

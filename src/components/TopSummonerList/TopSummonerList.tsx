@@ -1,3 +1,5 @@
+"use client";
+
 import { SummonerInfo } from "@/types/summonerInfo";
 import { buildPagination } from "@/utils/buildPagination";
 import clsx from "clsx";

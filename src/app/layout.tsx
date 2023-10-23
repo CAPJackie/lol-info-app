@@ -10,8 +10,6 @@ export default function RootLayout({
 }) {
   const headersList = headers();
   const pathname = headersList.get("x-pathname") || "";
-
-  console.log(pathname);
   const isLanding = pathname === "/";
   return (
     <html lang="en">

@@ -1,3 +1,5 @@
+"use client";
+
 import { RegionKey, RegionObject } from "@/types/regions";
 import { regions } from "@/utils/Constants/game";
 import clsx from "clsx";

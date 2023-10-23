@@ -1,13 +1,12 @@
 import Search from "@/components/Search/Search";
 import SummonerProfile from "@/components/SummonerProfile/SummonerProfile";
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 
 export default function SearchSummonerProfile() {
-  const router = useRouter();
   return (
     <>
       <Search />
-      <SummonerProfile name={router.query.name as string} />
+      <SummonerProfile name={useSearchParams().get("name") as string} />
     </>
   );
 }

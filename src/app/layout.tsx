@@ -1,5 +1,6 @@
+import "@/styles/globals.scss";
 import clsx from "clsx";
-import { useRouter } from "next/router";
+import { headers } from "next/headers";
 import ClientLayout from "./ClientLayout";
 
 export default function RootLayout({
@@ -7,9 +8,11 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const router = useRouter();
-  const currentPage = router.pathname;
-  const isLanding = currentPage === "/";
+  const headersList = headers();
+  const pathname = headersList.get("x-pathname") || "";
+
+  console.log(pathname);
+  const isLanding = pathname === "/";
   return (
     <html lang="en">
       <body className={clsx(isLanding ? "landing-site" : "other-sites")}>

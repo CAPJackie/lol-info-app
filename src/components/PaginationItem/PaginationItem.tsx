@@ -1,7 +1,7 @@
 import getPaginationListConfig from "@/utils/getPaginationListConfig";
 import clsx from "clsx";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 import { FunctionComponent } from "react";
 import styles from "./PaginationItem.module.scss";
 
@@ -12,8 +12,10 @@ type PaginationItemProps = {
 const PaginationItem: FunctionComponent<PaginationItemProps> = ({
   numberOfPages,
 }) => {
-  const router = useRouter();
-  var { list, page, range } = getPaginationListConfig(numberOfPages, router);
+  var { list, page, range } = getPaginationListConfig(
+    numberOfPages,
+    useSearchParams().get("page") as string,
+  );
 
   return (
     <ul className={styles.container}>

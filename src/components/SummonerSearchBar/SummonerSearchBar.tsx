@@ -1,13 +1,13 @@
 "use client";
 
+import { callApiAction } from "@/app/actions";
 import { RegionKey, RegionObject } from "@/types/regions";
 import { regions } from "@/utils/Constants/game";
 import clsx from "clsx";
 import {
   ChangeEventHandler,
   FunctionComponent,
-  MouseEventHandler,
-  useState,
+  useState
 } from "react";
 import styles from "./SummonerSearchBar.module.scss";
 
@@ -27,9 +27,11 @@ const SummonerSearchBar: FunctionComponent<SummonerSearchBarProps> = ({
     setSummonerName(event.target.value);
   };
 
-  const onClick: MouseEventHandler<HTMLButtonElement> = () => {
-    setMenuRegionIsOpen(!menuRegionIsOpen);
-  };
+  // const onClick: MouseEventHandler<HTMLButtonElement> = async () => {
+  //   const response = await callApiAction();
+  //   console.log("Response call api action", response)
+  //   setMenuRegionIsOpen(!menuRegionIsOpen);
+  // };
   return (
     <div className={clsx(styles.searchBar, classes)}>
       <ul className={styles.searchBarList}>
@@ -43,13 +45,15 @@ const SummonerSearchBar: FunctionComponent<SummonerSearchBarProps> = ({
               className={styles.summonerNameInput}
             />
           </div>
-          <button
-            type="button"
-            {...{ onClick }}
-            className={styles.regionSelector}
-          >{` ${currentRegion.slug} `}</button>
+          <form>
+            <button
+              type="submit"
+              className={styles.regionSelector}
+              formAction={callApiAction}
+            >{` ${currentRegion.slug} `}</button>
+          </form>
         </li>
-        <button type="submit" className={styles.searchButton}></button>
+        <button className={styles.searchButton}></button>
       </ul>
     </div>
   );

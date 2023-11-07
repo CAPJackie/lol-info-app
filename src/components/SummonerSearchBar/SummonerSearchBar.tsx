@@ -45,11 +45,13 @@ const SummonerSearchBar: FunctionComponent<SummonerSearchBarProps> = ({
               className={styles.summonerNameInput}
             />
           </div>
-          <form>
+          <form onSubmit={(e) => {
+            e.preventDefault();
+            callApiAction()
+          }}>
             <button
               type="submit"
               className={styles.regionSelector}
-              formAction={callApiAction}
             >{` ${currentRegion.slug} `}</button>
           </form>
         </li>

@@ -2,7 +2,14 @@
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ["ddragon.leagueoflegends.com", "cdn.lolskill.net"],
+    remotePatterns: [
+      {
+        hostname: "ddragon.leagueoflegends.com",
+      },
+      {
+        hostname: "cdn.lolskill.net",
+      },
+    ],
   },
 };
 

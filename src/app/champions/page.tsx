@@ -1,5 +1,10 @@
 import { champions } from "@/utils/Constants/champions";
 import ClientPage from "./ClientPage";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Champions",
+};
 
 async function getChampions() {
   return champions;

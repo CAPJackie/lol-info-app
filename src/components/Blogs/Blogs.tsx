@@ -1,6 +1,5 @@
-import React from "react";
-import CreateBlog from "../CreateBlog/CreateBlog";
 import BlogList, { BlogsType } from "../BlogList/BlogList";
+import CreateBlog from "../CreateBlog/CreateBlog";
 import styles from "./Blogs.module.scss";
 
 function Blogs({ blogs }: BlogsType) {

@@ -12,5 +12,7 @@ export default async function Blog() {
   if (Object.keys(blogs).length === 0) {
     blogs = [];
   }
+
+  // throw Error("You're throwing an intentional error");
   return <ClientPage {...{ blogs }} />;
 }

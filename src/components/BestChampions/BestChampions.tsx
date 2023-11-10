@@ -15,14 +15,18 @@ type BestChampions = {
   mostBanned: BestStat;
 };
 
-const bestChampionsMock: BestChampions = {
-  highestWinRate: { champion: "Lee Sin", rate: 32.9 },
-  mostBanned: { champion: "Ivern", rate: 55 },
-  mostPopular: { champion: "Xayah", rate: 52.5 },
-};
 
-const BestChampions: FunctionComponent = () => {
-  const { mostPopular, highestWinRate, mostBanned } = bestChampionsMock;
+async function getBestChampions() {
+  const req = await fetch(`${process.env.BASE_URL}/api/champions/best-champions`);
+  const data = await req.json();
+  console.log({ req }, data)
+
+  return data;
+}
+
+const BestChampions: FunctionComponent = async () => {
+  const bestChampions = await getBestChampions();
+  const { mostPopular, highestWinRate, mostBanned } = bestChampions;
   return (
     <>
       <Link

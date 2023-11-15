@@ -59,3 +59,16 @@
     background: rgba(15, 7, 19, 0.6);
   }
 }
+
+.skeleton {
+  animation: skeleton-loading 1s linear infinite alternate;
+}
+
+@keyframes skeleton-loading {
+  0% {
+    background-color: rgba(15, 7, 19, 0.75);
+  }
+  100% {
+    background-color: rgba(246, 222, 167, 0.084);
+  }
+}

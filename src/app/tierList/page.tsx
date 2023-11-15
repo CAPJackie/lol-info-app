@@ -1,5 +1,7 @@
-import ClientPage from "./ClientPage";
+"use client"
 
-export default async function Page() {
-  return <ClientPage />;
+import TopTierList from "@/components/Others/TopTierList";
+
+export default function Page() {
+  return <TopTierList />;
 }

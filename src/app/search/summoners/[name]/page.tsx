@@ -1,5 +1,14 @@
-import ClientPage from "./ClientPage";
+"use client";
 
-export default async function Page() {
-  return <ClientPage />;
+import Search from "@/components/Search/Search";
+import SummonerProfile from "@/components/SummonerProfile/SummonerProfile";
+import { useSearchParams } from "next/navigation";
+
+export default function Page() {
+  return (
+    <>
+      <Search />
+      <SummonerProfile name={useSearchParams().get("name") as string} />
+    </>
+  );
 }

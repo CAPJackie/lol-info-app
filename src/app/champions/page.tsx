@@ -1,5 +1,5 @@
+import ChampionList from "@/components/ChampionList/ChampionList";
 import { champions } from "@/utils/Constants/champions";
-import ClientPage from "./ClientPage";
 
 async function getChampions() {
   return champions;
@@ -7,5 +7,9 @@ async function getChampions() {
 
 export default async function Page() {
   const champions = await getChampions();
-  return <ClientPage {...{ champions }} />;
+  return (
+    <div className="container">
+      <ChampionList {...{ champions }} />
+    </div>
+  );
 }

@@ -1,5 +1,7 @@
-import ClientPage from "./ClientPage";
+"use client";
+import ChampionDetail from "@/components/Others/ChampionDetail";
+import { useSearchParams } from "next/navigation";
 
-export default async function Page() {
-  return <ClientPage />;
+export default function Page() {
+  return <ChampionDetail id={useSearchParams().get("id") as string} />;
 }

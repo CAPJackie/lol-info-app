@@ -1,8 +1,8 @@
+import TopList from "@/components/TopList/TopList";
 import { Filters } from "@/enums/filters";
 import { Champions } from "@/types/champions";
 import { apiStaticUrl } from "@/utils/Constants/urls";
 import { fetchSummonersTopList } from "@/utils/fetchSummonersTopList";
-import ClientPage from "./ClientPage";
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -26,6 +26,10 @@ async function getChampionsAndSummonersList() {
 }
 
 export default async function Page() {
-  const props = await getChampionsAndSummonersList();
-  return <ClientPage {...props} />;
+  const { champions, summonersList } = await getChampionsAndSummonersList();
+  return (
+    <div className="container">
+      <TopList {...{ champions, summonersList }} />
+    </div>
+  );
 }

@@ -1,5 +1,7 @@
-import ClientPage from "./ClientPage";
+"use client"
+
+import Search from "@/components/Search/Search";
 
 export default function Page() {
-  return <ClientPage />;
+  return <Search />;
 }

@@ -1,11 +1,12 @@
-import ClientPage from "./ClientPage";
+"use client"
 
 import { Metadata } from "next";
+import TopTierList from "@/components/Others/TopTierList";
 
 export const metadata: Metadata = {
   title: "Tier List",
 };
 
-export default async function Page() {
-  return <ClientPage />;
+export default function Page() {
+  return <TopTierList />;
 }

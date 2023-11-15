@@ -3,6 +3,11 @@ import { Filters } from "@/enums/filters";
 import { Champions } from "@/types/champions";
 import { apiStaticUrl } from "@/utils/Constants/urls";
 import { fetchSummonersTopList } from "@/utils/fetchSummonersTopList";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Top List",
+};
 
 export async function generateStaticParams() {
   const paths = Object.values(Filters);

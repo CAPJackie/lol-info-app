@@ -1,23 +1,22 @@
 "use client";
 
-import React, { FunctionComponent, memo, useEffect, useState } from "react";
+import { FunctionComponent, memo, useEffect, useState } from "react";
 
-import { getChampion } from "../../utils/api";
-import Loading from "../Loading/Loading";
-import ErrorPanel from "../ErrorPanel/ErrorPanel";
+import { InternalAxiosRequestConfig } from "axios";
+import { useSearchParams } from "next/navigation";
 import { useRenderCount } from "../../hooks/customHooks";
 import { Error, IChampion, IChampionCallback } from "../../types/commonTypes";
+import { getChampion } from "../../utils/api";
+import ErrorPanel from "../ErrorPanel/ErrorPanel";
+import Loading from "../Loading/Loading";
 import RenderChampionDetail from "../RenderChampionDetail/RenderChampionDetail";
-import { InternalAxiosRequestConfig } from "axios";
 
-interface IChampionDetail {
-  id: string;
-}
-
-const ChampionDetail: FunctionComponent<IChampionDetail> = ({ id }) => {
+const ChampionDetail: FunctionComponent = () => {
   const [loading, setLoading] = useState(true);
   const [champion, setChampion] = useState<IChampion>();
   const [error, setError] = useState<Error>();
+
+  const id = useSearchParams().get("id") as string;
 
   useRenderCount([id]);
   useEffect(() => {

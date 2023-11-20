@@ -1,5 +1,10 @@
+"use client";
+
 import { Paper } from "@material-ui/core";
-import React, { FunctionComponent, memo, useEffect, useState } from "react";
+import axios, { AxiosResponse } from "axios";
+import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import { FunctionComponent, memo, useEffect, useState } from "react";
 import { useRenderCount } from "../../hooks/customHooks";
 import {
   Error,
@@ -8,24 +13,20 @@ import {
   MatchReferenceDTO,
   SummonerDTO,
 } from "../../types/commonTypes";
-import { concatApiKey, getSummoner, getSummonerMatches } from "../../utils/api";
 import { apiStaticUrl, apiUrl2 } from "../../utils/Constants/urls";
+import { concatApiKey, getSummoner, getSummonerMatches } from "../../utils/api";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
 import Loading from "../Loading/Loading";
 import Match from "../Match/Match";
 import styles from "./SummonerProfile.module.scss";
-import Image from "next/image";
-import axios, { AxiosResponse } from "axios";
 
-interface ISummonerProfile {
-  name: string;
-}
-
-const SummonerProfile: FunctionComponent<ISummonerProfile> = ({ name }) => {
+const SummonerProfile: FunctionComponent = () => {
   const [loading, setLoading] = useState(true);
   const [profileInfo, setProfileInfo] = useState<SummonerDTO>();
   const [matches, setMatches] = useState<MatchReferenceDTO[]>();
   const [error, setError] = useState<Error>();
+
+  const name = useSearchParams().get("name") as string;
 
   useRenderCount([name]);
   useEffect(() => {

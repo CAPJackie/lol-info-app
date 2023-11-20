@@ -1,8 +1,9 @@
 import "@/styles/globals.scss";
+import { Analytics } from "@vercel/analytics/react";
 import clsx from "clsx";
+import { Metadata } from "next";
 import { headers } from "next/headers";
 import ClientLayout from "./ClientLayout";
-import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: {
@@ -72,6 +73,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={clsx(isLanding ? "landing-site" : "other-sites")}>
         <ClientLayout>{children}</ClientLayout>
+        <Analytics />
       </body>
     </html>
   );

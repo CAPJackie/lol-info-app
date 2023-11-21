@@ -58,7 +58,6 @@ const SummonerProfile: FunctionComponent = () => {
         setProfileInfo(response.data);
         const summonerMatchesCallback: ISummonerMatchesCallback = {
           onSuccess: (res) => {
-            console.log("Response from getSummonerMatches", res);
             getMatchesAxios(res);
           },
           onFailed: (err) => {

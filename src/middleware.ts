@@ -4,7 +4,6 @@ const allowedOrigin = [process.env.BASE_URL];
 
 export function middleware(request: NextRequest) {
   const origin = request.headers.get("origin");
-  console.log(origin);
 
   if (origin && !allowedOrigin.includes(origin)) {
     return new NextResponse(null, {

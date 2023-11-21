@@ -23,7 +23,11 @@ const CreateBlog = () => {
           required
         />
       </div>
-      <button type="submit" className={styles.btnSubmit}>
+      <button
+        type="submit"
+        className={styles.btnSubmit}
+        aria-label="Create Post"
+      >
         Create Post
       </button>
     </form>

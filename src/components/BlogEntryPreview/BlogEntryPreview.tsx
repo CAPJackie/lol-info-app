@@ -31,8 +31,9 @@ const BlogEntryPreview: FunctionComponent<BlogEntryPreviewProps> = ({
             width={730}
             height={300}
             className={styles.img}
+            loading="eager"
           />
-          <h5 className={styles.h5}>Champion Preview: {name}</h5>
+          <h3 className={styles.h5}>Champion Preview: {name}</h3>
         </Link>
         <div className={styles.description}>
           <p className={styles.p}>{description}</p>

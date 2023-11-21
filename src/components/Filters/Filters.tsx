@@ -81,7 +81,9 @@ const Filters: FunctionComponent<FiltersProps> = ({ champions }) => {
             href={`filterChampion=${filterChampion}&filterPlatform=${filterPlatform}`}
             className={styles.link}
           >
-            <button className={styles.button}>Apply</button>
+            <button className={styles.button} aria-label="Apply">
+              Apply
+            </button>
           </Link>
         </FilterCriteriaInput>
       </div>

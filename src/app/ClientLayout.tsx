@@ -1,10 +1,18 @@
 "use client";
 
-import Footer from "@/components/Footer/Footer";
-import Header from "@/components/Header/Header";
+import Spinner from "@/components/Spinner/Spinner";
 import { Analytics } from "@vercel/analytics/react";
 import clsx from "clsx";
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
+
+const Header = dynamic(() => import("@/components/Header/Header"), {
+  loading: () => <Spinner />,
+});
+
+const Footer = dynamic(() => import("@/components/Footer/Footer"), {
+  loading: () => <Spinner />,
+});
 
 export default function ClientLayout({
   children,

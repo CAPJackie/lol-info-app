@@ -49,7 +49,7 @@ const SummonerSearchBar: FunctionComponent<SummonerSearchBarProps> = ({
             >{` ${currentRegion.slug} `}</button>
           </form>
         </li>
-        <li>
+        <li className={styles.searchButtonContainer}>
           <button className={styles.searchButton} aria-label="search bar" />
         </li>
       </ul>

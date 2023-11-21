@@ -21,8 +21,18 @@
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 
   &:hover {
     background-color: #0056b3;
   }
+}
+
+.spinner {
+  margin-top: 0 !important;
+  margin-left: 20px !important;
+  width: 30px !important;
+  height: 30px !important;
 }

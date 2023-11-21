@@ -1,9 +1,33 @@
+"use client";
+
+import { useFormState, useFormStatus } from "react-dom";
 import styles from "./CreateBlog.module.scss";
 import { createBlog } from "@/actions";
+import Spinner from "../Spinner/Spinner";
+
+const initialState = {
+  message: "",
+};
+
+function SubmitButton() {
+  const { pending } = useFormStatus();
+  return (
+    <button
+      type="submit"
+      className={styles.btnSubmit}
+      aria-label="Create Post"
+      aria-disabled={pending}
+    >
+      <p>Create Post</p>
+      {pending && <Spinner className={styles.spinner} />}
+    </button>
+  );
+}
 
 const CreateBlog = () => {
+  const [state, formAction] = useFormState(createBlog, initialState);
   return (
-    <form action={createBlog} className={styles.newPostForm}>
+    <form action={formAction} className={styles.newPostForm}>
       <div className={styles.formGroup}>
         <label htmlFor="post-title">Title</label>
         <input
@@ -23,13 +47,8 @@ const CreateBlog = () => {
           required
         />
       </div>
-      <button
-        type="submit"
-        className={styles.btnSubmit}
-        aria-label="Create Post"
-      >
-        Create Post
-      </button>
+      <SubmitButton />
+      <p>{state?.message}</p>
     </form>
   );
 };

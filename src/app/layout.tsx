@@ -1,8 +1,5 @@
 import "@/styles/globals.scss";
-import { Analytics } from "@vercel/analytics/react";
-import clsx from "clsx";
 import { Metadata } from "next";
-import { headers } from "next/headers";
 import ClientLayout from "./ClientLayout";
 
 export const metadata: Metadata = {
@@ -66,15 +63,9 @@ export default function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const headersList = headers();
-  const pathname = headersList.get("x-pathname") || "";
-  const isLanding = pathname === "/";
   return (
     <html lang="en">
-      <body className={clsx(isLanding ? "landing-site" : "other-sites")}>
-        <ClientLayout>{children}</ClientLayout>
-        <Analytics />
-      </body>
+      <ClientLayout>{children}</ClientLayout>
     </html>
   );
 }

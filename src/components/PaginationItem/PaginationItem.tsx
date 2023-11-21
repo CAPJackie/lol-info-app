@@ -14,7 +14,7 @@ const PaginationItem: FunctionComponent<PaginationItemProps> = ({
 }) => {
   var { list, page, range } = getPaginationListConfig(
     numberOfPages,
-    useSearchParams().get("page") as string,
+    useSearchParams()?.get("page") as string,
   );
 
   return (

@@ -1,17 +1,20 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 
-export function middleware(request: Request) {
-  const url = new URL(request.url);
-  const origin = url.origin;
-  const pathname = url.pathname;
-  const requestHeaders = new Headers(request.headers);
-  requestHeaders.set("x-url", request.url);
-  requestHeaders.set("x-origin", origin);
-  requestHeaders.set("x-pathname", pathname);
+const allowedOrigin = [process.env.BASE_URL];
 
-  return NextResponse.next({
-    request: {
-      headers: requestHeaders,
-    },
-  });
+export function middleware(request: NextRequest) {
+  const origin = request.headers.get("origin");
+  console.log(origin);
+
+  if (origin && !allowedOrigin.includes(origin)) {
+    return new NextResponse(null, {
+      status: 400,
+      statusText: "Bad Request",
+      headers: {
+        "Content-Type": "text/plain",
+      },
+    });
+  }
+
+  return NextResponse.next();
 }

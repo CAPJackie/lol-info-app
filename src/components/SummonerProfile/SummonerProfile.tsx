@@ -26,7 +26,7 @@ const SummonerProfile: FunctionComponent = () => {
   const [matches, setMatches] = useState<MatchReferenceDTO[]>();
   const [error, setError] = useState<Error>();
 
-  const name = useSearchParams().get("name") as string;
+  const name = useSearchParams()?.get("name") as string;
 
   useRenderCount([name]);
   useEffect(() => {

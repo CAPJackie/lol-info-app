@@ -1,18 +1,27 @@
+"use client";
+
 import Footer from "@/components/Footer/Footer";
 import Header from "@/components/Header/Header";
+import { Analytics } from "@vercel/analytics/react";
+import clsx from "clsx";
+import { usePathname } from "next/navigation";
 
 export default function ClientLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const isLanding = usePathname() === "/";
   return (
-    <div className={"site"}>
-      <div>
-        <Header />
-        {children}
+    <body className={clsx(isLanding ? "landing-site" : "other-sites")}>
+      <div className={"site"}>
+        <div>
+          <Header />
+          {children}
+        </div>
+        <Footer />
       </div>
-      <Footer />
-    </div>
+      <Analytics />
+    </body>
   );
 }

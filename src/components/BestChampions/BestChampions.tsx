@@ -1,8 +1,8 @@
+import { convertToLolSkillChampionNameConvention } from "@/utils/convertToLolSkillChampionNameConvention";
 import clsx from "clsx";
+import Link from "next/link";
 import { FunctionComponent } from "react";
 import styles from "./BestChampions.module.scss";
-import Link from "next/link";
-import { convertToLolSkillChampionNameConvention } from "@/utils/convertToLolSkillChampionNameConvention";
 
 type BestStat = {
   champion: string;
@@ -15,9 +15,10 @@ type BestChampions = {
   mostBanned: BestStat;
 };
 
-
 async function getBestChampions() {
-  const req = await fetch(`${process.env.BASE_URL}/api/champions/best-champions`);
+  const req = await fetch(
+    `${process.env.BASE_URL}/api/champions/best-champions`,
+  );
   const data = await req.json();
 
   return data;

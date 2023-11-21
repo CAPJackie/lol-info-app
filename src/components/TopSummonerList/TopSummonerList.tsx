@@ -14,7 +14,7 @@ type Props = {
 };
 
 const TopSummonerList: FunctionComponent<Props> = ({ summonersList }) => {
-  const page = Number(useSearchParams().get("page")) || 1;
+  const page = Number(useSearchParams()?.get("page")) || 1;
 
   const itemsPerPage = 30;
 

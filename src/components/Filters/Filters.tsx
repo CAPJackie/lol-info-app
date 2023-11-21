@@ -26,7 +26,7 @@ const Filters: FunctionComponent<FiltersProps> = ({ champions }) => {
   const [filterChampion, setFilterChampion] = useState("");
   const [filterPlatform, setFilterPlatform] = useState("");
 
-  const typeOfTopList = useSearchParams().get("typeOfTopList") ?? "skillscore";
+  const typeOfTopList = useSearchParams()?.get("typeOfTopList") ?? "skillscore";
 
   const allChampions: Options = [{ label: "All Champions" }].concat(
     champions.map(({ key, name }) => ({

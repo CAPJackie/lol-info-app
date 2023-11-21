@@ -16,7 +16,7 @@ const ChampionDetail: FunctionComponent = () => {
   const [champion, setChampion] = useState<IChampion>();
   const [error, setError] = useState<Error>();
 
-  const id = useSearchParams().get("id") as string;
+  const id = useSearchParams()?.get("id") as string;
 
   useRenderCount([id]);
   useEffect(() => {

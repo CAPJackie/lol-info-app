@@ -3,8 +3,8 @@
 import { apiUrl } from "@/utils/Constants/urls";
 import { concatApiKey } from "@/utils/api";
 import { kv } from "@vercel/kv";
-import { BlogType } from "./components/BlogList/BlogList";
 import { revalidatePath } from "next/cache";
+import { BlogType } from "./components/BlogList/BlogList";
 
 export async function createBlog(prevState: any, formData: FormData) {
   const blogsKey = "blogs";

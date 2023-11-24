@@ -1,3 +1,4 @@
+"use client";
 import { Button, InputBase, Paper } from "@material-ui/core";
 import React, { FunctionComponent, useState } from "react";
 import { Slide } from "react-awesome-reveal";

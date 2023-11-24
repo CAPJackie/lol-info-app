@@ -24,7 +24,7 @@ const FreeChampionsWeek: FunctionComponent = () => {
   return (
     <div className={styles.container}>
       <h2 className={styles.h2}>Free Champions of the Week</h2>
-      <h5 className={styles.h5}>17.10.2023</h5>
+      <h3 className={styles.h5}>17.10.2023</h3>
       <ul className={styles.ul}>
         {weekRotation.map(({ link, imageUrl }) => (
           <li key={link}>

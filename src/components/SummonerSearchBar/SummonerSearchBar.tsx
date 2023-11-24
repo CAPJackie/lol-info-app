@@ -1,4 +1,7 @@
+"use client";
+
 import { callApiAction } from "@/actions";
+
 import { RegionKey, RegionObject } from "@/types/regions";
 import { regions } from "@/utils/Constants/game";
 import clsx from "clsx";
@@ -20,11 +23,7 @@ const SummonerSearchBar: FunctionComponent<SummonerSearchBarProps> = ({
   const onChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     setSummonerName(event.target.value);
   };
-
-  // const onClick: MouseEventHandler<HTMLButtonElement> = () => {
-  //   setMenuRegionIsOpen(!menuRegionIsOpen);
-
-  // };
+  
   return (
     <div className={clsx(styles.searchBar, classes)}>
       <ul className={styles.searchBarList}>
@@ -38,17 +37,21 @@ const SummonerSearchBar: FunctionComponent<SummonerSearchBarProps> = ({
               className={styles.summonerNameInput}
             />
           </div>
-          <form onSubmit={(e) => {
-            e.preventDefault();
-            callApiAction()
-          }}>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              callApiAction();
+            }}
+          >
             <button
               type="submit"
               className={styles.regionSelector}
             >{` ${currentRegion.slug} `}</button>
           </form>
         </li>
-        <button className={styles.searchButton}></button>
+        <li className={styles.searchButtonContainer}>
+          <button className={styles.searchButton} aria-label="search bar" />
+        </li>
       </ul>
     </div>
   );

@@ -4,6 +4,7 @@ import styles from "./Button.module.scss";
 interface ButtonProps {
   children: string;
   onClick: MouseEventHandler<HTMLButtonElement>;
+  name: string;
 }
 
 export const Button: FunctionComponent<ButtonProps> = ({
@@ -11,7 +12,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
   onClick,
 }) => {
   return (
-    <button className={styles.button} {...onClick}>
+    <button className={styles.button} {...onClick} aria-label={children}>
       {children}
     </button>
   );

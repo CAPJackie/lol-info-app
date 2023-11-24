@@ -1,10 +1,8 @@
-import { NextRouter } from "next/router";
-
 export default function getPaginationListConfig(
   numberOfPages: number,
-  router: NextRouter,
+  pageFromParams: string,
 ) {
-  const page = Number(router.query.page) || 1;
+  const page = Number(pageFromParams) || 1;
   const range = 5;
   const totalPagesToShow = range * 2 + 1;
   let startPage, endPage;

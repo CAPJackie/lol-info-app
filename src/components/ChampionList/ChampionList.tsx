@@ -1,9 +1,8 @@
-import { Champions } from "@/types/champions";
 import clsx from "clsx";
 import { FunctionComponent } from "react";
-import styles from "./ChampionsList.module.scss";
 import BestChampions from "../BestChampions/BestChampions";
 import ChampionsListDetail from "../ChampionsListDetail/ChampionsListDetail";
+import styles from "./ChampionsList.module.scss";
 
 type ChampionListProps = {
   champions: string[];

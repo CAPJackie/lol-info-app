@@ -1,26 +1,20 @@
+"use client";
+
 import { SummonerInfo } from "@/types/summonerInfo";
 import { buildPagination } from "@/utils/buildPagination";
 import clsx from "clsx";
-import { useRouter } from "next/router";
 import { FunctionComponent } from "react";
 import ListWithPagination from "../ListWithPagination/ListWithPagination";
 import SummonerCard from "../SummonerCard/SummonerCard";
 import styles from "./TopSummonerList.module.scss";
+import { useSearchParams } from "next/navigation";
 
 type Props = {
-  summonersList: SummonerInfo[]
-}
+  summonersList: SummonerInfo[];
+};
 
 const TopSummonerList: FunctionComponent<Props> = ({ summonersList }) => {
-  const router = useRouter();
-  const page = Number(router.query.page) || 1;
-  // const onChangePage = () => {
-  //   router.push({
-  //     pathname: router.pathname,
-  //     query: { ...router.query, page: String(page + 1) },
-  //   });
-  // };
-
+  const page = Number(useSearchParams()?.get("page")) || 1;
 
   const itemsPerPage = 30;
 
@@ -37,7 +31,6 @@ const TopSummonerList: FunctionComponent<Props> = ({ summonersList }) => {
   );
 
   const sortedItems = items.sort((a, b) => b.lssScore - a.lssScore);
-
 
   return (
     <div className={clsx("row", styles.container)}>

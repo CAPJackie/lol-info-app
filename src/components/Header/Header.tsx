@@ -1,16 +1,16 @@
+"use client";
+
 import clsx from "clsx";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { usePathname } from "next/navigation";
 import { FunctionComponent } from "react";
 import HeaderLinks from "../HeaderLinks/HeaderLinks";
 import SummonerSearchBar from "../SummonerSearchBar/SummonerSearchBar";
 import styles from "./Header.module.scss";
 
 const Header: FunctionComponent = () => {
-  const router = useRouter();
-  const currentPage = router.pathname;
-  const isLanding = currentPage === "/";
+  const isLanding = usePathname() === "/";
 
   return (
     <nav className={clsx(styles.nav, { [styles.landingHeader]: isLanding })}>

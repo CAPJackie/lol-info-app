@@ -4,7 +4,7 @@ import { champions } from "./Constants/champions";
 
 export const fetchSummonersTopList: () => SummonerInfo[] = () => {
   const generateGamingUsername = () =>
-    `${faker.internet.userName()}${faker.datatype.number({
+    `${faker.internet.userName()}${faker.number.int({
       min: 1,
       max: 9999,
     })}`;

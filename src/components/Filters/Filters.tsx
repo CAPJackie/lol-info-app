@@ -1,9 +1,11 @@
+"use client";
+
 import { Champions } from "@/types/champions";
 import { Options } from "@/types/options";
 import { regions } from "@/utils/Constants/game";
 import clsx from "clsx";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import { useSearchParams } from "next/navigation";
 import { FunctionComponent, useState } from "react";
 import FilterCriteriaInput from "../FilterCriteriaInput/FilterCriteriaInput";
 import SelectInput from "../SelectInput/SelectInput";
@@ -23,8 +25,8 @@ const allRegions: Options = [{ label: "All Regions" }].concat(
 const Filters: FunctionComponent<FiltersProps> = ({ champions }) => {
   const [filterChampion, setFilterChampion] = useState("");
   const [filterPlatform, setFilterPlatform] = useState("");
-  const router = useRouter();
-  const typeOfTopList = router.query.typeOfTopList ?? "skillscore";
+
+  const typeOfTopList = useSearchParams()?.get("typeOfTopList") ?? "skillscore";
 
   const allChampions: Options = [{ label: "All Champions" }].concat(
     champions.map(({ key, name }) => ({
@@ -79,7 +81,9 @@ const Filters: FunctionComponent<FiltersProps> = ({ champions }) => {
             href={`filterChampion=${filterChampion}&filterPlatform=${filterPlatform}`}
             className={styles.link}
           >
-            <button className={styles.button}>Apply</button>
+            <button className={styles.button} aria-label="Apply">
+              Apply
+            </button>
           </Link>
         </FilterCriteriaInput>
       </div>

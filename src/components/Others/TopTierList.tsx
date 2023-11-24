@@ -1,3 +1,5 @@
+"use client";
+
 import React, { FunctionComponent, useEffect, useState } from "react";
 import {
   Error,
@@ -12,7 +14,7 @@ import RenderTierList from "../RenderTierList/RenderTierList";
 
 const TopTierList: FunctionComponent = () => {
   const [summoners, setSummoners] = useState<(LeagueItemDTO & IRankNumber)[]>(
-    []
+    [],
   );
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error>();
@@ -31,7 +33,7 @@ const TopTierList: FunctionComponent = () => {
   }, []);
 
   const orderByLeaguePoints: (summonersList: LeagueItemDTO[]) => void = (
-    summonersList
+    summonersList,
   ) => {
     let summonersSortedList = [...summonersList];
 

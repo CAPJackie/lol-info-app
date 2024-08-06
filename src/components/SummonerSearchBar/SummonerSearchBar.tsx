@@ -53,6 +53,24 @@ const SummonerSearchBar: FunctionComponent<SummonerSearchBarProps> = ({
           <button className={styles.searchButton} aria-label="search bar" />
         </li>
       </ul>
+      {menuRegionIsOpen && (
+        <ul className={styles.regionsList}>
+          {regions.map((region) => (
+            <li key={region.slug} className={styles.regionItem}>
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentRegion(region);
+                  setMenuRegionIsOpen(false);
+                }}
+                className={styles.regionButton}
+              >
+                {region.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

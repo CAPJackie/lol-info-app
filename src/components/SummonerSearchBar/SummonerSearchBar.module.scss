@@ -1,16 +1,17 @@
 .searchButton {
-  height: 100%;
   list-style: none;
   padding: 8px 12px;
   background: rgba(0, 0, 0, 0.1);
   border: 1px solid;
   border-color: #2e2734;
   width: 70px;
+  height: 45px;
   background-image: url(/images/search.png);
   background-position: center center;
   background-repeat: no-repeat;
-  background-size: 40%;
+  background-size: 30%;
   box-shadow: none !important;
+  margin-left: 16px;
   cursor: pointer;
 }
 
@@ -19,8 +20,8 @@
 }
 
 .searchBarList {
-  height: 100%;
   list-style-type: none;
+  display: flex;
 }
 
 .searchBarList, .input{
@@ -72,8 +73,8 @@
   font-weight: 700;
   font-family: "roboto black";
   color: rgb(191, 190, 209);
+  height: 45px;
   cursor: pointer;
-  border-left: none;
 }
 
 

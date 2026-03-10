@@ -29,13 +29,6 @@ const SummonerProfile: FunctionComponent = () => {
   const name = useSearchParams()?.get("name") as string;
 
   useRenderCount([name]);
-  useEffect(() => {
-    handleProfileRequest();
-    return () => {
-      setLoading(true);
-      setError(undefined);
-    };
-  }, [name]);
 
   const getMatchesAxios = async (response: AxiosResponse<string[], any>) => {
     const minimizedArray = response.data.slice(0, 8);
@@ -52,7 +45,7 @@ const SummonerProfile: FunctionComponent = () => {
     setLoading(false);
   };
 
-  const handleProfileRequest = () => {
+  function handleProfileRequest() {
     const callback: ISummonerCallback = {
       onSuccess: (response) => {
         setProfileInfo(response.data);
@@ -71,7 +64,15 @@ const SummonerProfile: FunctionComponent = () => {
       },
     };
     getSummoner(name, callback);
-  };
+  }
+
+  useEffect(() => {
+    handleProfileRequest();
+    return () => {
+      setLoading(true);
+      setError(undefined);
+    };
+  }, [name]);
 
   const getMatches = () => {
     //TODO Needs to change since api changed responses

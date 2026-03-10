@@ -3,7 +3,7 @@ import Paper from "@material-ui/core/Paper";
 import Table from "@material-ui/core/Table";
 import TableBody from "@material-ui/core/TableBody";
 import Image from "next/image";
-import React, { FunctionComponent, useState } from "react";
+import React, { FunctionComponent, ReactElement, useState } from "react";
 import { Slide } from "react-awesome-reveal";
 import challenger from "../../../public/images/challenger.png";
 import { IRankNumber, LeagueItemDTO } from "../../types/commonTypes";
@@ -42,7 +42,7 @@ const RenderTierList: FunctionComponent<IProps> = ({ summoners }) => {
     setRowsPerPage(+event.target.value);
   };
 
-  const getSummonerRows: () => JSX.Element[] = () => {
+  const getSummonerRows: () => ReactElement[] = () => {
     return stableSort(summoners, getSorting(order, orderBy))
       .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
       .map((value: LeagueItemDTO & IRankNumber, index: number) => {

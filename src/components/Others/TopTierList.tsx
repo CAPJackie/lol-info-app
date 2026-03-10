@@ -48,7 +48,20 @@ const TopTierList: FunctionComponent = () => {
 
     setSummoners(summonersSortedList);
     setLoading(false);
-  };
+  }
+
+  useEffect(() => {
+    const callback: IleagueListCallback = {
+      onSuccess: (response) => {
+        orderByLeaguePoints(response.data.entries);
+      },
+      onFailed: (errorMsg) => {
+        setError(errorMsg.response);
+      },
+    };
+
+    getChallengerLeagueByQueue("RANKED_SOLO_5x5", callback);
+  }, []);
 
   return error ? (
     <ErrorPanel error={error} />

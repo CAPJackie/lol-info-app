@@ -6,9 +6,7 @@ type ChampionsListDetailProps = {
   champions: string[];
 };
 
-const ChampionsListDetail: FunctionComponent<ChampionsListDetailProps> = ({
-  champions,
-}) => {
+const ChampionsListDetail: FunctionComponent<ChampionsListDetailProps> = ({ champions }) => {
   return (
     <ul className={styles.list}>
       {champions.map((championName) => (

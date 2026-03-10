@@ -20,15 +20,9 @@ const TopSummonerList: FunctionComponent<Props> = ({ summonersList }) => {
 
   const numberOfPages = Math.ceil(summonersList.length / itemsPerPage);
 
-  const sortedEntireList = summonersList.sort(
-    (a, b) => b.lssScore - a.lssScore,
-  );
+  const sortedEntireList = summonersList.sort((a, b) => b.lssScore - a.lssScore);
 
-  const items = buildPagination<SummonerInfo>(
-    sortedEntireList,
-    page,
-    itemsPerPage,
-  );
+  const items = buildPagination<SummonerInfo>(sortedEntireList, page, itemsPerPage);
 
   const sortedItems = items.sort((a, b) => b.lssScore - a.lssScore);
 
@@ -41,8 +35,7 @@ const TopSummonerList: FunctionComponent<Props> = ({ summonersList }) => {
               <SummonerCard
                 ranking={
                   sortedEntireList.findIndex(
-                    ({ summonerName }) =>
-                      summonerName === summonerInfo.summonerName,
+                    ({ summonerName }) => summonerName === summonerInfo.summonerName,
                   ) + 1
                 }
                 {...summonerInfo}

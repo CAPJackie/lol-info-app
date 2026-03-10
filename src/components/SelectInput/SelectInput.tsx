@@ -8,15 +8,9 @@ interface SelectInputProps {
   onChangeOption: ChangeEventHandler<HTMLSelectElement>;
 }
 
-const SelectInput: FunctionComponent<SelectInputProps> = ({
-  options,
-  onChangeOption,
-}) => {
+const SelectInput: FunctionComponent<SelectInputProps> = ({ options, onChangeOption }) => {
   return (
-    <select
-      className={clsx("form-control", styles.select)}
-      onChange={onChangeOption}
-    >
+    <select className={clsx("form-control", styles.select)} onChange={onChangeOption}>
       {options.map(({ label, value }) => (
         <option className={styles.option} key={label} {...{ value }}>
           {label}

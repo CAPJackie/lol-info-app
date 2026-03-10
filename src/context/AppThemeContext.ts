@@ -31,9 +31,6 @@ type Theme = {
   disabledTextOpacity: string;
 };
 
-const AppThemeContext = createContext<[Theme, (theme: Theme) => void]>([
-  themes.light,
-  () => {},
-]);
+const AppThemeContext = createContext<[Theme, (theme: Theme) => void]>([themes.light, () => {}]);
 
 export { AppThemeContext, themes };

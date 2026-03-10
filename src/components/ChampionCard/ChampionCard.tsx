@@ -11,14 +11,10 @@ type ChampionCardProps = {
   championName: string;
 };
 
-const ChampionCard: FunctionComponent<ChampionCardProps> = ({
-  championName,
-}) => {
+const ChampionCard: FunctionComponent<ChampionCardProps> = ({ championName }) => {
   return (
     <Link
-      href={`/champion/${convertToLolSkillChampionNameConvention(
-        championName,
-      )}`}
+      href={`/champion/${convertToLolSkillChampionNameConvention(championName)}`}
       className={styles.container}
       style={{
         backgroundImage: `url(https://cdn.lolskill.net/img/skins/tablerow/${championName.replaceAll(

@@ -1,8 +1,7 @@
 // TODO This version should be synchronized with https://ddragon.leagueoflegends.com/api/versions.json later
 const realmVersion = "13.19.1";
 const apiStaticUrl = {
-  data:
-    "http://ddragon.leagueoflegends.com/cdn/" + realmVersion + "/data/en_US",
+  data: "http://ddragon.leagueoflegends.com/cdn/" + realmVersion + "/data/en_US",
   img: "http://ddragon.leagueoflegends.com/cdn/" + realmVersion + "/img",
   noVersionImg: "http://ddragon.leagueoflegends.com/cdn/img",
 };

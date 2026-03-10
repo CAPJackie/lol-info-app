@@ -30,9 +30,7 @@ const BestChampions: FunctionComponent = async () => {
   return (
     <>
       <Link
-        href={`/champion/${convertToLolSkillChampionNameConvention(
-          mostPopular.champion,
-        )}`}
+        href={`/champion/${convertToLolSkillChampionNameConvention(mostPopular.champion)}`}
         className={clsx(styles.card, styles.marginRight)}
         style={{
           backgroundImage: `url(https://cdn.lolskill.net/img/skins/splash/${mostPopular.champion.replaceAll(
@@ -48,9 +46,7 @@ const BestChampions: FunctionComponent = async () => {
         </div>
       </Link>
       <Link
-        href={`/champion/${convertToLolSkillChampionNameConvention(
-          highestWinRate.champion,
-        )}`}
+        href={`/champion/${convertToLolSkillChampionNameConvention(highestWinRate.champion)}`}
         className={clsx(styles.card, styles.marginLeft, styles.marginRight)}
         style={{
           backgroundImage: `url(https://cdn.lolskill.net/img/skins/splash/${highestWinRate.champion.replaceAll(
@@ -66,9 +62,7 @@ const BestChampions: FunctionComponent = async () => {
         </div>
       </Link>
       <Link
-        href={`/champion/${convertToLolSkillChampionNameConvention(
-          mostBanned.champion,
-        )}`}
+        href={`/champion/${convertToLolSkillChampionNameConvention(mostBanned.champion)}`}
         className={clsx(styles.card, styles.marginLeft)}
         style={{
           backgroundImage: `url(https://cdn.lolskill.net/img/skins/splash/${mostBanned.champion.replaceAll(

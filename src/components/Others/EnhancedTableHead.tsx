@@ -10,11 +10,7 @@ interface IProps {
   onRequestSort: (property: string) => void;
 }
 
-const EnhancedTableHead: FunctionComponent<IProps> = ({
-  order,
-  orderBy,
-  onRequestSort,
-}) => {
+const EnhancedTableHead: FunctionComponent<IProps> = ({ order, orderBy, onRequestSort }) => {
   const createSortHandler: (property: string) => void = (property) => {
     onRequestSort(property);
   };
@@ -27,11 +23,7 @@ const EnhancedTableHead: FunctionComponent<IProps> = ({
             id={`${row.id}-cell`}
             key={row.id}
             align={
-              row.id === "rankNumber"
-                ? "left"
-                : row.id === "leaguePoints"
-                ? "right"
-                : "center"
+              row.id === "rankNumber" ? "left" : row.id === "leaguePoints" ? "right" : "center"
             }
             padding={row.disablePadding ? "none" : "default"}
             sortDirection={orderBy === row.id ? order : false}

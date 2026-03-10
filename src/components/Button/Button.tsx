@@ -7,10 +7,7 @@ interface ButtonProps {
   name: string;
 }
 
-export const Button: FunctionComponent<ButtonProps> = ({
-  children,
-  onClick,
-}) => {
+export const Button: FunctionComponent<ButtonProps> = ({ children, onClick }) => {
   return (
     <button className={styles.button} {...onClick} aria-label={children}>
       {children}

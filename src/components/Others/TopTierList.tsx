@@ -1,21 +1,20 @@
 "use client";
 
 import React, { FunctionComponent, useEffect, useState } from "react";
-import {
-  Error,
-  IleagueListCallback,
-  IRankNumber,
-  LeagueItemDTO,
-} from "../../types/commonTypes";
+import { Error, IleagueListCallback, IRankNumber, LeagueItemDTO } from "../../types/commonTypes";
 import { getChallengerLeagueByQueue } from "../../utils/api";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
 import Loading from "../Loading/Loading";
 import RenderTierList from "../RenderTierList/RenderTierList";
 
 const TopTierList: FunctionComponent = () => {
+<<<<<<< HEAD
   const [summoners, setSummoners] = useState<(LeagueItemDTO & IRankNumber)[]>(
     [],
   );
+=======
+  const [summoners, setSummoners] = useState<(LeagueItemDTO & IRankNumber)[]>([]);
+>>>>>>> 388ba6b (formatted Workspace)
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error>();
 

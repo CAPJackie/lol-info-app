@@ -15,8 +15,7 @@ const ProgressBar: FunctionComponent<IProps> = ({ value, total, type }) => {
 
   const percentage = calculatePercentage();
 
-  const label =
-    type === "percentage" ? `${value}/${total - value} ${percentage}%` : value;
+  const label = type === "percentage" ? `${value}/${total - value} ${percentage}%` : value;
 
   return (
     <Tooltip title={label} placement={"bottom-start"} enterDelay={300}>

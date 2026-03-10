@@ -14,12 +14,7 @@ const Header: FunctionComponent = () => {
 
   return (
     <nav className={clsx(styles.nav, { [styles.landingHeader]: isLanding })}>
-      <Link
-        href="/"
-        aria-label="Home page"
-        title="Home"
-        className={styles.toggleHome}
-      >
+      <Link href="/" aria-label="Home page" title="Home" className={styles.toggleHome}>
         <Image
           src="https://cdn.lolskill.net/img/logo.png"
           alt="lol skill logo"

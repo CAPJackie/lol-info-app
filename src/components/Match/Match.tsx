@@ -31,9 +31,7 @@ const Match: FunctionComponent<MatchReferenceDTO> = ({
   role,
   lane,
 }) => {
-  const [championInfo, setChampionInfo] = useState<IChampion | undefined>(
-    undefined,
-  );
+  const [championInfo, setChampionInfo] = useState<IChampion | undefined>(undefined);
   const [loading, setLoading] = useState(true);
   const [seasonValue, setSeasonValue] = useState<string>();
   const [queueValue, setQueueValue] = useState<IQueue>();
@@ -50,9 +48,7 @@ const Match: FunctionComponent<MatchReferenceDTO> = ({
         const championMatched = Object.keys(champions).find(
           (champ) => +champions[champ].key === champion,
         );
-        setChampionInfo(
-          championMatched ? champions[championMatched] : undefined,
-        );
+        setChampionInfo(championMatched ? champions[championMatched] : undefined);
         setSeasonValue(seasons[season]);
         setQueueValue(queues[queue]);
         setPlatformValue(serviceProxies[platformId]);
@@ -79,10 +75,7 @@ const Match: FunctionComponent<MatchReferenceDTO> = ({
   ) : (
     <Card className={styles.card}>
       <Link href={`/champion/${championInfo?.id}`}>
-        <Image
-          src={championImgUrl}
-          alt={`The champion used was ${championInfo?.name}`}
-        />
+        <Image src={championImgUrl} alt={`The champion used was ${championInfo?.name}`} />
       </Link>
 
       <h4>{seasonValue}</h4>

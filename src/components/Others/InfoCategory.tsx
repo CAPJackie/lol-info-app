@@ -2,10 +2,7 @@ import React, { FunctionComponent } from "react";
 import { Slide } from "react-awesome-reveal";
 import ProgressBar from "../ProgressBar/ProgressBar";
 
-const InfoCategory: FunctionComponent<{ label: string; value: number }> = ({
-  label,
-  value,
-}) => {
+const InfoCategory: FunctionComponent<{ label: string; value: number }> = ({ label, value }) => {
   return (
     <div id={`category-description-${label}`} aria-label={`${label}, ${value}`}>
       <p aria-labelledby={`category-description-${label}`}>{label}</p>

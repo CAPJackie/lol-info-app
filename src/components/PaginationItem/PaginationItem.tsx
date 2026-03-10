@@ -9,6 +9,7 @@ type PaginationItemProps = {
   numberOfPages: number;
 };
 
+<<<<<<< HEAD
 const PaginationItem: FunctionComponent<PaginationItemProps> = ({
   numberOfPages,
 }) => {
@@ -16,6 +17,11 @@ const PaginationItem: FunctionComponent<PaginationItemProps> = ({
     numberOfPages,
     useSearchParams()?.get("page") as string,
   );
+=======
+const PaginationItem: FunctionComponent<PaginationItemProps> = ({ numberOfPages }) => {
+  const router = useRouter();
+  var { list, page, range } = getPaginationListConfig(numberOfPages, router);
+>>>>>>> 388ba6b (formatted Workspace)
 
   return (
     <ul className={styles.container}>

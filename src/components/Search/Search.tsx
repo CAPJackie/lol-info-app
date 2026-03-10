@@ -12,15 +12,15 @@ const Search: FunctionComponent = () => {
   const { push } = useRouter();
   const [summonerName, setSummonerName] = useState("");
 
-  const handleChange: (
-    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-  ) => void = (event) => {
+  const handleChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void = (
+    event,
+  ) => {
     setSummonerName(event.target.value);
   };
 
-  const handleSubmit: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => void = (event) => {
+  const handleSubmit: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void = (
+    event,
+  ) => {
     event.preventDefault();
   };
 

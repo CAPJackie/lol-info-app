@@ -16,8 +16,7 @@ const RenderChampionDetail: FunctionComponent<IChampion> = ({
   tags,
   version,
 }) => {
-  const championImageUrl =
-    apiStaticUrl.noVersionImg + "/champion/loading/" + id + "_0.jpg";
+  const championImageUrl = apiStaticUrl.noVersionImg + "/champion/loading/" + id + "_0.jpg";
   return (
     <article className={styles.container}>
       <Slide direction="up" triggerOnce={true}>
@@ -36,12 +35,7 @@ const RenderChampionDetail: FunctionComponent<IChampion> = ({
       <div>
         <Slide direction="right" triggerOnce={true}>
           <div>
-            <Image
-              alt={`${name} Splash art`}
-              src={championImageUrl}
-              width={100}
-              height={100}
-            />
+            <Image alt={`${name} Splash art`} src={championImageUrl} width={100} height={100} />
             <HashTagList values={tags} />
           </div>
         </Slide>

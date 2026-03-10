@@ -28,10 +28,7 @@ export const getChampions = (callback: IChampionsCallback) => {
       callback.onFailed(error);
     });
 };
-export const getChampion = (
-  championKey: string,
-  callback: IChampionCallback,
-) => {
+export const getChampion = (championKey: string, callback: IChampionCallback) => {
   const championsCallback: IChampionsCallback = {
     onSuccess: (response) => {
       callback.onSuccess({ data: response.data.data[championKey] });
@@ -43,17 +40,9 @@ export const getChampion = (
   getChampions(championsCallback);
 };
 
-export const getSummoner = (
-  summonerName: string,
-  callback: ISummonerCallback,
-) => {
+export const getSummoner = (summonerName: string, callback: ISummonerCallback) => {
   axios
-    .get(
-      apiUrl +
-        "/summoner/v4/summoners/by-name/" +
-        summonerName +
-        concatApiKey("?"),
-    )
+    .get(apiUrl + "/summoner/v4/summoners/by-name/" + summonerName + concatApiKey("?"))
     .then((response: AxiosResponse<SummonerDTO>) => {
       callback.onSuccess(response);
     })
@@ -61,16 +50,9 @@ export const getSummoner = (
       callback.onFailed(error);
     });
 };
-const getSummonerById = (
-  encryptedSummonerId: string,
-  callback: ISummonerCallback,
-) => {
+const getSummonerById = (encryptedSummonerId: string, callback: ISummonerCallback) => {
   axios
-    .get(
-      `${apiUrl}/summoner/v4/summoners/${encryptedSummonerId}${concatApiKey(
-        "?",
-      )}`,
-    )
+    .get(`${apiUrl}/summoner/v4/summoners/${encryptedSummonerId}${concatApiKey("?")}`)
     .then((response: AxiosResponse<SummonerDTO>) => {
       callback.onSuccess(response);
     })
@@ -105,12 +87,7 @@ export const getChallengerLeagueByQueue = (
   callback: IleagueListCallback,
 ) => {
   axios
-    .get(
-      apiUrl +
-        "/league/v4/challengerleagues/by-queue/" +
-        queue +
-        concatApiKey("?"),
-    )
+    .get(apiUrl + "/league/v4/challengerleagues/by-queue/" + queue + concatApiKey("?"))
     .then((response: AxiosResponse<LeagueListDTO>) => {
       callback.onSuccess(response);
     })

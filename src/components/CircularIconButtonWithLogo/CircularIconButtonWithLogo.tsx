@@ -7,9 +7,10 @@ interface ICircularIconButtonWithLogo {
   href: string;
 }
 
-const CircularIconButtonWithLogo: FunctionComponent<
-  ICircularIconButtonWithLogo
-> = ({ href, name }) => {
+const CircularIconButtonWithLogo: FunctionComponent<ICircularIconButtonWithLogo> = ({
+  href,
+  name,
+}) => {
   return (
     <Link {...{ href }} className={styles.container}>
       <Image

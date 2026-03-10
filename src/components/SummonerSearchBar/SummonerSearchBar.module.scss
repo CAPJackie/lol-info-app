@@ -24,7 +24,22 @@
   display: flex;
 }
 
+<<<<<<< HEAD
 .searchBarList, .input{
+=======
+.regionsList {
+  flex-direction: column;
+  border: 1px solid rgba(246, 222, 167, 0.4);
+  width: 205px;
+  background-color: #0d0611;
+  padding: 8px 0;
+  position: absolute;
+  top: 46px;
+  right: 86px;
+}
+
+.searchBar {
+>>>>>>> 388ba6b (formatted Workspace)
   display: flex;
   flex-direction: row;
 }

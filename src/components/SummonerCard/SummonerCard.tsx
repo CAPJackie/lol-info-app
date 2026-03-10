@@ -49,9 +49,7 @@ const SummonerCard: FunctionComponent<SummonerInfo> = ({
           alt="mastery icon"
         />
       </div>
-      <div className={clsx(styles.statsContainer, styles.regionContainer)}>
-        {region}
-      </div>
+      <div className={clsx(styles.statsContainer, styles.regionContainer)}>{region}</div>
       <div className={styles.summonerName}>{summonerName}</div>
       <div className={styles.rankingIcon}>
         <RankingIcon {...currentLeague} />

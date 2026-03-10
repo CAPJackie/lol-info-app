@@ -6,10 +6,12 @@
     "clean-dev": "rm -rf node_modules && yarn && yarn dev",
     "dev": "next dev --turbo",
     "build": "next build",
+    "build:verify": "yarn format:check && yarn lint && yarn build && yarn perf:routes",
     "start": "next start",
     "lint": "eslint .",
-    "perf:routes": "node scripts/check-route-performance.mjs",
-    "perf:routes:build": "yarn build && yarn perf:routes"
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "perf:routes": "node scripts/check-route-performance.mjs"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",

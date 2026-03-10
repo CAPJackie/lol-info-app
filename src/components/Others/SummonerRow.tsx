@@ -1,7 +1,7 @@
 import React, { FunctionComponent } from "react";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
-import { useRouter } from 'next/navigation';
+import { useRouter } from "next/navigation";
 import ProgressBar from "../ProgressBar/ProgressBar";
 import HotStreak from "./HotStreak";
 import FreshBlood from "./FreshBlood";

@@ -1,10 +1,14 @@
 "use client";
 
 import { Paper } from "@material-ui/core";
+<<<<<<< HEAD
 import axios, { AxiosResponse } from "axios";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
 import { FunctionComponent, memo, useEffect, useState } from "react";
+=======
+import React, { FunctionComponent, memo, useCallback, useEffect, useState } from "react";
+>>>>>>> 388ba6b (formatted Workspace)
 import { useRenderCount } from "../../hooks/customHooks";
 import {
   Error,
@@ -30,23 +34,18 @@ const SummonerProfile: FunctionComponent = () => {
 
   useRenderCount([name]);
 
-  const getMatchesAxios = useCallback(
-    async (response: AxiosResponse<string[], any>) => {
-      const minimizedArray = response.data.slice(0, 8);
-      let matches: MatchReferenceDTO[] = [];
-      for (let index = 0; index < minimizedArray.length; index++) {
-        const matchId = minimizedArray[index];
-        const match = await axios.get(
-          `${apiUrl2}/match/v5/matches/${matchId}${concatApiKey("?")}`,
-        );
-        matches.push(match.data);
-      }
-      await Promise.all(matches);
-      setMatches(matches);
-      setLoading(false);
-    },
-    [],
-  );
+  const getMatchesAxios = useCallback(async (response: AxiosResponse<string[], any>) => {
+    const minimizedArray = response.data.slice(0, 8);
+    let matches: MatchReferenceDTO[] = [];
+    for (let index = 0; index < minimizedArray.length; index++) {
+      const matchId = minimizedArray[index];
+      const match = await axios.get(`${apiUrl2}/match/v5/matches/${matchId}${concatApiKey("?")}`);
+      matches.push(match.data);
+    }
+    await Promise.all(matches);
+    setMatches(matches);
+    setLoading(false);
+  }, []);
 
   const handleProfileRequest = useCallback(() => {
     const callback: ISummonerCallback = {
@@ -80,10 +79,7 @@ const SummonerProfile: FunctionComponent = () => {
   const getMatches = () => {
     //TODO Needs to change since api changed responses
     return matches?.map(
-      (
-        { platformId, gameId, champion, queue, season, timestamp, role, lane },
-        index,
-      ) => {
+      ({ platformId, gameId, champion, queue, season, timestamp, role, lane }, index) => {
         return (
           <li key={index}>
             <Match
@@ -112,12 +108,7 @@ const SummonerProfile: FunctionComponent = () => {
     <Loading name="summoner profile" />
   ) : (
     <Paper className={styles.paper}>
-      <Image
-        src={profileIconUrl}
-        alt="Summoner Profile Icon"
-        width={150}
-        height={150}
-      />
+      <Image src={profileIconUrl} alt="Summoner Profile Icon" width={150} height={150} />
       <h2>{profileInfo?.name}</h2>
       <p>level {profileInfo?.summonerLevel}</p>
       <section className={styles.section}>

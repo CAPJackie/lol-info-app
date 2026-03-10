@@ -5,10 +5,7 @@ import Image from "next/image";
 
 const FreshBlood: FunctionComponent = () => {
   return (
-    <Image
-      src={newPlayer}
-      alt="the player has played no more than 100 games on this league"
-    />
+    <Image src={newPlayer} alt="the player has played no more than 100 games on this league" />
   );
 };
 

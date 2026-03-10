@@ -7,7 +7,9 @@
     "dev": "next dev --turbo",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "perf:routes": "node scripts/check-route-performance.mjs",
+    "perf:routes:build": "yarn build && yarn perf:routes"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",

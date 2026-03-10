@@ -1,4 +1,3 @@
-/* eslint-disable react/no-find-dom-node */
 import React, { FunctionComponent } from "react";
 import { Slide } from "react-awesome-reveal";
 import ProgressBar from "../ProgressBar/ProgressBar";

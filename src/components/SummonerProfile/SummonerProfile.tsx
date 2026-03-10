@@ -30,22 +30,25 @@ const SummonerProfile: FunctionComponent = () => {
 
   useRenderCount([name]);
 
-  const getMatchesAxios = async (response: AxiosResponse<string[], any>) => {
-    const minimizedArray = response.data.slice(0, 8);
-    let matches: MatchReferenceDTO[] = [];
-    for (let index = 0; index < minimizedArray.length; index++) {
-      const matchId = minimizedArray[index];
-      const match = await axios.get(
-        `${apiUrl2}/match/v5/matches/${matchId}${concatApiKey("?")}`,
-      );
-      matches.push(match.data);
-    }
-    await Promise.all(matches);
-    setMatches(matches);
-    setLoading(false);
-  };
+  const getMatchesAxios = useCallback(
+    async (response: AxiosResponse<string[], any>) => {
+      const minimizedArray = response.data.slice(0, 8);
+      let matches: MatchReferenceDTO[] = [];
+      for (let index = 0; index < minimizedArray.length; index++) {
+        const matchId = minimizedArray[index];
+        const match = await axios.get(
+          `${apiUrl2}/match/v5/matches/${matchId}${concatApiKey("?")}`,
+        );
+        matches.push(match.data);
+      }
+      await Promise.all(matches);
+      setMatches(matches);
+      setLoading(false);
+    },
+    [],
+  );
 
-  function handleProfileRequest() {
+  const handleProfileRequest = useCallback(() => {
     const callback: ISummonerCallback = {
       onSuccess: (response) => {
         setProfileInfo(response.data);
@@ -64,7 +67,7 @@ const SummonerProfile: FunctionComponent = () => {
       },
     };
     getSummoner(name, callback);
-  }
+  }, [getMatchesAxios, name]);
 
   useEffect(() => {
     handleProfileRequest();
@@ -72,7 +75,7 @@ const SummonerProfile: FunctionComponent = () => {
       setLoading(true);
       setError(undefined);
     };
-  }, [name]);
+  }, [handleProfileRequest]);
 
   const getMatches = () => {
     //TODO Needs to change since api changed responses

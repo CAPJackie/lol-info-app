@@ -1,6 +1,5 @@
 "use client";
 
-import { Champions } from "@/types/champions";
 import { Options } from "@/types/options";
 import { regions } from "@/utils/Constants/game";
 import clsx from "clsx";
@@ -12,7 +11,7 @@ import SelectInput from "../SelectInput/SelectInput";
 import styles from "./Filters.module.scss";
 
 interface FiltersProps {
-  champions: Champions;
+  champions: ChampionFilters;
 }
 
 const allRegions: Options = [{ label: "All Regions" }].concat(

@@ -43,22 +43,16 @@ const Match: FunctionComponent<MatchReferenceDTO> = ({
   const [laneValue, setLaneValue] = useState<string>();
   const [error, setError] = useState<Error>();
 
-  const getChampionInfo = (champions: ChampionsMap) => {
-    let championInfoObject;
-    const championMatched = Object.keys(champions).find((champ) => {
-      // TODO Check if key can be converted to number type
-      return +champions[champ].key === champion;
-    });
-    championInfoObject = championMatched
-      ? champions[championMatched]
-      : undefined;
-    return championInfoObject;
-  };
-
   useEffect(() => {
     const callback = {
       onSuccess: (response: AxiosResponse<IChampions>) => {
-        setChampionInfo(getChampionInfo(response.data.data));
+        const champions: ChampionsMap = response.data.data;
+        const championMatched = Object.keys(champions).find(
+          (champ) => +champions[champ].key === champion,
+        );
+        setChampionInfo(
+          championMatched ? champions[championMatched] : undefined,
+        );
         setSeasonValue(seasons[season]);
         setQueueValue(queues[queue]);
         setPlatformValue(serviceProxies[platformId]);
@@ -72,7 +66,7 @@ const Match: FunctionComponent<MatchReferenceDTO> = ({
       },
     };
     getChampions(callback);
-  }, []);
+  }, [champion, lane, platformId, queue, role, season, timestamp]);
 
   const championImgUrl = championInfo
     ? `${apiStaticUrl.img}/champion/${championInfo.image.full}`

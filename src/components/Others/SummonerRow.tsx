@@ -1,10 +1,9 @@
-import React, { FunctionComponent } from "react";
-import TableRow from "@material-ui/core/TableRow";
-import TableCell from "@material-ui/core/TableCell";
+import { TableCell, TableRow } from "@mui/material";
 import { useRouter } from "next/navigation";
+import { FunctionComponent } from "react";
 import ProgressBar from "../ProgressBar/ProgressBar";
-import HotStreak from "./HotStreak";
 import FreshBlood from "./FreshBlood";
+import HotStreak from "./HotStreak";
 import Veteran from "./Veteran";
 
 interface IProps {

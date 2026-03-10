@@ -1,7 +1,4 @@
-import { TablePagination } from "@material-ui/core";
-import Paper from "@material-ui/core/Paper";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
+import { Paper, Table, TableBody, TablePagination } from "@mui/material";
 import Image from "next/image";
 import React, { FunctionComponent, ReactElement, useState } from "react";
 import { Slide } from "react-awesome-reveal";

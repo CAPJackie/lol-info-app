@@ -1,14 +1,15 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
-import { Card } from "@material-ui/core";
+import { Card } from "@mui/material";
+import { FunctionComponent, useEffect, useState } from "react";
 
+import { queues, seasons, serviceProxies } from "../../utils/Constants/game";
 import { apiStaticUrl } from "../../utils/Constants/urls";
 import { getChampions } from "../../utils/api";
-import Loading from "../Loading/Loading";
-import { seasons, queues, serviceProxies } from "../../utils/Constants/game";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
+import Loading from "../Loading/Loading";
 
-import styles from "./Match.module.scss";
 import { AxiosError, AxiosResponse } from "axios";
+import Image from "next/image";
+import Link from "next/link";
 import {
   ChampionsMap,
   CustomError,
@@ -19,8 +20,7 @@ import {
   IQueue,
   MatchReferenceDTO,
 } from "../../types/commonTypes";
-import Image from "next/image";
-import Link from "next/link";
+import styles from "./Match.module.scss";
 
 const Match: FunctionComponent<MatchReferenceDTO> = ({
   champion,

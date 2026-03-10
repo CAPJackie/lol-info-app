@@ -1,5 +1,5 @@
-import React, { FunctionComponent } from "react";
-import CircularProgress from "@material-ui/core/CircularProgress";
+import { CircularProgress } from "@mui/material";
+import { FunctionComponent } from "react";
 import styles from "./Loading.module.scss";
 
 interface IProps {

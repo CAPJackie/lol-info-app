@@ -1,8 +1,8 @@
 import { FunctionComponent } from "react";
 import styles from "./Games.module.scss";
-import { Games } from "@/types/games";
+import type { Games as GamesType } from "@/types/games";
 
-const Games: FunctionComponent<Games> = ({ wins, defeats }) => {
+const Games: FunctionComponent<GamesType> = ({ wins, defeats }) => {
   const rate = ((wins / (wins + defeats)) * 100).toFixed(1);
   return (
     <div className={styles.container}>

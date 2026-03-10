@@ -1,9 +1,9 @@
-import { Kda } from "@/types/kda";
+import type { Kda as KdaType } from "@/types/kda";
 import { FunctionComponent } from "react";
 
 import styles from "./Kda.module.scss";
 
-const Kda: FunctionComponent<Kda> = ({ assistances, deaths, kills }) => {
+const Kda: FunctionComponent<KdaType> = ({ assistances, deaths, kills }) => {
   return (
     <div className={styles.container}>
       <p className={styles.upperText}>

@@ -1,14 +1,10 @@
 "use client";
 
-import { Paper } from "@material-ui/core";
-<<<<<<< HEAD
+import { Paper } from "@mui/material";
 import axios, { AxiosResponse } from "axios";
 import Image from "next/image";
 import { useSearchParams } from "next/navigation";
-import { FunctionComponent, memo, useEffect, useState } from "react";
-=======
 import React, { FunctionComponent, memo, useCallback, useEffect, useState } from "react";
->>>>>>> 388ba6b (formatted Workspace)
 import { useRenderCount } from "../../hooks/customHooks";
 import {
   Error,

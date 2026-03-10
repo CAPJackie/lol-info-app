@@ -5,11 +5,7 @@ import { callApiAction } from "@/actions";
 import { RegionKey, RegionObject } from "@/types/regions";
 import { regions } from "@/utils/Constants/game";
 import clsx from "clsx";
-<<<<<<< HEAD
 import { ChangeEventHandler, FunctionComponent, useState } from "react";
-=======
-import { ChangeEventHandler, FunctionComponent, MouseEventHandler, useState } from "react";
->>>>>>> 388ba6b (formatted Workspace)
 import styles from "./SummonerSearchBar.module.scss";
 
 const euw = regions.find(({ slug }) => slug === RegionKey.EUW) as RegionObject;

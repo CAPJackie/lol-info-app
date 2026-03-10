@@ -14,7 +14,6 @@
     "jsx": "react-jsx",
     "incremental": true,
     "paths": {
-<<<<<<< HEAD
       "@/*": [
         "./src/*"
       ]
@@ -35,11 +34,4 @@
   "exclude": [
     "node_modules"
   ]
-=======
-      "@/*": ["./src/*"]
-    }
-  },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
->>>>>>> 388ba6b (formatted Workspace)
 }

@@ -1,5 +1,6 @@
 "use client";
 
+import { ChampionFilters } from "@/types/champions";
 import { Options } from "@/types/options";
 import { regions } from "@/utils/Constants/game";
 import clsx from "clsx";

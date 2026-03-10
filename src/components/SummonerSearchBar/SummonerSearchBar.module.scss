@@ -24,9 +24,6 @@
   display: flex;
 }
 
-<<<<<<< HEAD
-.searchBarList, .input{
-=======
 .regionsList {
   flex-direction: column;
   border: 1px solid rgba(246, 222, 167, 0.4);
@@ -39,7 +36,12 @@
 }
 
 .searchBar {
->>>>>>> 388ba6b (formatted Workspace)
+  display: flex;
+  flex-direction: row;
+}
+
+.searchBarList,
+.input {
   display: flex;
   flex-direction: row;
 }

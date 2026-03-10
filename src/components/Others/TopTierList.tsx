@@ -8,13 +8,9 @@ import Loading from "../Loading/Loading";
 import RenderTierList from "../RenderTierList/RenderTierList";
 
 const TopTierList: FunctionComponent = () => {
-<<<<<<< HEAD
   const [summoners, setSummoners] = useState<(LeagueItemDTO & IRankNumber)[]>(
     [],
   );
-=======
-  const [summoners, setSummoners] = useState<(LeagueItemDTO & IRankNumber)[]>([]);
->>>>>>> 388ba6b (formatted Workspace)
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error>();
 
@@ -47,20 +43,7 @@ const TopTierList: FunctionComponent = () => {
 
     setSummoners(summonersSortedList);
     setLoading(false);
-  }
-
-  useEffect(() => {
-    const callback: IleagueListCallback = {
-      onSuccess: (response) => {
-        orderByLeaguePoints(response.data.entries);
-      },
-      onFailed: (errorMsg) => {
-        setError(errorMsg.response);
-      },
-    };
-
-    getChallengerLeagueByQueue("RANKED_SOLO_5x5", callback);
-  }, []);
+  };
 
   return error ? (
     <ErrorPanel error={error} />

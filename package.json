@@ -11,7 +11,10 @@
     "lint": "eslint .",
     "format": "prettier --write .",
     "format:check": "prettier --check .",
-    "perf:routes": "node scripts/check-route-performance.mjs"
+    "perf:routes": "node scripts/check-route-performance.mjs",
+    "docker:verify": "docker compose build verify && docker compose run --rm verify",
+    "docker:app": "docker compose up --build app",
+    "docker:down": "docker compose down"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",

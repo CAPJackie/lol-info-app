@@ -21,7 +21,7 @@ const SummonerSearchBar: FunctionComponent<SummonerSearchBarProps> = ({ classes 
   const onChange: ChangeEventHandler<HTMLInputElement> = (event) => {
     setSummonerName(event.target.value);
   };
-  
+
   return (
     <div className={clsx(styles.searchBar, classes)}>
       <ul className={styles.searchBarList}>

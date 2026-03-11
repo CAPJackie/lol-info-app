@@ -8,9 +8,7 @@ import Loading from "../Loading/Loading";
 import RenderTierList from "../RenderTierList/RenderTierList";
 
 const TopTierList: FunctionComponent = () => {
-  const [summoners, setSummoners] = useState<(LeagueItemDTO & IRankNumber)[]>(
-    [],
-  );
+  const [summoners, setSummoners] = useState<(LeagueItemDTO & IRankNumber)[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error>();
 
@@ -27,9 +25,7 @@ const TopTierList: FunctionComponent = () => {
     getChallengerLeagueByQueue("RANKED_SOLO_5x5", callback);
   }, []);
 
-  const orderByLeaguePoints: (summonersList: LeagueItemDTO[]) => void = (
-    summonersList,
-  ) => {
+  const orderByLeaguePoints: (summonersList: LeagueItemDTO[]) => void = (summonersList) => {
     let summonersSortedList = [...summonersList];
 
     summonersSortedList.sort((a, b) => {

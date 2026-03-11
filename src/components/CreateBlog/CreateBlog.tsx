@@ -30,22 +30,11 @@ const CreateBlog = () => {
     <form action={formAction} className={styles.newPostForm}>
       <div className={styles.formGroup}>
         <label htmlFor="post-title">Title</label>
-        <input
-          type="text"
-          id="post-title"
-          name="title"
-          className={styles.formControl}
-          required
-        />
+        <input type="text" id="post-title" name="title" className={styles.formControl} required />
       </div>
       <div className={styles.formGroup}>
         <label htmlFor="post-content">Content</label>
-        <textarea
-          id="post-content"
-          name="summary"
-          className={styles.formControl}
-          required
-        />
+        <textarea id="post-content" name="summary" className={styles.formControl} required />
       </div>
       <SubmitButton />
       <p>{state?.message}</p>

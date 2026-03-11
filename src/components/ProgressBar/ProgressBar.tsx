@@ -23,9 +23,9 @@ const ProgressBar: FunctionComponent<IProps> = ({ value, total, type }) => {
         role="progressbar"
         aria-valuenow={percentage}
         className={styles.progressBar}
-      // TODO Check if these 2 props were affecting somehow this component behaviour
-      // variant="determinate"
-      // value={percentage}
+        // TODO Check if these 2 props were affecting somehow this component behaviour
+        // variant="determinate"
+        // value={percentage}
       >
         <div style={{ transform: `scaleX(${percentage / 100})` }} />
       </div>

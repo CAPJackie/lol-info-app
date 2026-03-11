@@ -4,10 +4,7 @@ import Link from "next/link";
 import { FunctionComponent } from "react";
 import styles from "./ChampionLink.module.scss";
 
-const ChampionLink: FunctionComponent<ChampionRotation> = ({
-  imageUrl,
-  link,
-}) => {
+const ChampionLink: FunctionComponent<ChampionRotation> = ({ imageUrl, link }) => {
   return (
     <Link href={`champion/${link}`} className={styles.link}>
       <Image

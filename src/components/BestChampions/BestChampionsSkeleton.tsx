@@ -2,7 +2,6 @@ import clsx from "clsx";
 import { FunctionComponent } from "react";
 import styles from "./BestChampions.module.scss";
 
-
 const BestChampionsSkeleton: FunctionComponent = async () => {
   return (
     <>

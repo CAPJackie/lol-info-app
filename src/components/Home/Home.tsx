@@ -17,7 +17,6 @@ const Home: FunctionComponent = () => {
       <section className={styles.freeChampionsWeek}>
         <FreeChampionsWeek />
       </section>
-
     </article>
   );
 };

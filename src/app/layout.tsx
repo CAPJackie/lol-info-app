@@ -58,11 +58,7 @@ export const metadata: Metadata = {
   category: "videogames",
 };
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <ClientLayout>{children}</ClientLayout>

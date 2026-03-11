@@ -2,7 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 const allowedOrigin = [process.env.BASE_URL];
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const origin = request.headers.get("origin");
 
   if (origin && !allowedOrigin.includes(origin)) {

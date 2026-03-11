@@ -1,7 +1,7 @@
 "use client";
 
 import Spinner from "@/components/Spinner/Spinner";
-import { Analytics } from "@vercel/analytics/react";
+import { Analytics } from "@vercel/analytics/next";
 import clsx from "clsx";
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
@@ -14,11 +14,7 @@ const Footer = dynamic(() => import("@/components/Footer/Footer"), {
   loading: () => <Spinner />,
 });
 
-export default function ClientLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
+export default function ClientLayout({ children }: { children: React.ReactNode }) {
   const isLanding = usePathname() === "/";
   return (
     <body className={clsx(isLanding ? "landing-site" : "other-sites")}>

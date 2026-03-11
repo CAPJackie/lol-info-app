@@ -16,9 +16,7 @@ type BestChampions = {
 };
 
 async function getBestChampions() {
-  const req = await fetch(
-    `${process.env.BASE_URL}/api/champions/best-champions`,
-  );
+  const req = await fetch(`${process.env.BASE_URL}/api/champions/best-champions`);
   const data = await req.json();
 
   return data;

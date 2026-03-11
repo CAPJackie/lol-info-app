@@ -6,7 +6,7 @@ import TopSummonerList from "../TopSummonerList/TopSummonerList";
 
 interface TopListProps {
   champions: Champions;
-  summonersList: SummonerInfo[]
+  summonersList: SummonerInfo[];
 }
 
 const TopList: FunctionComponent<TopListProps> = ({ champions, summonersList }) => {

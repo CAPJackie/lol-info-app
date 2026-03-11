@@ -1,7 +1,4 @@
-export default function getPaginationListConfig(
-  numberOfPages: number,
-  pageFromParams: string,
-) {
+export default function getPaginationListConfig(numberOfPages: number, pageFromParams: string) {
   const page = Number(pageFromParams) || 1;
   const range = 5;
   const totalPagesToShow = range * 2 + 1;

@@ -6,9 +6,8 @@ import { champions } from "@/utils/Constants/champions";
 import { Suspense } from "react";
 import BestChampionsSkeleton from "@/components/BestChampions/BestChampionsSkeleton";
 
-
 async function getChampions() {
-  return champions
+  return champions;
 }
 
 export default async function Champions() {

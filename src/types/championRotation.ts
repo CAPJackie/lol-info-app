@@ -1,4 +1,4 @@
 export type ChampionRotation = {
-    link: string;
-    imageUrl: string;
-  };
+  link: string;
+  imageUrl: string;
+};

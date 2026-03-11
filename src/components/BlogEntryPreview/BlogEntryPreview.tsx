@@ -21,10 +21,7 @@ const BlogEntryPreview: FunctionComponent<BlogEntryPreviewProps> = ({
   return (
     <div className={clsx(classes, styles.container)}>
       <div className={styles.entity}>
-        <Link
-          href={`/blog/champion-preview-${name}`}
-          className={styles.championLink}
-        >
+        <Link href={`/blog/champion-preview-${name}`} className={styles.championLink}>
           <Image
             alt="champion illustration"
             src={`https://cdn.lolskill.net/entity/${number}/header.jpg`}
@@ -39,8 +36,8 @@ const BlogEntryPreview: FunctionComponent<BlogEntryPreviewProps> = ({
           <p className={styles.p}>{description}</p>
           <br />
           <p className={styles.p}>
-            Check out her champion page to find out everything about her
-            abilities, damage ratios and more.
+            Check out her champion page to find out everything about her abilities, damage ratios
+            and more.
           </p>
           <br />
           <Link href={`/champion/${name}`} className={styles.link}>

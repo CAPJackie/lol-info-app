@@ -9,9 +9,7 @@ type PaginationItemProps = {
   numberOfPages: number;
 };
 
-const PaginationItem: FunctionComponent<PaginationItemProps> = ({
-  numberOfPages,
-}) => {
+const PaginationItem: FunctionComponent<PaginationItemProps> = ({ numberOfPages }) => {
   var { list, page, range } = getPaginationListConfig(
     numberOfPages,
     useSearchParams()?.get("page") as string,

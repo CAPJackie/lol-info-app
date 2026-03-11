@@ -15,7 +15,7 @@
   cursor: pointer;
 }
 
-.nameInputContainer{
+.nameInputContainer {
   flex: 1;
 }
 
@@ -46,7 +46,7 @@
   flex-direction: row;
 }
 
-.input{
+.input {
   width: 100%;
 }
 
@@ -55,11 +55,11 @@
   height: 100%;
 }
 
-.searchButton{
+.searchButton {
   width: 90px;
 }
 
-.searchButtonContainer{
+.searchButtonContainer {
   height: 100%;
 }
 
@@ -96,8 +96,6 @@
   height: 45px;
   cursor: pointer;
 }
-
-
 
 .searchBar *:focus,
 .searchBar:focus {

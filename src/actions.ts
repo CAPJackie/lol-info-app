@@ -32,8 +32,6 @@ export async function createBlog(prevState: any, formData: FormData) {
 }
 
 export async function callApiAction() {
-  const response = await fetch(
-    apiUrl + "/platform/v3/champion-rotations" + concatApiKey("?"),
-  );
+  const response = await fetch(apiUrl + "/platform/v3/champion-rotations" + concatApiKey("?"));
   console.log(await response.json());
 }

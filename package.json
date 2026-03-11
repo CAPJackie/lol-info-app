@@ -18,8 +18,10 @@
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.14.1",
     "@faker-js/faker": "^8.2.0",
     "@material-ui/core": "^4.12.4",
+    "@mui/material": "^5.15.20",
     "@types/antd": "^1.0.0",
     "@types/node": "20.9.0",
     "@types/react": "18.2.37",
@@ -42,10 +44,11 @@
     "typescript": "5.2.2"
   },
   "devDependencies": {
+    "array-union": "^2.1.0",
     "prettier": "^3.0.3"
   },
   "resolutions": {
-    "@types/react": "19.2.14",
-    "@types/react-dom": "19.2.3"
+    "@types/react": "18.2.37",
+    "@types/react-dom": "18.2.15"
   }
 }

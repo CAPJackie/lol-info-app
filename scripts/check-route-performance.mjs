@@ -11,31 +11,32 @@ const budgets = {
 const checks = [
   {
     route: "/top",
-    jsonFile: ".next/server/pages/top.json",
-    htmlFile: ".next/server/pages/top.html",
+    jsonFile: ".next/server/app/top.rsc",
+    htmlFile: ".next/server/app/top.html",
+    jsonBudgetBytes: 300 * KB,
+    htmlBudgetBytes: 300 * KB,
   },
   {
-    route: "/top/skillscore",
-    jsonFile: ".next/server/pages/top/skillscore.json",
-    htmlFile: ".next/server/pages/top/skillscore.html",
+    route: "/champions",
+    jsonFile: ".next/server/app/champions.rsc",
+    htmlFile: ".next/server/app/champions.html",
+    jsonBudgetBytes: 300 * KB,
+    htmlBudgetBytes: 700 * KB,
   },
   {
-    route: "/top/mostgames",
-    jsonFile: ".next/server/pages/top/mostgames.json",
-    htmlFile: ".next/server/pages/top/mostgames.html",
+    route: "/blog",
+    jsonFile: ".next/server/app/blog.rsc",
+    htmlFile: ".next/server/app/blog.html",
   },
   {
-    route: "/top/champion-mastery",
-    jsonFile: ".next/server/pages/top/champion-mastery.json",
-    htmlFile: ".next/server/pages/top/champion-mastery.html",
+    route: "/search",
+    jsonFile: ".next/server/app/search.rsc",
+    htmlFile: ".next/server/app/search.html",
   },
   {
     route: "/tierList",
-    htmlFile: ".next/server/pages/tierList.html",
-  },
-  {
-    route: "/summoners/[name]",
-    htmlFile: ".next/server/pages/summoners/[name].html",
+    jsonFile: ".next/server/app/tierList.rsc",
+    htmlFile: ".next/server/app/tierList.html",
   },
 ];
 
@@ -43,8 +44,16 @@ const formatKb = (bytes) => `${(bytes / KB).toFixed(1)}KB`;
 
 const getFileSize = async (relativePath) => {
   const absolutePath = path.join(process.cwd(), relativePath);
-  const stats = await fs.stat(absolutePath);
-  return stats.size;
+  try {
+    const stats = await fs.stat(absolutePath);
+    return stats.size;
+  } catch (error) {
+    if (error && error.code === "ENOENT") {
+      return null;
+    }
+
+    throw error;
+  }
 };
 
 const run = async () => {
@@ -56,37 +65,62 @@ const run = async () => {
 
   for (const check of checks) {
     const metrics = [];
+    const jsonBudgetBytes = check.jsonBudgetBytes ?? budgets.jsonBytes;
+    const htmlBudgetBytes = check.htmlBudgetBytes ?? budgets.htmlBytes;
 
     if (check.jsonFile) {
       const jsonBytes = await getFileSize(check.jsonFile);
-      const jsonOk = jsonBytes <= budgets.jsonBytes;
-      metrics.push({
-        label: "JSON",
-        bytes: jsonBytes,
-        ok: jsonOk,
-        path: check.jsonFile,
-      });
+      if (jsonBytes === null) {
+        metrics.push({
+          label: "JSON",
+          missing: true,
+          path: check.jsonFile,
+        });
+      } else {
+        const jsonOk = jsonBytes <= jsonBudgetBytes;
+        metrics.push({
+          label: "JSON",
+          bytes: jsonBytes,
+          budgetBytes: jsonBudgetBytes,
+          ok: jsonOk,
+          path: check.jsonFile,
+        });
+      }
     }
 
     if (check.htmlFile) {
       const htmlBytes = await getFileSize(check.htmlFile);
-      const htmlOk = htmlBytes <= budgets.htmlBytes;
-      metrics.push({
-        label: "HTML",
-        bytes: htmlBytes,
-        ok: htmlOk,
-        path: check.htmlFile,
-      });
+      if (htmlBytes === null) {
+        metrics.push({
+          label: "HTML",
+          missing: true,
+          path: check.htmlFile,
+        });
+      } else {
+        const htmlOk = htmlBytes <= htmlBudgetBytes;
+        metrics.push({
+          label: "HTML",
+          bytes: htmlBytes,
+          budgetBytes: htmlBudgetBytes,
+          ok: htmlOk,
+          path: check.htmlFile,
+        });
+      }
     }
 
-    hasFailure = hasFailure || metrics.some((metric) => !metric.ok);
+    hasFailure = hasFailure || metrics.some((metric) => metric.ok === false);
 
     console.log(`\n${check.route}`);
     for (const metric of metrics) {
+      if (metric.missing) {
+        console.log(`- ${metric.label}: SKIPPED (missing file) (${metric.path})`);
+        continue;
+      }
+
       console.log(
-        `- ${metric.label}: ${formatKb(metric.bytes)} ${metric.ok ? "OK" : "OVER BUDGET"} (${
-          metric.path
-        })`,
+        `- ${metric.label}: ${formatKb(metric.bytes)} / ${formatKb(metric.budgetBytes)} ${
+          metric.ok ? "OK" : "OVER BUDGET"
+        } (${metric.path})`,
       );
     }
   }

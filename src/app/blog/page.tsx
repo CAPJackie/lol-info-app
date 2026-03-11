@@ -8,8 +8,16 @@ export const metadata: Metadata = {
 };
 
 async function getBlogs(): Promise<BlogType[] | null> {
-  const blogs = kv.get("blogs") as Promise<BlogType[]>;
-  return blogs;
+  if (!process.env.KV_REST_API_URL || !process.env.KV_REST_API_TOKEN) {
+    return [];
+  }
+
+  try {
+    const blogs = kv.get("blogs") as Promise<BlogType[]>;
+    return blogs;
+  } catch {
+    return [];
+  }
 }
 
 export default async function Blog() {

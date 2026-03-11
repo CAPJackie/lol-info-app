@@ -1,6 +1,6 @@
 import { Paper, Table, TableBody, TablePagination } from "@mui/material";
 import Image from "next/image";
-import React, { FunctionComponent, ReactElement, useState } from "react";
+import React, { FunctionComponent, useState } from "react";
 import { Slide } from "react-awesome-reveal";
 import challenger from "../../../public/images/challenger.png";
 import { IRankNumber, LeagueItemDTO } from "../../types/commonTypes";
@@ -39,7 +39,7 @@ const RenderTierList: FunctionComponent<IProps> = ({ summoners }) => {
     setRowsPerPage(+event.target.value);
   };
 
-  const getSummonerRows: () => ReactElement[] = () => {
+  const getSummonerRows = () => {
     return stableSort(summoners, getSorting(order, orderBy))
       .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
       .map((value: LeagueItemDTO & IRankNumber, index: number) => {

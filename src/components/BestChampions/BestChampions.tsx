@@ -15,11 +15,28 @@ type BestChampions = {
   mostBanned: BestStat;
 };
 
-async function getBestChampions() {
-  const req = await fetch(`${process.env.BASE_URL}/api/champions/best-champions`);
-  const data = await req.json();
+const DEFAULT_BEST_CHAMPIONS: BestChampions = {
+  highestWinRate: { champion: "Lee Sin", rate: 32.9 },
+  mostBanned: { champion: "Ivern", rate: 55 },
+  mostPopular: { champion: "Xayah", rate: 52.5 },
+};
 
-  return data;
+async function getBestChampions() {
+  if (!process.env.BASE_URL) {
+    return DEFAULT_BEST_CHAMPIONS;
+  }
+
+  try {
+    const req = await fetch(`${process.env.BASE_URL}/api/champions/best-champions`);
+    if (!req.ok) {
+      return DEFAULT_BEST_CHAMPIONS;
+    }
+
+    const data = await req.json();
+    return data;
+  } catch {
+    return DEFAULT_BEST_CHAMPIONS;
+  }
 }
 
 const BestChampions: FunctionComponent = async () => {

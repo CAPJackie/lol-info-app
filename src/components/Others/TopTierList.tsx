@@ -12,19 +12,6 @@ const TopTierList: FunctionComponent = () => {
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<Error>();
 
-  useEffect(() => {
-    const callback: IleagueListCallback = {
-      onSuccess: (response) => {
-        orderByLeaguePoints(response.data.entries);
-      },
-      onFailed: (errorMsg) => {
-        setError(errorMsg.response);
-      },
-    };
-
-    getChallengerLeagueByQueue("RANKED_SOLO_5x5", callback);
-  }, []);
-
   const orderByLeaguePoints: (summonersList: LeagueItemDTO[]) => void = (summonersList) => {
     let summonersSortedList = [...summonersList];
 
@@ -40,6 +27,19 @@ const TopTierList: FunctionComponent = () => {
     setSummoners(summonersSortedList);
     setLoading(false);
   };
+
+  useEffect(() => {
+    const callback: IleagueListCallback = {
+      onSuccess: (response) => {
+        orderByLeaguePoints(response.data.entries);
+      },
+      onFailed: (errorMsg) => {
+        setError(errorMsg.response);
+      },
+    };
+
+    getChallengerLeagueByQueue("RANKED_SOLO_5x5", callback);
+  }, []);
 
   return error ? (
     <ErrorPanel error={error} />

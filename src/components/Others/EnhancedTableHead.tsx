@@ -1,8 +1,5 @@
-import { TableSortLabel, Tooltip } from "@material-ui/core";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import React, { FunctionComponent } from "react";
+import { TableCell, TableHead, TableRow, TableSortLabel, Tooltip } from "@mui/material";
+import { FunctionComponent } from "react";
 
 interface IProps {
   order?: "asc" | "desc";
@@ -10,11 +7,7 @@ interface IProps {
   onRequestSort: (property: string) => void;
 }
 
-const EnhancedTableHead: FunctionComponent<IProps> = ({
-  order,
-  orderBy,
-  onRequestSort,
-}) => {
+const EnhancedTableHead: FunctionComponent<IProps> = ({ order, orderBy, onRequestSort }) => {
   const createSortHandler: (property: string) => void = (property) => {
     onRequestSort(property);
   };
@@ -27,13 +20,9 @@ const EnhancedTableHead: FunctionComponent<IProps> = ({
             id={`${row.id}-cell`}
             key={row.id}
             align={
-              row.id === "rankNumber"
-                ? "left"
-                : row.id === "leaguePoints"
-                ? "right"
-                : "center"
+              row.id === "rankNumber" ? "left" : row.id === "leaguePoints" ? "right" : "center"
             }
-            padding={row.disablePadding ? "none" : "default"}
+            padding={row.disablePadding ? "none" : "normal"}
             sortDirection={orderBy === row.id ? order : false}
           >
             <Tooltip

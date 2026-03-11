@@ -58,3 +58,7 @@ export interface Champion {
 }
 
 export type Champions = Champion[];
+
+export type ChampionFilter = Pick<Champion, "key" | "name">;
+
+export type ChampionFilters = ChampionFilter[];

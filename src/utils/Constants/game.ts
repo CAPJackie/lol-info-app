@@ -1,9 +1,5 @@
 import { RegionKey, RegionValue, Regions } from "@/types/regions";
-import {
-  QueuesMap,
-  SeasonsMap,
-  ServicesProxiesMap,
-} from "../../types/commonTypes";
+import { QueuesMap, SeasonsMap, ServicesProxiesMap } from "../../types/commonTypes";
 
 export const seasons: SeasonsMap = {
   0: "preseason 3",

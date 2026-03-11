@@ -9,11 +9,7 @@ type ChampionProps = {
   nameKey: string;
 };
 
-const Champion: FunctionComponent<ChampionProps> = ({
-  name,
-  image,
-  nameKey,
-}) => {
+const Champion: FunctionComponent<ChampionProps> = ({ name, image, nameKey }) => {
   // Only log this if necessary, it can low the performance
   // useRenderCount([name, image, nameKey]);
   return (

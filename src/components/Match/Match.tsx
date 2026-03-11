@@ -1,14 +1,15 @@
-import React, { FunctionComponent, useEffect, useState } from "react";
-import { Card } from "@material-ui/core";
+import { Card } from "@mui/material";
+import { FunctionComponent, useEffect, useState } from "react";
 
+import { queues, seasons, serviceProxies } from "../../utils/Constants/game";
 import { apiStaticUrl } from "../../utils/Constants/urls";
 import { getChampions } from "../../utils/api";
-import Loading from "../Loading/Loading";
-import { seasons, queues, serviceProxies } from "../../utils/Constants/game";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
+import Loading from "../Loading/Loading";
 
-import styles from "./Match.module.scss";
 import { AxiosError, AxiosResponse } from "axios";
+import Image from "next/image";
+import Link from "next/link";
 import {
   ChampionsMap,
   CustomError,
@@ -19,8 +20,7 @@ import {
   IQueue,
   MatchReferenceDTO,
 } from "../../types/commonTypes";
-import Image from "next/image";
-import Link from "next/link";
+import styles from "./Match.module.scss";
 
 const Match: FunctionComponent<MatchReferenceDTO> = ({
   champion,
@@ -31,9 +31,7 @@ const Match: FunctionComponent<MatchReferenceDTO> = ({
   role,
   lane,
 }) => {
-  const [championInfo, setChampionInfo] = useState<IChampion | undefined>(
-    undefined,
-  );
+  const [championInfo, setChampionInfo] = useState<IChampion | undefined>(undefined);
   const [loading, setLoading] = useState(true);
   const [seasonValue, setSeasonValue] = useState<string>();
   const [queueValue, setQueueValue] = useState<IQueue>();
@@ -43,22 +41,14 @@ const Match: FunctionComponent<MatchReferenceDTO> = ({
   const [laneValue, setLaneValue] = useState<string>();
   const [error, setError] = useState<Error>();
 
-  const getChampionInfo = (champions: ChampionsMap) => {
-    let championInfoObject;
-    const championMatched = Object.keys(champions).find((champ) => {
-      // TODO Check if key can be converted to number type
-      return +champions[champ].key === champion;
-    });
-    championInfoObject = championMatched
-      ? champions[championMatched]
-      : undefined;
-    return championInfoObject;
-  };
-
   useEffect(() => {
     const callback = {
       onSuccess: (response: AxiosResponse<IChampions>) => {
-        setChampionInfo(getChampionInfo(response.data.data));
+        const champions: ChampionsMap = response.data.data;
+        const championMatched = Object.keys(champions).find(
+          (champ) => +champions[champ].key === champion,
+        );
+        setChampionInfo(championMatched ? champions[championMatched] : undefined);
         setSeasonValue(seasons[season]);
         setQueueValue(queues[queue]);
         setPlatformValue(serviceProxies[platformId]);
@@ -72,7 +62,7 @@ const Match: FunctionComponent<MatchReferenceDTO> = ({
       },
     };
     getChampions(callback);
-  }, []);
+  }, [champion, lane, platformId, queue, role, season, timestamp]);
 
   const championImgUrl = championInfo
     ? `${apiStaticUrl.img}/champion/${championInfo.image.full}`
@@ -85,10 +75,7 @@ const Match: FunctionComponent<MatchReferenceDTO> = ({
   ) : (
     <Card className={styles.card}>
       <Link href={`/champion/${championInfo?.id}`}>
-        <Image
-          src={championImgUrl}
-          alt={`The champion used was ${championInfo?.name}`}
-        />
+        <Image src={championImgUrl} alt={`The champion used was ${championInfo?.name}`} />
       </Link>
 
       <h4>{seasonValue}</h4>

@@ -1,41 +1,30 @@
-import { useRouter } from "next/router";
-import { FunctionComponent } from "react";
-import styles from "./TopSummonerList.module.scss";
-import clsx from "clsx";
-import { buildPagination } from "@/utils/buildPagination";
-import SummonerCard from "../SummonerCard/SummonerCard";
-import ListWithPagination from "../ListWithPagination/ListWithPagination";
-import { fetchSummonersTopList } from "@/utils/fetchSummonersTopList";
+"use client";
+
 import { SummonerInfo } from "@/types/summonerInfo";
+import { buildPagination } from "@/utils/buildPagination";
+import clsx from "clsx";
+import { FunctionComponent } from "react";
+import ListWithPagination from "../ListWithPagination/ListWithPagination";
+import SummonerCard from "../SummonerCard/SummonerCard";
+import styles from "./TopSummonerList.module.scss";
+import { useSearchParams } from "next/navigation";
 
-const TopSummonerList: FunctionComponent = () => {
-  const router = useRouter();
-  const page = Number(router.query.page) || 1;
-  // const onChangePage = () => {
-  //   router.push({
-  //     pathname: router.pathname,
-  //     query: { ...router.query, page: String(page + 1) },
-  //   });
-  // };
+type Props = {
+  summonersList: SummonerInfo[];
+};
 
-  const summonersList: SummonerInfo[] = fetchSummonersTopList();
+const TopSummonerList: FunctionComponent<Props> = ({ summonersList }) => {
+  const page = Number(useSearchParams()?.get("page")) || 1;
 
   const itemsPerPage = 30;
 
   const numberOfPages = Math.ceil(summonersList.length / itemsPerPage);
 
-  const sortedEntireList = summonersList.sort(
-    (a, b) => b.lssScore - a.lssScore,
-  );
+  const sortedEntireList = summonersList.sort((a, b) => b.lssScore - a.lssScore);
 
-  const items = buildPagination<SummonerInfo>(
-    sortedEntireList,
-    page,
-    itemsPerPage,
-  );
+  const items = buildPagination<SummonerInfo>(sortedEntireList, page, itemsPerPage);
 
   const sortedItems = items.sort((a, b) => b.lssScore - a.lssScore);
-
 
   return (
     <div className={clsx("row", styles.container)}>
@@ -46,8 +35,7 @@ const TopSummonerList: FunctionComponent = () => {
               <SummonerCard
                 ranking={
                   sortedEntireList.findIndex(
-                    ({ summonerName }) =>
-                      summonerName === summonerInfo.summonerName,
+                    ({ summonerName }) => summonerName === summonerInfo.summonerName,
                   ) + 1
                 }
                 {...summonerInfo}

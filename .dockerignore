@@ -1,0 +1,10 @@
+.git
+.gitignore
+.next
+node_modules
+npm-debug.log*
+yarn-error.log*
+coverage
+.vscode
+.DS_Store
+README.md

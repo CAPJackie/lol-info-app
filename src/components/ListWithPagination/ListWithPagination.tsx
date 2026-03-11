@@ -1,9 +1,9 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, ReactElement } from "react";
 import styles from "./ListWithPagination.module.scss";
 import PaginationItem from "../PaginationItem/PaginationItem";
 
 type ListWithPaginationProps = {
-  children: JSX.Element;
+  children: ReactElement;
   numberOfPages: number;
 };
 

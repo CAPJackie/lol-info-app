@@ -1,4 +1,5 @@
-import { Button, InputBase, Paper } from "@material-ui/core";
+"use client";
+import { Button, InputBase, Paper } from "@mui/material";
 import React, { FunctionComponent, useState } from "react";
 import { Slide } from "react-awesome-reveal";
 import search from "../../../public/images/search.svg";
@@ -11,15 +12,15 @@ const Search: FunctionComponent = () => {
   const { push } = useRouter();
   const [summonerName, setSummonerName] = useState("");
 
-  const handleChange: (
-    event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>,
-  ) => void = (event) => {
+  const handleChange: (event: React.ChangeEvent<HTMLTextAreaElement | HTMLInputElement>) => void = (
+    event,
+  ) => {
     setSummonerName(event.target.value);
   };
 
-  const handleSubmit: (
-    event: React.MouseEvent<HTMLButtonElement, MouseEvent>,
-  ) => void = (event) => {
+  const handleSubmit: (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => void = (
+    event,
+  ) => {
     event.preventDefault();
   };
 

@@ -2,9 +2,14 @@ import { SummonerInfo } from "@/types/summonerInfo";
 import { faker } from "@faker-js/faker";
 import { champions } from "./Constants/champions";
 
+const SUMMONERS_SEED = 1337;
+
 export const fetchSummonersTopList: () => SummonerInfo[] = () => {
+  // Keep generated mock data stable between server render and client hydration.
+  faker.seed(SUMMONERS_SEED);
+
   const generateGamingUsername = () =>
-    `${faker.internet.userName()}${faker.datatype.number({
+    `${faker.internet.username()}${faker.number.int({
       min: 1,
       max: 9999,
     })}`;
@@ -30,9 +35,9 @@ export const fetchSummonersTopList: () => SummonerInfo[] = () => {
       defeats: faker.number.int({ min: 0, max: 1000 }),
     },
     kda: {
-      kills: parseFloat(faker.finance.amount(0, 50, 1)),
-      deaths: parseFloat(faker.finance.amount(0, 10, 1)),
-      assistances: parseFloat(faker.finance.amount(0, 20, 1)),
+      kills: faker.number.float({ min: 0, max: 50, multipleOf: 0.1 }),
+      deaths: faker.number.float({ min: 0, max: 10, multipleOf: 0.1 }),
+      assistances: faker.number.float({ min: 0, max: 20, multipleOf: 0.1 }),
     },
     lssScore: faker.number.int({ min: 1000, max: 10000 }),
     region: "LAN",

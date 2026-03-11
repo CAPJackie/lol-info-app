@@ -1,0 +1,51 @@
+.container {
+}
+
+.entity {
+  margin-bottom: 45px;
+  color: #fff;
+  font-family:
+    roboto light,
+    sans-serif;
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.championLink {
+  color: #fff;
+  text-decoration: none;
+  touch-action: manipulation;
+  & > .img {
+    height: 300px;
+    width: 730px;
+    margin-bottom: 30px;
+  }
+}
+
+.h5 {
+  font-size: 18px;
+  color: #f6dea7;
+  text-align: left;
+  font-family:
+    roboto black,
+    sans-serif;
+  font-weight: 400;
+  margin-bottom: 8px;
+  text-transform: capitalize;
+}
+
+.description {
+  text-align: left;
+  & .p {
+    margin: 0;
+    font-size: 16px;
+    color: #8f8f8f;
+    font-family:
+      roboto light,
+      sans-serif;
+    line-height: 1.5rem;
+    text-align: left;
+  }
+}

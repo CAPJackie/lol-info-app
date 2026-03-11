@@ -1,5 +1,5 @@
-import { Tooltip } from "@material-ui/core";
-import React, { FunctionComponent } from "react";
+import { Tooltip } from "@mui/material";
+import { FunctionComponent } from "react";
 import styles from "./ProgressBar.module.scss";
 
 interface IProps {
@@ -15,8 +15,7 @@ const ProgressBar: FunctionComponent<IProps> = ({ value, total, type }) => {
 
   const percentage = calculatePercentage();
 
-  const label =
-    type === "percentage" ? `${value}/${total - value} ${percentage}%` : value;
+  const label = type === "percentage" ? `${value}/${total - value} ${percentage}%` : value;
 
   return (
     <Tooltip title={label} placement={"bottom-start"} enterDelay={300}>

@@ -1,8 +1,16 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   reactStrictMode: true,
+  pageExtensions: ["ts", "tsx"],
   images: {
-    domains: ["ddragon.leagueoflegends.com", "cdn.lolskill.net"],
+    remotePatterns: [
+      {
+        hostname: "ddragon.leagueoflegends.com",
+      },
+      {
+        hostname: "cdn.lolskill.net",
+      },
+    ],
   },
 };
 

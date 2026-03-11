@@ -1,11 +1,11 @@
-import { FunctionComponent } from "react";
+import { FunctionComponent, ReactElement } from "react";
 import styles from "./FilterCriteriaInput.module.scss";
 import Link from "next/link";
 import clsx from "clsx";
 
 interface FilterCriteriaInputProps {
   title: string;
-  children: JSX.Element;
+  children: ReactElement;
   href: string;
   titleClassName?: string;
 }

@@ -21,10 +21,7 @@ const Footer = () => {
             name="facebook"
             href="https://www.facebook.com/LoLSkill.net"
           />
-          <CircularIconButtonWithLogo
-            name="twitter"
-            href="https://twitter.com/LoLSkillDotNet"
-          />
+          <CircularIconButtonWithLogo name="twitter" href="https://twitter.com/LoLSkillDotNet" />
         </div>
       </section>
       <section className={styles.footerBottom}>

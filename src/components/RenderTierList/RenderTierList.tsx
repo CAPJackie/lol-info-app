@@ -1,7 +1,4 @@
-import { TablePagination } from "@material-ui/core";
-import Paper from "@material-ui/core/Paper";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
+import { Paper, Table, TableBody, TablePagination } from "@mui/material";
 import Image from "next/image";
 import React, { FunctionComponent, useState } from "react";
 import { Slide } from "react-awesome-reveal";
@@ -42,7 +39,7 @@ const RenderTierList: FunctionComponent<IProps> = ({ summoners }) => {
     setRowsPerPage(+event.target.value);
   };
 
-  const getSummonerRows: () => JSX.Element[] = () => {
+  const getSummonerRows = () => {
     return stableSort(summoners, getSorting(order, orderBy))
       .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
       .map((value: LeagueItemDTO & IRankNumber, index: number) => {

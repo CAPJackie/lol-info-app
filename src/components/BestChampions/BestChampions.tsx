@@ -1,8 +1,8 @@
+import { convertToLolSkillChampionNameConvention } from "@/utils/convertToLolSkillChampionNameConvention";
 import clsx from "clsx";
+import Link from "next/link";
 import { FunctionComponent } from "react";
 import styles from "./BestChampions.module.scss";
-import Link from "next/link";
-import { convertToLolSkillChampionNameConvention } from "@/utils/convertToLolSkillChampionNameConvention";
 
 type BestStat = {
   champion: string;
@@ -15,20 +15,37 @@ type BestChampions = {
   mostBanned: BestStat;
 };
 
-const bestChampionsMock: BestChampions = {
+const DEFAULT_BEST_CHAMPIONS: BestChampions = {
   highestWinRate: { champion: "Lee Sin", rate: 32.9 },
   mostBanned: { champion: "Ivern", rate: 55 },
   mostPopular: { champion: "Xayah", rate: 52.5 },
 };
 
-const BestChampions: FunctionComponent = () => {
-  const { mostPopular, highestWinRate, mostBanned } = bestChampionsMock;
+async function getBestChampions() {
+  if (!process.env.BASE_URL) {
+    return DEFAULT_BEST_CHAMPIONS;
+  }
+
+  try {
+    const req = await fetch(`${process.env.BASE_URL}/api/champions/best-champions`);
+    if (!req.ok) {
+      return DEFAULT_BEST_CHAMPIONS;
+    }
+
+    const data = await req.json();
+    return data;
+  } catch {
+    return DEFAULT_BEST_CHAMPIONS;
+  }
+}
+
+const BestChampions: FunctionComponent = async () => {
+  const bestChampions = await getBestChampions();
+  const { mostPopular, highestWinRate, mostBanned } = bestChampions;
   return (
     <>
       <Link
-        href={`/champion/${convertToLolSkillChampionNameConvention(
-          mostPopular.champion,
-        )}`}
+        href={`/champion/${convertToLolSkillChampionNameConvention(mostPopular.champion)}`}
         className={clsx(styles.card, styles.marginRight)}
         style={{
           backgroundImage: `url(https://cdn.lolskill.net/img/skins/splash/${mostPopular.champion.replaceAll(
@@ -44,9 +61,7 @@ const BestChampions: FunctionComponent = () => {
         </div>
       </Link>
       <Link
-        href={`/champion/${convertToLolSkillChampionNameConvention(
-          highestWinRate.champion,
-        )}`}
+        href={`/champion/${convertToLolSkillChampionNameConvention(highestWinRate.champion)}`}
         className={clsx(styles.card, styles.marginLeft, styles.marginRight)}
         style={{
           backgroundImage: `url(https://cdn.lolskill.net/img/skins/splash/${highestWinRate.champion.replaceAll(
@@ -62,9 +77,7 @@ const BestChampions: FunctionComponent = () => {
         </div>
       </Link>
       <Link
-        href={`/champion/${convertToLolSkillChampionNameConvention(
-          mostBanned.champion,
-        )}`}
+        href={`/champion/${convertToLolSkillChampionNameConvention(mostBanned.champion)}`}
         className={clsx(styles.card, styles.marginLeft)}
         style={{
           backgroundImage: `url(https://cdn.lolskill.net/img/skins/splash/${mostBanned.champion.replaceAll(

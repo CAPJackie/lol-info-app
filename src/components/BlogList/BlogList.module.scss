@@ -1,0 +1,18 @@
+.blogList {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.blogItem {
+  padding: 1rem;
+  border-bottom: 1px solid #ccc;
+
+  h3 {
+    margin: 0 0 0.5rem 0;
+  }
+
+  p {
+    margin: 0;
+  }
+}

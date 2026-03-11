@@ -1,0 +1,16 @@
+.link {
+  &:hover {
+    color: #f6dea7;
+    opacity: 1;
+  }
+  & .image {
+    height: 359px;
+    width: 80px;
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.image {
+}

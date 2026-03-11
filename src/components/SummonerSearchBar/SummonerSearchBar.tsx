@@ -1,16 +1,20 @@
+"use client";
+
+import { callApiAction } from "@/actions";
+
 import { RegionKey, RegionObject } from "@/types/regions";
 import { regions } from "@/utils/Constants/game";
-import {
-  ChangeEventHandler,
-  FunctionComponent,
-  MouseEventHandler,
-  useState,
-} from "react";
+import clsx from "clsx";
+import { ChangeEventHandler, FunctionComponent, useState } from "react";
 import styles from "./SummonerSearchBar.module.scss";
 
 const euw = regions.find(({ slug }) => slug === RegionKey.EUW) as RegionObject;
 
-const SummonerSearchBar: FunctionComponent = () => {
+type SummonerSearchBarProps = {
+  classes?: string;
+};
+
+const SummonerSearchBar: FunctionComponent<SummonerSearchBarProps> = ({ classes }) => {
   const [summonerName, setSummonerName] = useState("");
   const [menuRegionIsOpen, setMenuRegionIsOpen] = useState(false);
   const [currentRegion, setCurrentRegion] = useState<RegionObject>(euw);
@@ -18,14 +22,11 @@ const SummonerSearchBar: FunctionComponent = () => {
     setSummonerName(event.target.value);
   };
 
-  const onClick: MouseEventHandler<HTMLButtonElement> = () => {
-    setMenuRegionIsOpen(!menuRegionIsOpen);
-  };
   return (
-    <div className={styles.searchBar}>
+    <div className={clsx(styles.searchBar, classes)}>
       <ul className={styles.searchBarList}>
         <li className={styles.input}>
-          <div>
+          <div className={styles.nameInputContainer}>
             <input
               type="text"
               placeholder="Summoner name..."
@@ -34,14 +35,40 @@ const SummonerSearchBar: FunctionComponent = () => {
               className={styles.summonerNameInput}
             />
           </div>
-          <button
-            type="button"
-            {...{ onClick }}
-            className={styles.regionSelector}
-          >{` ${currentRegion.slug} `}</button>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              callApiAction();
+            }}
+          >
+            <button
+              type="submit"
+              className={styles.regionSelector}
+            >{` ${currentRegion.slug} `}</button>
+          </form>
         </li>
-        <button type="submit" className={styles.searchButton}></button>
+        <li className={styles.searchButtonContainer}>
+          <button className={styles.searchButton} aria-label="search bar" />
+        </li>
       </ul>
+      {menuRegionIsOpen && (
+        <ul className={styles.regionsList}>
+          {regions.map((region) => (
+            <li key={region.slug} className={styles.regionItem}>
+              <button
+                type="button"
+                onClick={() => {
+                  setCurrentRegion(region);
+                  setMenuRegionIsOpen(false);
+                }}
+                className={styles.regionButton}
+              >
+                {region.name}
+              </button>
+            </li>
+          ))}
+        </ul>
+      )}
     </div>
   );
 };

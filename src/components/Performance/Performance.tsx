@@ -6,9 +6,7 @@ type PerformanceProps = {
   championPerformance: number;
 };
 
-const Performance: FunctionComponent<PerformanceProps> = ({
-  championPerformance,
-}) => {
+const Performance: FunctionComponent<PerformanceProps> = ({ championPerformance }) => {
   return (
     <div className={styles.container}>
       <div className={styles.donutChartBlock}>

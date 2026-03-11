@@ -1,5 +1,10 @@
-import { Paper } from "@material-ui/core";
-import React, { FunctionComponent, memo, useEffect, useState } from "react";
+"use client";
+
+import { Paper } from "@mui/material";
+import axios, { AxiosResponse } from "axios";
+import Image from "next/image";
+import { useSearchParams } from "next/navigation";
+import React, { FunctionComponent, memo, useCallback, useEffect, useState } from "react";
 import { useRenderCount } from "../../hooks/customHooks";
 import {
   Error,
@@ -8,56 +13,42 @@ import {
   MatchReferenceDTO,
   SummonerDTO,
 } from "../../types/commonTypes";
-import { concatApiKey, getSummoner, getSummonerMatches } from "../../utils/api";
 import { apiStaticUrl, apiUrl2 } from "../../utils/Constants/urls";
+import { concatApiKey, getSummoner, getSummonerMatches } from "../../utils/api";
 import ErrorPanel from "../ErrorPanel/ErrorPanel";
 import Loading from "../Loading/Loading";
 import Match from "../Match/Match";
 import styles from "./SummonerProfile.module.scss";
-import Image from "next/image";
-import axios, { AxiosResponse } from "axios";
 
-interface ISummonerProfile {
-  name: string;
-}
-
-const SummonerProfile: FunctionComponent<ISummonerProfile> = ({ name }) => {
+const SummonerProfile: FunctionComponent = () => {
   const [loading, setLoading] = useState(true);
   const [profileInfo, setProfileInfo] = useState<SummonerDTO>();
   const [matches, setMatches] = useState<MatchReferenceDTO[]>();
   const [error, setError] = useState<Error>();
 
-  useRenderCount([name]);
-  useEffect(() => {
-    handleProfileRequest();
-    return () => {
-      setLoading(true);
-      setError(undefined);
-    };
-  }, [name]);
+  const name = useSearchParams()?.get("name") as string;
 
-  const getMatchesAxios = async (response: AxiosResponse<string[], any>) => {
+  useRenderCount([name]);
+
+  const getMatchesAxios = useCallback(async (response: AxiosResponse<string[], any>) => {
     const minimizedArray = response.data.slice(0, 8);
     let matches: MatchReferenceDTO[] = [];
     for (let index = 0; index < minimizedArray.length; index++) {
       const matchId = minimizedArray[index];
-      const match = await axios.get(
-        `${apiUrl2}/match/v5/matches/${matchId}${concatApiKey("?")}`,
-      );
+      const match = await axios.get(`${apiUrl2}/match/v5/matches/${matchId}${concatApiKey("?")}`);
       matches.push(match.data);
     }
     await Promise.all(matches);
     setMatches(matches);
     setLoading(false);
-  };
+  }, []);
 
-  const handleProfileRequest = () => {
+  const handleProfileRequest = useCallback(() => {
     const callback: ISummonerCallback = {
       onSuccess: (response) => {
         setProfileInfo(response.data);
         const summonerMatchesCallback: ISummonerMatchesCallback = {
           onSuccess: (res) => {
-            console.log("Response from getSummonerMatches", res);
             getMatchesAxios(res);
           },
           onFailed: (err) => {
@@ -71,15 +62,20 @@ const SummonerProfile: FunctionComponent<ISummonerProfile> = ({ name }) => {
       },
     };
     getSummoner(name, callback);
-  };
+  }, [getMatchesAxios, name]);
+
+  useEffect(() => {
+    handleProfileRequest();
+    return () => {
+      setLoading(true);
+      setError(undefined);
+    };
+  }, [handleProfileRequest]);
 
   const getMatches = () => {
     //TODO Needs to change since api changed responses
     return matches?.map(
-      (
-        { platformId, gameId, champion, queue, season, timestamp, role, lane },
-        index,
-      ) => {
+      ({ platformId, gameId, champion, queue, season, timestamp, role, lane }, index) => {
         return (
           <li key={index}>
             <Match
@@ -108,12 +104,7 @@ const SummonerProfile: FunctionComponent<ISummonerProfile> = ({ name }) => {
     <Loading name="summoner profile" />
   ) : (
     <Paper className={styles.paper}>
-      <Image
-        src={profileIconUrl}
-        alt="Summoner Profile Icon"
-        width={150}
-        height={150}
-      />
+      <Image src={profileIconUrl} alt="Summoner Profile Icon" width={150} height={150} />
       <h2>{profileInfo?.name}</h2>
       <p>level {profileInfo?.summonerLevel}</p>
       <section className={styles.section}>

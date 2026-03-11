@@ -4,8 +4,8 @@ import React, { FunctionComponent, useState } from "react";
 import { Slide } from "react-awesome-reveal";
 import challenger from "../../../public/images/challenger.png";
 import { IRankNumber, LeagueItemDTO } from "../../types/commonTypes";
-import EnhancedTableHead from "../Others/EnhancedTableHead";
-import SummonerRow from "../Others/SummonerRow";
+import EnhancedTableHead from "../features/summoners/EnhancedTableHead";
+import SummonerRow from "../features/summoners/SummonerRow";
 import styles from "./RenderTierList.module.scss";
 
 interface IProps {

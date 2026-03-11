@@ -4,12 +4,12 @@ import { FunctionComponent, memo, useEffect, useState } from "react";
 
 import { InternalAxiosRequestConfig } from "axios";
 import { useSearchParams } from "next/navigation";
-import { useRenderCount } from "../../hooks/customHooks";
-import { Error, IChampion, IChampionCallback } from "../../types/commonTypes";
-import { getChampion } from "../../utils/api";
-import ErrorPanel from "../ErrorPanel/ErrorPanel";
-import Loading from "../Loading/Loading";
-import RenderChampionDetail from "../RenderChampionDetail/RenderChampionDetail";
+import { useRenderCount } from "../../../hooks/customHooks";
+import { Error, IChampion, IChampionCallback } from "../../../types/commonTypes";
+import { getChampion } from "../../../utils/api";
+import ErrorPanel from "../../ErrorPanel/ErrorPanel";
+import Loading from "../../Loading/Loading";
+import RenderChampionDetail from "../../RenderChampionDetail/RenderChampionDetail";
 
 const ChampionDetail: FunctionComponent = () => {
   const [loading, setLoading] = useState(true);

@@ -1,4 +1,4 @@
-import TopTierList from "@/components/Others/TopTierList";
+import TopTierList from "@/components/features/summoners/TopTierList";
 
 export default function ClientPage() {
   return <TopTierList />;

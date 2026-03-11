@@ -4,8 +4,8 @@ import { IChampion } from "../../types/commonTypes";
 import { apiStaticUrl } from "../../utils/Constants/urls";
 import styles from "./RenderChampionDetail.module.scss";
 import Image from "next/image";
-import HashTagList from "../Others/HashTagList";
-import InfoCategory from "../Others/InfoCategory";
+import HashTagList from "../features/champions/HashTagList";
+import InfoCategory from "../features/champions/InfoCategory";
 
 const RenderChampionDetail: FunctionComponent<IChampion> = ({
   id,

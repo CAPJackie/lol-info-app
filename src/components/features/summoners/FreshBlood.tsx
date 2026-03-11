@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 
-import newPlayer from "../../../public/images/new-player.svg";
+import newPlayer from "../../../../public/images/new-player.svg";
 import Image from "next/image";
 
 const FreshBlood: FunctionComponent = () => {

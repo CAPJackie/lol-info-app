@@ -3,7 +3,7 @@ import { Slide } from "react-awesome-reveal";
 import { ChampionsMap } from "../../types/commonTypes";
 import { apiStaticUrl } from "../../utils/Constants/urls";
 import styles from "./RenderChampionList.module.scss";
-import Champion from "../Others/Champion";
+import Champion from "../features/champions/Champion";
 
 const apiStaticUrlImg = apiStaticUrl.img + "/champion";
 

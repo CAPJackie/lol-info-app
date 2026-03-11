@@ -1,4 +1,4 @@
-import ChampionDetail from "@/components/Others/ChampionDetail";
+import ChampionDetail from "@/components/features/champions/ChampionDetail";
 
 export default function Page() {
   return <ChampionDetail />;

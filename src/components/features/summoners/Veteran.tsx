@@ -1,5 +1,5 @@
 import React, { FunctionComponent } from "react";
-import veteran from "../../../public/images/veteran.svg";
+import veteran from "../../../../public/images/veteran.svg";
 import Image from "next/image";
 
 const Veteran: FunctionComponent = () => {

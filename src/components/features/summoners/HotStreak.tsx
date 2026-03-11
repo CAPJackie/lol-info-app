@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 
-import hotStreak from "../../../public/images/hotStreak.svg";
+import hotStreak from "../../../../public/images/hotStreak.svg";
 import Image from "next/image";
 
 const HotStreak: FunctionComponent = () => {

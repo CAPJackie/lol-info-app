@@ -6,3 +6,21 @@
   list-style-type: none;
   width: 100%;
 }
+
+.loadMore {
+  display: block;
+  margin: 24px auto;
+  padding: 10px 32px;
+  background: transparent;
+  border: 1px solid #2e2734;
+  color: #f6dea7;
+  font-family: beaufort, sans-serif;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+
+  &:hover {
+    border-color: rgba(246, 222, 167, 0.5);
+    background: rgba(246, 222, 167, 0.05);
+  }
+}

@@ -1,5 +1,5 @@
 "use client";
-import { Button, InputBase, Paper } from "@material-ui/core";
+import { Button, InputBase, Paper } from "@mui/material";
 import React, { FunctionComponent, useState } from "react";
 import { Slide } from "react-awesome-reveal";
 import search from "../../../public/images/search.svg";

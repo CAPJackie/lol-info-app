@@ -2,7 +2,10 @@ import "@/styles/globals.scss";
 import { Metadata } from "next";
 import ClientLayout from "./ClientLayout";
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://lol-info-app.vercel.app";
+
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
   title: {
     default: "LoL Skill",
     template: "%s | LoL Skill",

@@ -9,7 +9,7 @@ export const fetchSummonersTopList: () => SummonerInfo[] = () => {
   faker.seed(SUMMONERS_SEED);
 
   const generateGamingUsername = () =>
-    `${faker.internet.userName()}${faker.number.int({
+    `${faker.internet.username()}${faker.number.int({
       min: 1,
       max: 9999,
     })}`;
@@ -35,9 +35,9 @@ export const fetchSummonersTopList: () => SummonerInfo[] = () => {
       defeats: faker.number.int({ min: 0, max: 1000 }),
     },
     kda: {
-      kills: faker.number.float({ min: 0, max: 50, precision: 0.1 }),
-      deaths: faker.number.float({ min: 0, max: 10, precision: 0.1 }),
-      assistances: faker.number.float({ min: 0, max: 20, precision: 0.1 }),
+      kills: faker.number.float({ min: 0, max: 50, multipleOf: 0.1 }),
+      deaths: faker.number.float({ min: 0, max: 10, multipleOf: 0.1 }),
+      assistances: faker.number.float({ min: 0, max: 20, multipleOf: 0.1 }),
     },
     lssScore: faker.number.int({ min: 1000, max: 10000 }),
     region: "LAN",

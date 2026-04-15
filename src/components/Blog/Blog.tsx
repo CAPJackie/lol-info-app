@@ -8,7 +8,7 @@ const Blog: FunctionComponent = () => {
     <div className={styles.container}>
       <h2 className={styles.h2}>Blog</h2>
       <div className="row">
-        <div className="col-8">
+        <div className="col-12">
           <div className="row">
             <BlogEntryPreview
               name="zoe"
@@ -29,7 +29,6 @@ const Blog: FunctionComponent = () => {
             </Link>
           </div>
         </div>
-        <div className="col-4"></div>
       </div>
     </div>
   );

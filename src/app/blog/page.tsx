@@ -26,6 +26,5 @@ export default async function Blog() {
     blogs = [];
   }
 
-  // throw Error("You're throwing an intentional error");
   return <ClientPage {...{ blogs }} />;
 }

@@ -14,7 +14,9 @@
     "perf:routes": "node scripts/check-route-performance.mjs",
     "docker:verify": "docker compose build verify && docker compose run --rm verify",
     "docker:app": "docker compose up --build app",
-    "docker:down": "docker compose down"
+    "docker:down": "docker compose down",
+    "typecheck": "next typegen && tsc --noEmit",
+    "validate": "yarn lint && yarn typecheck && yarn build"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",

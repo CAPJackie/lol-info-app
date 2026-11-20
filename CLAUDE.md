@@ -9,9 +9,8 @@ MUI + antd + Sass (not Tailwind/shadcn — don't introduce them without asking).
 
 ```bash
 yarn dev            # next dev --turbo, http://localhost:3000
-yarn validate       # lint + typecheck + build — final check
+yarn validate       # lint + typecheck + build — runs automatically on git push (husky)
 yarn build:verify   # format:check + lint + build + route performance check
-yarn format         # prettier (the edit hook already formats touched files)
 yarn docker:verify  # same checks inside Docker
 ```
 

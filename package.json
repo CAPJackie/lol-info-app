@@ -16,7 +16,8 @@
     "docker:app": "docker compose up --build app",
     "docker:down": "docker compose down",
     "typecheck": "next typegen && tsc --noEmit",
-    "validate": "yarn lint && yarn typecheck && yarn build"
+    "validate": "yarn lint && yarn typecheck && yarn build",
+    "prepare": "husky"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -46,6 +47,7 @@
   },
   "devDependencies": {
     "array-union": "^3.0.1",
+    "husky": "^9.1.7",
     "prettier": "^3.8.1"
   },
   "resolutions": {
